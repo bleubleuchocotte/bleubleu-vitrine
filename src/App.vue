@@ -3,7 +3,8 @@ import Header from './components/Header.vue';
 </script>
 
 <template>
-  <Header />
+  <Header/>
+  <p>{{ counter }}</p>
 </template>
 
 <style lang="scss">
