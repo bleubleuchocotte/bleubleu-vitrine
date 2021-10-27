@@ -6,13 +6,17 @@ import Header from './components/Header.vue';
   <Header />
 </template>
 
-<style>
+<style lang="scss">
+body {
+  min-height: 100vh;
+  box-shadow: inset 0px 0px 30px 10px $primary;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: $text;
 }
 </style>
