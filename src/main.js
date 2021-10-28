@@ -1,16 +1,12 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import { createPrismic } from '@prismicio/vue';
+import { router } from './router.js';
+import App from './App.vue';
 import './styles/main.scss'
-import PrismicVue from '@prismicio/vue';
-import linkResolver from './link-resolver';
 
-const accessToken = '' // Leave empty if your repo is public
-const endpoint = 'https://bleubleu-vitrine.prismic.io/api/v2';
+const prismic = createPrismic({ endpoint: 'https://bleubleu-vitrine.prismic.io/api/v2' });
 
 createApp(App)
-  .use(PrismicVue, {
-    endpoint,
-    apiOptions: { accessToken },
-    linkResolver
-  })
+  .use(router)
+  .use(prismic)
   .mount('#app')

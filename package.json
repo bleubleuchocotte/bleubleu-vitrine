@@ -1,6 +1,7 @@
 {
   "name": "bleubleu-vitrine",
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -9,7 +10,7 @@
   },
   "dependencies": {
     "@prismicio/client": "^5.1.0",
-    "@prismicio/vue": "^2.0.11",
+    "@prismicio/vue": "^3.0.0-alpha.4",
     "prismic-dom": "^2.2.6",
     "vue": "^3.2.16",
     "vue-router": "4"
