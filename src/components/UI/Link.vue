@@ -48,6 +48,7 @@ const componentType = ref(props.type === 'internal' ? 'router-link' : 'a');
   display: inline-block;
   font-size: 24px;
   line-height: 1.2;
+  cursor: pointer;
 }
 
 .link__text {

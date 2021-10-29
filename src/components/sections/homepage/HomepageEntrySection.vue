@@ -14,6 +14,7 @@
         <Link
           text="Our projects"
           to="/projects"
+          type="internal"
         />
         <Link
           text="Our team"

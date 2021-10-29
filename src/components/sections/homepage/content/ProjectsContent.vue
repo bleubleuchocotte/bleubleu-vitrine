@@ -6,6 +6,7 @@
     <Link
       to="/projects"
       text="Our projects"
+      type="internal"
     />
   </article>
 </template>
