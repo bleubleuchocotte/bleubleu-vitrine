@@ -84,6 +84,7 @@ defineProps({
     height: calc(100vh - 200px);
 
     video {
+      width: 100%;
       height: 100%;
       object-fit: cover;
     }

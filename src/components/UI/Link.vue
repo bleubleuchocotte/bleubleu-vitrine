@@ -1,8 +1,9 @@
 <template>
   <component
     :is="componentType"
-    :href="to"
     :to="to"
+    :href="url"
+    :target="target"
     class="link"
   >
     <span class="link__text">{{ text }}</span>
@@ -21,13 +22,21 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  to: {
-    type: String,
-    required: true,
-  },
   type: {
     type: String,
     default: 'external'
+  },
+  to: {
+    type: String,
+    default: () => null,
+  },
+  url: {
+    type: String,
+    default: () => null,
+  },
+  target: {
+    type: String,
+    default: () => null,
   },
 })
 
@@ -36,6 +45,7 @@ const componentType = ref(props.type === 'internal' ? 'router-link' : 'a');
 
 <style lang="scss">
 .link {
+  display: inline-block;
   font-size: 24px;
   line-height: 1.2;
 }

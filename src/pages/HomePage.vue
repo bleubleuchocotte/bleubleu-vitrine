@@ -5,6 +5,7 @@
   >
     <Header />
     <HomepageEntrySection :socials="document.data.socials" />
+    <HomepageContentSection :fields="document.data" />
     <HomepageTeamSection :members="document.data.team_members" />
     <Footer />
   </div>
@@ -20,6 +21,7 @@ import Header from '../components/layout/Header.vue'
 import HomepageEntrySection from '../components/sections/homepage/HomepageEntrySection.vue';
 import HomepageTeamSection from '../components/sections/homepage/HomepageTeamSection.vue';
 import Footer from '../components/layout/Footer.vue';
+import HomepageContentSection from '../components/sections/homepage/HomepageContentSection.vue';
 
 const { client } = usePrismic();
 let document = ref(null);
