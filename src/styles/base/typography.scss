@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Sprat';
+  src:
+    url('@/assets/fonts/Sprat-Variable.woff2') format("woff2-variations"),
+    url('@/assets/fonts/Sprat.woff2') format("woff2"),
+    url('@/assets/fonts/Sprat.woff') format('woff');
+  font-weight: 1 999;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neutral Face';
+  src: url('@/assets/fonts/subset-NeutralFaceBold.woff2') format('woff2'),
+  url('@/assets/fonts/subset-NeutralFaceBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neutral Face';
+  src: url('@/assets/fonts/subset-NeutralFaceRegular.woff2') format('woff2'),
+  url('@/assets/fonts/subset-NeutralFaceRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+

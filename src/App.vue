@@ -10,11 +10,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
   position: relative;
   min-height: 100vh;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: $font-primary;
+  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
