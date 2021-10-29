@@ -1,16 +1,22 @@
 <template>
   <section class="section section--projects-list">
     <div
-        v-for="(project, i) in projects"
-        class="project"
-        :key="i">
+      v-for="(project, i) in projects"
+      :key="i"
+      class="project"
+    >
       <prismic-rich-text :field="project.data.title" />
     </div>
   </section>
 </template>
 
 <script setup>
+import { defineProps} from 'vue';
+
 defineProps({
-  projects: Array,
+  projects: {
+    required: true,
+    type: Array,
+  },
 })
 </script>
