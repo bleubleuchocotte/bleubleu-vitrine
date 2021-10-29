@@ -30,3 +30,26 @@ async function getContent() {
 
 getContent()
 </script>
+
+<style lang="scss">
+.homepage {
+  &:before, &:after {
+    content: '';
+    z-index: 900;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: $black;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  &:before {
+    top: 80px;
+  }
+  &:after {
+    bottom: 80px;
+  }
+}
+</style>

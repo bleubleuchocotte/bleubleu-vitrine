@@ -22,7 +22,6 @@ body {
 
 body {
   margin: 0;
-  line-height: $line-height-base;
   font-family: $font-primary;
   font-weight: $weight-base;
   background-color: $color-body;
@@ -30,6 +29,27 @@ body {
   font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  // Style frame
+  min-height: 100vh;
+  position: relative;
+  padding: 80px 90px;
+
+  &:before, &:after {
+    content: '';
+    z-index: 900;
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: $black;
+    position: absolute;
+    bottom: 0;
+  }
+  &:before {
+    left: 90px;
+  }
+  &:after {
+    right: 90px;
+  }
 }
 
 :focus:not(:focus-visible) {

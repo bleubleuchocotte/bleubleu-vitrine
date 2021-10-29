@@ -34,4 +34,15 @@ export default {
 </script>
 
 <style scoped>
+.social-media {
+  display: inline-block;
+  margin: 20px;
+  width: 36px;
+  height: 36px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
 </style>

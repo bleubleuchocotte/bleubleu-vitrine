@@ -9,10 +9,3 @@ export default {
   components: { GradiantFrame }
 }
 </script>
-
-<style lang="scss">
-#app {
-  position: relative;
-  min-height: 100vh;
-}
-</style>

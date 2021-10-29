@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header o-grid-item--full">
     <h1 class="header__title">
       <span
         v-for="(word, i) in keywords"
