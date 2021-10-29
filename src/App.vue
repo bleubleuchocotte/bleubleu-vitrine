@@ -14,11 +14,5 @@ export default {
 #app {
   position: relative;
   min-height: 100vh;
-  font-family: $font-primary;
-  font-optical-sizing: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: $text;
 }
 </style>

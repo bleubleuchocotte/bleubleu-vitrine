@@ -1,8 +1,31 @@
 @import
-  './base/reset',
-  './base/typography',
-  './base/colors';
+'0-settings/settings-color',
+'0-settings/settings-helpers',
+'0-settings/settings-index',
+'0-settings/settings-layout',
+'0-settings/settings-media',
+'0-settings/settings-miscellaneous',
+'0-settings/settings-typography';
 
 @import
-  './helpers/mixins',
-  './helpers/variables';
+'1-base/base-default',
+'1-base/base-font';
+
+@import
+'2-elements/elements-form',
+'2-elements/elements-list',
+'2-elements/elements-media',
+'2-elements/elements-typography',
+'2-elements/elements-table';
+
+@import
+'3-objects/objects-container',
+'3-objects/objects-cover',
+'3-objects/objects-full';
+
+@import
+'4-utilities/utilities-grid',
+'4-utilities/utilities-spacing',
+'4-utilities/utilities-layout',
+'4-utilities/utilities-typography';
+
