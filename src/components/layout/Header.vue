@@ -1,5 +1,5 @@
 <template>
-  <header class="header o-grid-item--full">
+  <header class="header o-grid-item--full-bottom">
     <h1 class="header__title">
       <span
         v-for="(word, i) in keywords"
@@ -20,7 +20,7 @@ const keywords = ref(['multidisciplinary' ,'collective', 'with a strong', 'perso
   font-family: $font-secondary;
   font-weight: 50;
   font-size: 50px;
-  font-variation-settings: 'wdth' 400;
+  font-variation-settings: 'wdth' 200;
   text-transform: uppercase;
 }
 </style>

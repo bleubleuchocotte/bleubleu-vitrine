@@ -1,11 +1,11 @@
 <template>
-  <section class="section section--homepage-entry o-grid-item--full">
+  <section class="section section--homepage-entry o-grid-item--full-bottom">
     <aside>
       <div class="infos">
         <p>Bleubleu</p>
         <p>Amour et multimedia</p>
       </div>
-      <div class="socials o-grid-item">
+      <div class="socials o-grid-item--bottom">
         <Socials :fields="socials" />
       </div>
       <div class="links">

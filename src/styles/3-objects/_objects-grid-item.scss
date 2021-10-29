@@ -1,25 +1,44 @@
 /*
- * [ objects / full ]
+ * [ objects / grid-item ]
  */
 
 // -----------------------------------------------------------------------------
 
-.o-grid-item {
-  box-sizing: content-box;
-  border-bottom: 1px solid $black;
-}
+$directions: top, bottom, left, right;
 
-.o-grid-item--full {
-  position: relative;
+/**
+ * Usage
+ */
 
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: -90px;
-    right: -90px;
-    bottom: 0;
-    height: 1px;
-    background-color: $black;
+// o-grid-item--bottom
+// o-grid-item--full-bottom
+
+// o-grid-item--right
+// o-grid-item--full-right
+
+
+
+@each $dir in $directions {
+
+  .o-grid-item--#{$dir} {
+    box-sizing: content-box;
+    border-#{$dir}: 1px solid $black;
   }
+
+  .o-grid-item--full-#{$dir} {
+    position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: -90px;
+      right: -90px;
+      $dir: 0;
+      height: 1px;
+      background-color: $black;
+    }
+  }
+
 }
+
