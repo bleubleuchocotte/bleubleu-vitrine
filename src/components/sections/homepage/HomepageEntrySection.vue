@@ -1,9 +1,11 @@
 <template>
   <section class="section section--homepage-entry o-grid-item--full-bottom">
-    <aside>
-      <div class="infos">
-        <p>Bleubleu</p>
-        <p>Amour et multimedia</p>
+    <aside class="aside o-grid-item--right">
+      <div class="infos o-grid-item--bottom">
+        <IconBleubleu />
+        <p class="infos__text">
+          Amour & multimedia
+        </p>
       </div>
       <div class="socials o-grid-item--bottom">
         <Socials :fields="socials" />
@@ -23,7 +25,17 @@
         />
       </div>
     </aside>
-    <div class="main-logo" />
+    <div class="main-logo">
+      <video
+        autoplay
+        loop
+      >
+        <source
+          src="@/assets/video/entry-video.mp4"
+          type="video/mp4"
+        >
+      </video>
+    </div>
   </section>
 </template>
 
@@ -31,6 +43,7 @@
 import { defineProps } from 'vue';
 import Socials from '../../socials/Socials.vue';
 import Link from '@/components/UI/Link.vue';
+import IconBleubleu from '@/assets/icons/icon-bleubleu.svg?inline';
 
 defineProps({
   socials: {
@@ -42,12 +55,38 @@ defineProps({
 
 <style lang="scss" scoped>
 .section--homepage-entry {
+  display: grid;
+  grid-template-columns: minmax(272px, 22%) auto;
+
+  .infos {
+    padding: 26px;
+    font-size: 24px;
+  }
+  .infos__text {
+    margin-top: 32px;
+  }
+
+  .socials {
+    text-align: center;
+  }
+  
   .links {
     display: flex;
     flex-direction: column;
+    padding: 22px;
   }
+
   .link:not(:last-child) {
     margin-bottom: 16px;
+  }
+
+  .main-logo {
+    height: calc(100vh - 200px);
+
+    video {
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
 </style>

@@ -3,7 +3,18 @@
     v-if="footer"
     class="footer"
   >
-    <Socials :fields="footer.data.socials" />
+    <prismic-image
+      :field="footer.data.image"
+      class="footer__img"
+    />
+    <Socials
+      :fields="footer.data.socials"
+      small
+    />
+    <p class="footer__copyright">
+      <span>©{{ year }}, </span>
+      <span>{{ footer.data.copyright }}</span>
+    </p>
   </footer>
 </template>
 
@@ -22,9 +33,27 @@ async function getFooterContent() {
   console.log(footer.value);
 }
 
+const year = ref(new Date().getFullYear());
+
 getFooterContent()
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.footer {
+  padding: 56px 22px;
+  text-align: center;
+}
 
+.footer__img {
+  margin-bottom: 32px;
+}
+
+.footer__copyright {
+  margin-top: 16px;
+  font-family: $font-secondary;
+  font-size: 15px;
+  font-weight: 10;
+  font-variation-settings: 'wdth' 150;
+  text-transform: uppercase;
+}
 </style>

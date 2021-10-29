@@ -6,6 +6,7 @@
       :href="media.data.link.url"
       :target="media.data.link.target"
       :title="`Link to our ${media.data.name}`"
+      :class="{small}"
       class="social-media"
     >
       <component :is="`icon-${media.slug}`" />
@@ -29,11 +30,15 @@ export default {
       type: Array,
       required: true,
     },
+    small: {
+      type: Boolean,
+      default: false,
+    },
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .social-media {
   display: inline-block;
   margin: 20px;
@@ -43,6 +48,12 @@ export default {
   svg {
     width: 100%;
     height: 100%;
+  }
+
+  &.small {
+    width: 24px;
+    height: 24px;
+    margin: 16px 8px;
   }
 }
 </style>

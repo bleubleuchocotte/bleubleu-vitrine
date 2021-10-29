@@ -1,22 +1,25 @@
 <template>
   <div
     v-if="document"
-    class="homepage"
+    class="home-page"
   >
     <Header />
     <HomepageEntrySection :socials="document.data.socials" />
-    <Team :members="document.data.team_members" />
+    <HomepageTeamSection :members="document.data.team_members" />
     <Footer />
   </div>
+
+  <span class="line-top o-grid-item--full-top" />
+  <span class="line-bottom o-grid-item--full-bottom" />
 </template>
 
 <script setup>
-import Header from '../components/layout/Header.vue'
-import Team from '../components/sections/homepage/HomepageTeamSection.vue';
-import { usePrismic } from '@prismicio/vue';
 import { ref } from 'vue';
-import Footer from '../components/layout/Footer.vue';
+import { usePrismic } from '@prismicio/vue';
+import Header from '../components/layout/Header.vue'
 import HomepageEntrySection from '../components/sections/homepage/HomepageEntrySection.vue';
+import HomepageTeamSection from '../components/sections/homepage/HomepageTeamSection.vue';
+import Footer from '../components/layout/Footer.vue';
 
 const { client } = usePrismic();
 let document = ref(null);
@@ -30,26 +33,3 @@ async function getContent() {
 
 getContent()
 </script>
-
-<style lang="scss">
-.homepage {
-  &:before, &:after {
-    content: '';
-    z-index: 900;
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: $black;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-  &:before {
-    top: 80px;
-  }
-  &:after {
-    bottom: 80px;
-  }
-}
-</style>

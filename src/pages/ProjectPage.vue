@@ -1,10 +1,11 @@
 <template>
-  <router-link to="/">
-    Home
-  </router-link>
   <div v-if="projects">
+    <router-link to="/">
+      Home
+    </router-link>
     <ProjectsList :projects="projects" />
   </div>
+  <span class="line-top o-grid-item--full-top" />
 </template>
 
 <script setup>
@@ -22,3 +23,9 @@ async function getContent() {
 
 getContent()
 </script>
+
+<style>
+.projects-page {
+
+}
+</style>

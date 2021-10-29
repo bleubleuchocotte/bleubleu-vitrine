@@ -5,7 +5,6 @@
 // -----------------------------------------------------------------------------
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
   line-height: $line-height-headings;
   font-family: $font-secondary;
   font-weight: $weight-bold;
@@ -17,5 +16,5 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6, p {
-  margin-top: 0;
+  margin: 0;
 }
