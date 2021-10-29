@@ -61,7 +61,7 @@ const componentType = ref(props.type === 'internal' ? 'router-link' : 'a');
   vertical-align: top;
   width: 18px;
   height: 18px;
-  margin-left: 4px;
+  margin-left: 8px;
   position: relative;
   top: 2px;
 

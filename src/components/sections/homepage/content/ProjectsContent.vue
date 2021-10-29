@@ -1,13 +1,21 @@
 <template>
-  <article class="projects-content">
-    <Title class="projects-content__title">
+  <article class="content-item projects-content">
+    <Title class="content-item__title projects-content__title">
       <prismic-text :field="title" />
     </Title>
-    <Link
-      to="/projects"
-      text="Our projects"
-      type="internal"
-    />
+    <div class="content-item__infos projects_content__infos">
+      <Link
+        to="/projects"
+        text="Our projects"
+        type="internal"
+      />
+      <div class="content-item__description">
+        <prismic-text
+          :field="description"
+        />
+        <div class="blur" />
+      </div>
+    </div>
   </article>
 </template>
 
@@ -33,12 +41,7 @@ defineProps({
 </script>
 
 <style scoped>
-.projects-content {
-  padding: 28px 32px;
-}
-
 .projects-content__title {
-  display: block;
-  max-width: 50%;
+  max-width: 200px;
 }
 </style>
