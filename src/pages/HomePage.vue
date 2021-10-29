@@ -1,10 +1,13 @@
 <template>
-  <Header />
-  <HomepageEntrySection />
-  <div v-if="document">
+  <div
+    v-if="document"
+    class="homepage"
+  >
+    <Header />
+    <HomepageEntrySection :socials="document.data.socials" />
     <Team :members="document.data.team_members" />
+    <Footer />
   </div>
-  <Footer />
 </template>
 
 <script setup>
@@ -19,7 +22,9 @@ const { client } = usePrismic();
 let document = ref(null);
 
 async function getContent() {
-  document.value = await client.getSingle('home_page', {}, null);
+  document.value = await client.getSingle('home_page', {
+    fetchLinks: ['social_media.name', 'social_media.link'],
+  }, null);
   console.log(document.value);
 }
 

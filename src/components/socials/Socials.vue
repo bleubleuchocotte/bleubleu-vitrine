@@ -5,24 +5,33 @@
       :key="i"
       :href="media.data.link.url"
       :target="media.data.link.target"
+      :title="`Link to our ${media.data.name}`"
       class="social-media"
     >
-      {{ media.data.name }}
+      <component :is="`icon-${media.slug}`" />
     </a>
   </div>
 </template>
 
-<script setup>
-import { defineProps} from 'vue';
+<script>
+import IconMalt from '@/assets/icons/icon-malt.svg?inline';
+import IconInstagram from '@/assets/icons/icon-instagram.svg?inline';
+import IconLinkedin from '@/assets/icons/icon-linkedin.svg?inline';
 
-defineProps({
-  fields: {
-    type: Array,
-    required: true,
+export default {
+  components: {
+    IconMalt,
+    IconInstagram,
+    IconLinkedin,
   },
-})
+  props: {
+    fields: {
+      type: Array,
+      required: true,
+    },
+  }
+}
 </script>
 
 <style scoped>
-
 </style>
