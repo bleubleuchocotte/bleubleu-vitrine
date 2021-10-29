@@ -14,15 +14,13 @@
         <Link
           text="Our projects"
           to="/projects"
+          type="internal"
         />
         <Link
           text="Our team"
           to="https://fr.malt.be/group/bleubleuchocotte/60e0bf515002f0348a13aa26"
         />
-        <Link
-          text="Contact us"
-          to="null"
-        />
+        <ContactUs />
       </div>
     </aside>
     <div class="main-logo">
@@ -30,6 +28,10 @@
         autoplay
         loop
       >
+        <!--        <source
+          src="@/assets/video/entry-video.webm"
+          type="video/webm"
+        >-->
         <source
           src="@/assets/video/entry-video.mp4"
           type="video/mp4"
@@ -44,6 +46,7 @@ import { defineProps } from 'vue';
 import Socials from '../../socials/Socials.vue';
 import Link from '@/components/UI/Link.vue';
 import IconBleubleu from '@/assets/icons/icon-bleubleu.svg?inline';
+import ContactUs from '../../UI/ContactUs.vue';
 
 defineProps({
   socials: {

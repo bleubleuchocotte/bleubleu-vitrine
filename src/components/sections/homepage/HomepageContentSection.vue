@@ -10,7 +10,7 @@
     <TeamContent
       class="o-grid-item--right"
       :title="fields.team_title"
-      :description="fields.team_title"
+      :description="fields.team_description"
       :link="fields.team_link"
       :link-name="fields.team_link_name"
     />
