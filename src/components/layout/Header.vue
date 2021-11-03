@@ -12,7 +12,7 @@
 <script setup>
 import { ref } from 'vue';
 
-const keywords = ref(['multidisciplinary' ,'collective', 'with a strong', 'personnality']);
+const keywords = ref(['multidisciplinary' ,' collective', ' with a strong', ' personnality']);
 </script>
 
 <style lang="scss">
