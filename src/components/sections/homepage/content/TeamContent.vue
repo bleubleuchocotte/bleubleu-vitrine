@@ -11,10 +11,12 @@
       />
       <div class="content-item__description">
         <prismic-text
+          has_blur 
           class="content-item__text"
           :field="description"
+          :style="{}"
         />
-        <div class="blur" />
+        <!-- <div class="blur" /> -->
       </div>
     </div>
   </article>
@@ -41,8 +43,41 @@ defineProps({
   linkName: {
     type: String,
     required: true,
+  },
+  has_blur: {
+    type: Boolean,
+    required: false
   }
 })
+</script>
+
+
+<script>
+window.addEventListener('mousemove', arg => {
+    let blur_elements = document.querySelectorAll('[has_blur]');
+
+    blur_elements.forEach(el => {
+        let para = el.getBoundingClientRect();
+        let distance = computeDistanceFromCenter(para, arg);
+        let blur_value = distance*0.1;
+        if (blur_value > 1){
+          blur_value = 1;
+        } else if (blur_value < 0.10){
+          blur_value = 0;
+        } 
+
+        el.style = `filter: blur(${4*blur_value}px)`
+
+    })
+
+})
+
+function computeDistanceFromCenter(el_A,el_B){
+    // el_A doit être un élément getBoundingClientRec()
+    // el_B doit être l'argument d'un event mousemove
+    let dist = Math.sqrt(Math.pow((el_A.x+el_A.width/2) - el_B.clientX,2)/el_A.width/2 + Math.pow((el_A.y+el_A.height/2) - el_B.clientY,2)/el_A.height/2)
+    return dist;
+}
 </script>
 
 <style lang="scss">
