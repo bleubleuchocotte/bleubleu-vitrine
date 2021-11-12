@@ -1,20 +1,35 @@
 <template>
   <header class="header o-grid-item--full-bottom">
     <h1 class="header__title">
-      <div class="block">
+      <span class="block">
         <span>multidisciplinary</span>
+
+        <span class="icon">
+          <IconKeurKeur />
+        </span>
+
         <span class="border">collective</span>
-      </div>
-      <div class="block">
+      </span>
+      <span class="block">
         <span>with a strong</span>
+
+        <span class="icon">
+          <IconKeurKeur />
+        </span>
+
         <span>personnality</span>
-      </div>
+
+        <span class="icon">
+          <IconKeurKeur />
+        </span>
+      </span>
     </h1>
   </header>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import IconKeurKeur from '@/assets/icons/icon-keurkeur.svg?inline';
 
 const keywords = ref(['multidisciplinary' ,'collective', 'with a strong', 'personnality']);
 </script>
@@ -32,6 +47,16 @@ const keywords = ref(['multidisciplinary' ,'collective', 'with a strong', 'perso
 
   span {
     word-break: break-all;
+  }
+}
+
+.header .icon {
+  display: inline-block;
+  width: 50px;
+  margin: 0 16px;
+
+  svg {
+    vertical-align: middle;
   }
 }
 

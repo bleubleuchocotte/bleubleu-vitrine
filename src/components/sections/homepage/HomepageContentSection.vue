@@ -1,6 +1,8 @@
 <template>
   <section class="section section--content o-grid-item--full-bottom">
-    <div class="image-container image-container--left o-grid-item--bottom o-grid-item--right" />
+    <div class="image-container image-container--left o-grid-item--bottom o-grid-item--right">
+      <PrismicImage :field="fields.projects_image" />
+    </div>
     <ProjectsContent
       class="o-grid-item--bottom"
       :title="fields.projects_title"
@@ -14,7 +16,9 @@
       :link="fields.team_link"
       :link-name="fields.team_link_name"
     />
-    <div class="image-container image-container--right" />
+    <div class="image-container image-container--right">
+      <PrismicImage :field="fields.team_image" />
+    </div>
   </section>
 </template>
 
@@ -48,6 +52,11 @@ defineProps({
 
 .projects-content {
   grid-area: top-right;
+}
+
+.image-container img {
+  display: block;
+  margin: auto;
 }
 
 .image-container--left {
