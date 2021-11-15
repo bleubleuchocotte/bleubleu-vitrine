@@ -40,7 +40,7 @@ getFooterContent()
 
 <style lang="scss" scoped>
 .footer {
-  padding: 56px 22px;
+  padding: 48px 16px 16px 16px;
   text-align: center;
 }
 
@@ -52,9 +52,15 @@ getFooterContent()
 .footer__copyright {
   margin-top: 16px;
   font-family: $font-secondary;
-  font-size: 15px;
   font-weight: 10;
   font-variation-settings: 'wdth' 150;
   text-transform: uppercase;
+  @include fluid(font-size, 320px, 576px, 11px, 15px);
+}
+
+@media #{$sm-up} {
+  .footer {
+    padding: 56px 22px;
+  }
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <section class="section section--content o-grid-item--full-bottom">
     <div class="image-container image-container--left o-grid-item--bottom o-grid-item--right">
-      <primic-image :field="fields.projects_image" />
+      <prismic-image :field="fields.projects_image" />
     </div>
     <ProjectsContent
       class="o-grid-item--bottom"
@@ -17,7 +17,7 @@
       :link-name="fields.team_link_name"
     />
     <div class="image-container image-container--right">
-      <primic-image :field="fields.team_image" />
+      <prismic-image :field="fields.team_image" />
     </div>
   </section>
 </template>
@@ -37,6 +37,8 @@ defineProps({
 
 <style lang="scss">
 .section--content {
+  display: flex;
+  flex-direction: column;
 }
 
 .team-content {
@@ -44,6 +46,7 @@ defineProps({
 }
 
 .projects-content {
+  order: -1;
   grid-area: top-right;
 }
 

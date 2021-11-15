@@ -33,8 +33,8 @@ defineProps({
 }
 
 .member {
+  @include fluid(font-size, 576px, 1440px, 12px, 36px);
   font-family: $font-secondary;
-  font-size: 36px;
   font-weight: 10;
   font-variation-settings: 'wdth' 200;
   line-height: 1.66;
@@ -48,4 +48,5 @@ defineProps({
   right: 0;
   margin: auto;
 }
+
 </style>
