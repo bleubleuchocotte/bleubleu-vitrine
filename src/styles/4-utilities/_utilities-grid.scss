@@ -1,3 +1,4 @@
+@use "sass:math";
 /*
  * [ utilities / grid ]
  */
@@ -8,29 +9,29 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-left: ($grid-gap / -2);
-    margin-right: ($grid-gap / -2);
+    margin-left: ( math.div($grid-gap, -2) );
+    margin-right: ( math.div($grid-gap, -2) );
 }
 
 [class*='u-col-'] {
     width: 100%;
     min-height: 1px;
-    padding-left: ($grid-gap / 2);
-    padding-right: ($grid-gap / 2);
+    padding-left: ( math.div($grid-gap, 2) );
+    padding-right: ( math.div($grid-gap, 2) );
 }
 
 @for $i from 1 through $grid-columns {
     .u-col-#{$i} {
-        flex: 0 0 percentage($i / $grid-columns);
-        max-width: percentage($i / $grid-columns);
+        flex: 0 0 percentage( math.div($i, $grid-columns) );
+        max-width: percentage( math.div($i, $grid-columns) );
     }
 }
 
 @media #{$sm-up} {
     @for $i from 1 through $grid-columns {
         .u-col-sm-#{$i} {
-            flex: 0 0 percentage($i / $grid-columns);
-            max-width: percentage($i / $grid-columns);
+            flex: 0 0 percentage( math.div($i, $grid-columns) );
+            max-width: percentage( math.div($i, $grid-columns) );
         }
     }
 }
@@ -38,8 +39,8 @@
 @media #{$md-up} {
     @for $i from 1 through $grid-columns {
         .u-col-md-#{$i} {
-            flex: 0 0 percentage($i / $grid-columns);
-            max-width: percentage($i / $grid-columns);
+            flex: 0 0 percentage( math.div($i, $grid-columns) );
+            max-width: percentage( math.div($i, $grid-columns) );
         }
     }
 }
@@ -47,8 +48,8 @@
 @media #{$lg-up} {
     @for $i from 1 through $grid-columns {
         .u-col-lg-#{$i} {
-            flex: 0 0 percentage($i / $grid-columns);
-            max-width: percentage($i / $grid-columns);
+            flex: 0 0 percentage( math.div($i, $grid-columns) );
+            max-width: percentage( math.div($i, $grid-columns) );
         }
     }
 }
@@ -57,8 +58,8 @@
 @media #{$lg-up-middly} {
     @for $i from 1 through $grid-columns {
         .u-col-lg-middly-#{$i} {
-            flex: 0 0 percentage($i / $grid-columns);
-            max-width: percentage($i / $grid-columns);
+            flex: 0 0 percentage( math.div($i, $grid-columns) );
+            max-width: percentage( math.div($i, $grid-columns) );
         }
     }
 }
@@ -67,8 +68,8 @@
 @media #{$xl-up} {
     @for $i from 1 through $grid-columns {
         .u-col-xl-#{$i} {
-            flex: 0 0 percentage($i / $grid-columns);
-            max-width: percentage($i / $grid-columns);
+            flex: 0 0 percentage( math.div($i, $grid-columns) );
+            max-width: percentage( math.div($i, $grid-columns) );
         }
     }
 }

@@ -1,20 +1,35 @@
 <template>
   <header class="header o-grid-item--full-bottom">
     <h1 class="header__title">
-      <div class="block">
+      <span class="block">
         <span>multidisciplinary</span>
+
+        <span class="icon">
+          <IconKeurKeur />
+        </span>
+
         <span class="border">collective</span>
-      </div>
-      <div class="block">
+      </span>
+      <span class="block">
         <span>with a strong</span>
+
+        <span class="icon">
+          <IconKeurKeur />
+        </span>
+
         <span>personnality</span>
-      </div>
+
+        <span class="icon">
+          <IconKeurKeur />
+        </span>
+      </span>
     </h1>
   </header>
 </template>
 
 <script setup>
 import { ref } from 'vue';
+import IconKeurKeur from '@/assets/icons/icon-keurkeur.svg?inline';
 
 const keywords = ref(['multidisciplinary' ,'collective', 'with a strong', 'personnality']);
 </script>
@@ -26,12 +41,22 @@ const keywords = ref(['multidisciplinary' ,'collective', 'with a strong', 'perso
   font-size: 40px;
   font-variation-settings: 'wdth' 200;
   text-transform: uppercase;
-  text-align: center;
   padding: 12px 40px;
   @include fluid(font-size, 992px, 1920px, 25px, 50px);
+  @include fluid(font-size, 576px, 992px, 16px, 25px);
 
   span {
     word-break: break-all;
+  }
+}
+
+.header .icon {
+  display: none;
+  width: 50px;
+  margin: 0 16px;
+
+  svg {
+    vertical-align: middle;
   }
 }
 
@@ -44,5 +69,14 @@ const keywords = ref(['multidisciplinary' ,'collective', 'with a strong', 'perso
   padding: 0 8px;
   border: 1px solid $black;
   border-radius: 12px;
+}
+
+@media #{$lg-up} {
+  .header__title {
+    text-align: center;
+  }
+  .header .icon {
+    display: inline-block;
+  }
 }
 </style>

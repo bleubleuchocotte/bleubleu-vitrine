@@ -32,7 +32,7 @@ body {
   // Style frame
   min-height: 100vh;
   position: relative;
-  padding: 80px 90px;
+  padding: 40px 40px;
 
   &:before, &:after {
     content: '';
@@ -45,10 +45,10 @@ body {
     bottom: 0;
   }
   &:before {
-    left: 90px;
+    left: 40px;
   }
   &:after {
-    right: 90px;
+    right: 40px;
   }
 }
 
@@ -62,5 +62,18 @@ button {
 
   &:focus {
     outline: none;
+  }
+}
+
+@media #{$lg-up} {
+  body {
+    padding: 80px 90px;
+
+    &:before {
+      left: 90px;
+    }
+    &:after {
+      right: 90px;
+    }
   }
 }

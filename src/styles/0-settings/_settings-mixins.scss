@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @mixin hover {
   @media all and (pointer: fine) {
     &:hover {
@@ -32,5 +34,5 @@
 }
 
 @function strip-unit($value) {
-  @return $value / ($value * 0 + 1);
+  @return math.div($value, $value * 0 + 1);
 }
