@@ -14,15 +14,13 @@
         <Link
           text="Our projects"
           to="/projects"
+          type="internal"
         />
         <Link
           text="Our team"
           to="https://fr.malt.be/group/bleubleuchocotte/60e0bf515002f0348a13aa26"
         />
-        <Link
-          text="Contact us"
-          to="null"
-        />
+        <ContactUs />
       </div>
     </aside>
     <div class="main-logo">
@@ -30,6 +28,10 @@
         autoplay
         loop
       >
+        <!--        <source
+          src="@/assets/video/entry-video.webm"
+          type="video/webm"
+        >-->
         <source
           src="@/assets/video/entry-video.mp4"
           type="video/mp4"
@@ -44,6 +46,7 @@ import { defineProps } from 'vue';
 import Socials from '../../socials/Socials.vue';
 import Link from '@/components/UI/Link.vue';
 import IconBleubleu from '@/assets/icons/icon-bleubleu.svg?inline';
+import ContactUs from '../../UI/ContactUs.vue';
 
 defineProps({
   socials: {
@@ -55,25 +58,41 @@ defineProps({
 
 <style lang="scss" scoped>
 .section--homepage-entry {
-  display: grid;
-  grid-template-columns: minmax(272px, 22%) auto;
+  display: flex;
+  flex-direction: column;
+
+  .aside {
+    display: grid;
+    grid-template-columns: minmax(182px, 1fr) 1fr;
+    grid-template-areas:
+      "links infos"
+      "socials infos";
+  }
 
   .infos {
-    padding: 26px;
+    width: 100%;
     font-size: 24px;
+    grid-area: infos;
+
+    svg {
+      max-width: 198px;
+    }
   }
+
   .infos__text {
     margin-top: 32px;
+    font-size: 14px;
   }
 
   .socials {
     text-align: center;
+    grid-area: socials;
   }
   
   .links {
     display: flex;
     flex-direction: column;
-    padding: 22px;
+    grid-area: links;
   }
 
   .link:not(:last-child) {
@@ -81,7 +100,8 @@ defineProps({
   }
 
   .main-logo {
-    height: calc(100vh - 200px);
+    order: -1;
+    width: 100%;
 
     video {
       width: 100%;
@@ -89,5 +109,31 @@ defineProps({
       object-fit: cover;
     }
   }
+}
+
+@media #{$lg-up} {
+
+  .section--homepage-entry {
+    display: grid;
+    grid-template-columns: minmax(272px, 22%) auto;
+
+    .aside {
+      display: block;
+    }
+
+    .infos {
+      padding: 26px;
+    }
+
+    .links {
+      padding: 22px;
+    }
+
+    .main-logo {
+      order: 1;
+      height: calc(100vh - 200px);
+    }
+  }
+
 }
 </style>

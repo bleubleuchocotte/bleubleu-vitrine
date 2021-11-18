@@ -1,13 +1,22 @@
 <template>
-  <article class="team-content">
-    <Title class="team-content__title">
+  <article class="content-item team-content">
+    <Title class="content-item__title team-content__title">
       <prismic-text :field="title" />
     </Title>
-    <Link
-      :url="link.url"
-      :target="link.target"
-      :text="linkName"
-    />
+    <div class="content-item__infos">
+      <Link
+        :url="link.url"
+        :target="link.target"
+        :text="linkName"
+      />
+      <div class="content-item__description">
+        <prismic-text
+          class="content-item__text"
+          :field="description"
+        />
+        <div class="blur" />
+      </div>
+    </div>
   </article>
 </template>
 
@@ -36,13 +45,48 @@ defineProps({
 })
 </script>
 
-<style scoped>
-.team-content {
-  padding: 28px 32px;
+<style lang="scss">
+.content-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.content-item__title {
+  display: block;
+}
+
+.blur {
+  @extend %absolute;
+  pointer-events: none;
+  left: -10px;
+  top: -10px;
+  backdrop-filter: blur(2px);
+  transition: backdrop-filter .3s ease-in-out;
+}
+
+.content-item__description {
+  position: relative;
+  margin-top: 24px;
+  font-size: 20px;
+  line-height: 1.2;
+
+  @include hover {
+    .blur {
+      backdrop-filter: blur(0);
+    }
+  }
 }
 
 .team-content__title {
-  display: block;
-  max-width: 80%;
+  max-width: 400px;
+}
+
+@media #{$sm-up} {
+  .content-item {
+    padding: 28px 32px;
+  }
 }
 </style>
