@@ -4,8 +4,16 @@
   </span>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .title {
-  font-size: 55px;
+  font-size: 32px;
+  font-weight: 100;
 }
+
+@media #{$xs-up} {
+  .title {
+    @include fluid(font-size, 576px, 1440px, 38px, 55px);
+  }
+}
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <article class="content-item projects-content">
     <Title class="content-item__title projects-content__title">
-      <PrismicText :field="title" />
+      <PrismicRichText :field="title" />
     </Title>
     <div class="content-item__infos projects_content__infos">
       <Link
@@ -10,7 +10,7 @@
         type="internal"
       />
       <div class="content-item__description">
-        <PrismicText
+        <PrismicRichText
           :field="description"
         />
         <div class="blur" />

@@ -51,7 +51,7 @@ defineProps({
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 28px 32px;
+  padding: 16px;
 }
 
 .content-item__title {
@@ -82,5 +82,11 @@ defineProps({
 
 .team-content__title {
   max-width: 400px;
+}
+
+@media #{$sm-up} {
+  .content-item {
+    padding: 28px 32px;
+  }
 }
 </style>
