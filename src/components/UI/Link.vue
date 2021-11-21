@@ -46,9 +46,9 @@ const componentType = ref(props.type === 'internal' ? 'router-link' : 'a');
 <style lang="scss">
 .link {
   display: inline-block;
-  font-size: 24px;
   line-height: 1.2;
   cursor: pointer;
+  @include fluid(font-size, 576px, 1440px, 16px, 24px);
 }
 
 .link__text {
@@ -59,11 +59,12 @@ const componentType = ref(props.type === 'internal' ? 'router-link' : 'a');
 .link__arrow {
   display: inline-block;
   vertical-align: top;
-  width: 18px;
-  height: 18px;
   margin-left: 8px;
   position: relative;
   top: 2px;
+  @include fluid(margin-left, 576px, 1440px, 4px, 8px);
+  @include fluid(width, 576px, 1440px, 14px, 18px);
+  @include fluid(height, 576px, 1440px, 14px, 18px);
 
   svg {
     vertical-align: top;

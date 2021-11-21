@@ -41,7 +41,6 @@ export default {
 <style lang="scss" scoped>
 .social-media {
   display: inline-block;
-  margin: 20px;
   width: 36px;
   height: 36px;
 

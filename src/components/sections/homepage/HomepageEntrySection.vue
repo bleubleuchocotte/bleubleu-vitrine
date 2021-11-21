@@ -1,16 +1,16 @@
 <template>
   <section class="section section--homepage-entry o-grid-item--full-bottom">
     <aside class="aside o-grid-item--right">
-      <div class="infos o-grid-item--bottom">
+      <div class="infos-container o-grid-item--bottom">
         <IconBleubleu />
         <p class="infos__text">
           Amour & multimedia
         </p>
       </div>
-      <div class="socials o-grid-item--bottom">
+      <div class="socials-container o-grid-item--bottom">
         <Socials :fields="socials" />
       </div>
-      <div class="links">
+      <div class="links-container">
         <Link
           text="Our projects"
           to="/projects"
@@ -18,7 +18,7 @@
         />
         <Link
           text="Our team"
-          to="https://fr.malt.be/group/bleubleuchocotte/60e0bf515002f0348a13aa26"
+          url="https://fr.malt.be/group/bleubleuchocotte/60e0bf515002f0348a13aa26"
         />
         <ContactUs />
       </div>
@@ -55,7 +55,7 @@ defineProps({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .section--homepage-entry {
   display: flex;
   flex-direction: column;
@@ -68,10 +68,14 @@ defineProps({
       "socials infos";
   }
 
-  .infos {
+  .infos-container {
     width: 100%;
     font-size: 24px;
     grid-area: infos;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px;
 
     svg {
       max-width: 198px;
@@ -83,15 +87,30 @@ defineProps({
     font-size: 14px;
   }
 
-  .socials {
+  .socials-container {
     text-align: center;
     grid-area: socials;
+    padding: 12px;
+
+    .socials {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .social-media {
+      margin: 0;
+    }
   }
   
-  .links {
+  .links-container {
     display: flex;
     flex-direction: column;
     grid-area: links;
+    padding: 20px 16px;
+
+    .clipboard-copy .link {
+      margin-bottom: 0;
+    }
   }
 
   .link:not(:last-child) {
@@ -111,7 +130,6 @@ defineProps({
 }
 
 @media #{$lg-up} {
-
   .section--homepage-entry {
     display: grid;
     grid-template-columns: minmax(272px, 22%) auto;
@@ -120,11 +138,12 @@ defineProps({
       display: block;
     }
 
-    .infos {
+    .infos-container {
+      display: block;
       padding: 26px;
     }
 
-    .links {
+    .links-container {
       padding: 22px;
     }
 
@@ -132,7 +151,18 @@ defineProps({
       order: 1;
       height: calc(100vh - 200px);
     }
-  }
 
+    .socials-container {
+      padding: 0;
+
+      .socials {
+        display: block;
+      }
+
+      .social-media {
+        margin: 20px;
+      }
+    }
+  }
 }
 </style>

@@ -1,11 +1,9 @@
 <template>
-  <div class="contact-us">
-    <ClipboardCopy value="love@bleubleuchocotte.fr">
-      <Link
-        text="Contact us"
-      />
-    </ClipboardCopy>
-  </div>
+  <ClipboardCopy value="love@bleubleuchocotte.fr">
+    <Link
+      text="Contact us"
+    />
+  </ClipboardCopy>
 </template>
 
 <script setup>

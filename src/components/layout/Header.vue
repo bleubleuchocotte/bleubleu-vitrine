@@ -41,12 +41,13 @@ function getComponent(string) {
 
 <style lang="scss" scoped>
 .header__title {
+  padding: 16px 4px;
   font-family: $font-secondary;
   font-weight: 50;
   font-size: 40px;
   font-variation-settings: 'wdth' 200;
   text-transform: uppercase;
-  padding: 12px 40px;
+  line-height: 2;
   @include fluid(font-size, 992px, 1920px, 25px, 50px);
   @include fluid(font-size, 576px, 992px, 16px, 25px);
 
@@ -79,6 +80,7 @@ function getComponent(string) {
 @media #{$lg-up} {
   .header__title {
     text-align: center;
+    padding: 12px 40px;
   }
   .header .icon {
     display: inline-block;

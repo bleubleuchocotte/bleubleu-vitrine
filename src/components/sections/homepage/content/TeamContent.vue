@@ -67,6 +67,10 @@ defineProps({
   transition: backdrop-filter .3s ease-in-out;
 }
 
+.content-item__infos {
+  margin-top: 20px;
+}
+
 .content-item__description {
   position: relative;
   margin-top: 24px;
@@ -87,6 +91,12 @@ defineProps({
 @media #{$sm-up} {
   .content-item {
     padding: 28px 32px;
+  }
+}
+
+@media #{$lg-up} {
+  .content-item__infos {
+    margin-top: 0;
   }
 }
 </style>
