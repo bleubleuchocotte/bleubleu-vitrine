@@ -25,7 +25,6 @@
 <script setup>
 import ProjectsContent from './content/ProjectsContent.vue';
 import TeamContent from './content/TeamContent.vue';
-import { defineProps } from 'vue';
 
 defineProps({
   fields: {

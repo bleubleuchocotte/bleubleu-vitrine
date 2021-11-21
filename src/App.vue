@@ -3,9 +3,6 @@
   <router-view />
 </template>
 
-<script>
+<script setup>
 import GradiantFrame from './components/layout/GradiantFrame.vue';
-export default {
-  components: { GradiantFrame }
-}
 </script>

@@ -31,7 +31,12 @@
 import { ref } from 'vue';
 import IconKeurKeur from '@/assets/icons/icon-keurkeur.svg?inline';
 
-const keywords = ref(['multidisciplinary' ,'collective', 'with a strong', 'personnality']);
+const keywords = ref(['multidisciplinary','[icon-keukeur]' ,'collective', 'with a strong', 'personnality']);
+
+function getComponent(string) {
+  const betweenBrackets = new RegExp(/(?<=\[)(.*?)(?=\])/g);
+  return string.match(betweenBrackets);
+}
 </script>
 
 <style lang="scss" scoped>

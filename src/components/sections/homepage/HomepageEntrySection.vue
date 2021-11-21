@@ -42,7 +42,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
 import Socials from '../../socials/Socials.vue';
 import Link from '@/components/UI/Link.vue';
 import IconBleubleu from '@/assets/icons/icon-bleubleu.svg?inline';

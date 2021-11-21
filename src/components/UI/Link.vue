@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from 'vue';
+import { ref } from 'vue';
 import IconArrowRight from '@/assets/icons/icon-arrow-right.svg?inline';
 
 const props = defineProps({
