@@ -8,39 +8,59 @@
   >
     <span class="link__text">{{ text }}</span>
     <span class="link__arrow">
-      <IconArrowRight />
+      <component :is="iconComponent" />
     </span>
   </component>
 </template>
 
-<script setup>
+<script>
 import { ref } from 'vue';
 import IconArrowRight from '@/assets/icons/icon-arrow-right.svg?inline';
+import IconLove from '@/assets/icons/icon-love.svg?inline';
+import IconSmile from '@/assets/icons/icon-smile.svg?inline';
 
-const props = defineProps({
-  text: {
-    type: String,
-    required: true,
+export default {
+  components: {
+    IconArrowRight,
+    IconLove,
+    IconSmile,
   },
-  type: {
-    type: String,
-    default: 'external'
+  props: {
+    text: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      default: 'external'
+    },
+    icon: {
+      type: String,
+      default: 'arrow-right',
+    },
+    to: {
+      type: String,
+      default: () => null,
+    },
+    url: {
+      type: String,
+      default: () => null,
+    },
+    target: {
+      type: String,
+      default: () => null,
+    },
   },
-  to: {
-    type: String,
-    default: () => null,
-  },
-  url: {
-    type: String,
-    default: () => null,
-  },
-  target: {
-    type: String,
-    default: () => null,
-  },
-})
+  setup(props) {
+    const componentType = ref(props.type === 'internal' ? 'router-link' : 'a');
+    const iconComponent = ref(`icon-${props.icon}`);
 
-const componentType = ref(props.type === 'internal' ? 'router-link' : 'a');
+    return {
+      componentType,
+      iconComponent,
+    }
+  }
+}
 </script>
 
 <style lang="scss">
