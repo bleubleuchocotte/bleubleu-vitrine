@@ -1,9 +1,12 @@
 <template>
   <header class="header header--home o-grid-item--full-bottom">
     <h1 class="header__title">
-      <span class="block">Multi-</span>
+      <!--      <span class="block">Multi-</span>
       <span class="block">Disciplinary collec-</span>
       <span class="block">tive with a bold</span>
+      <span class="block text-right">personality</span>-->
+      <span class="block">Multi-</span>
+      Disciplinary collective with a bold
       <span class="block text-right">personality</span>
     </h1>
 
@@ -35,19 +38,23 @@
     </div>
 
     <div class="header__video">
-      <video
+      <img
+        src="@/assets/img/bleubleu-home.png"
+        alt=""
+      >
+      <!--      <video
         autoplay
         loop
       >
-        <!--        <source
+        <source
           src="@/assets/video/entry-video.webm"
           type="video/webm"
-        >-->
+        >
         <source
           src="@/assets/video/entry-video.mp4"
           type="video/mp4"
         >
-      </video>
+      </video>-->
     </div>
   </header>
 </template>
@@ -78,13 +85,15 @@ defineProps({
   position: relative;
   width: 100%;
   min-height: calc(100vh - 80px);
-  display: flex;
   padding: 36px 14px;
 
   .header__title {
     position: relative;
     z-index: 1;
     font-size: 98px;
+    text-align: justify;
+    hyphens: auto;
+    @include fluid(font-size, 576px, 4032px, 22px, 320px);
 
     span {
       white-space: nowrap;
@@ -97,9 +106,16 @@ defineProps({
 
   .header__video {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -20vw;
+    left: -25vw;
     z-index: 0;
+    transform: translate(-90px, -80px);
+
+    img {
+      max-width: none;
+      width: 120vw;
+      //height: 166vh;
+    }
   }
 
   .socials-container {
