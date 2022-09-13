@@ -10,11 +10,14 @@
         :text="linkName"
       />
       <div class="content-item__description">
-        <prismic-text
+        <!-- <prismic-text
           class="content-item__text"
           :field="description"
         />
-        <div class="blur" />
+        <div class="blur" /> -->
+        <BlurText 
+          :field="description"
+        />
       </div>
     </div>
   </article>
@@ -24,6 +27,7 @@
 import Link from '../../../UI/Link.vue';
 import { defineProps } from 'vue';
 import Title from '../../../UI/Title.vue';
+import BlurText from '../../../UI/BlurText.vue';
 
 defineProps({
   title: {
