@@ -10,17 +10,9 @@
         type="internal"
       />
       <div class="content-item__description">
-        <!-- <PrismicRichText
-          :field="description"
-        /> -->
-
         <BlurText 
           :field="description"
         />
-
-
-        <!-- <div id="circle" /> -->
-        <!-- <div class="blur" /> -->
       </div>
     </div>
   </article>
