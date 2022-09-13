@@ -10,10 +10,17 @@
         type="internal"
       />
       <div class="content-item__description">
-        <PrismicRichText
+        <!-- <PrismicRichText
+          :field="description"
+        /> -->
+
+        <BlurText 
           :field="description"
         />
-        <div class="blur" />
+
+
+        <!-- <div id="circle" /> -->
+        <!-- <div class="blur" /> -->
       </div>
     </div>
   </article>
@@ -23,6 +30,7 @@
 import { defineProps } from 'vue';
 import Link from '../../../UI/Link.vue';
 import Title from '../../../UI/Title.vue';
+import BlurText from '../../../UI/BlurText.vue';
 
 defineProps({
   title: {
@@ -38,6 +46,7 @@ defineProps({
     required: true,
   }
 })
+
 </script>
 
 <style scoped>
