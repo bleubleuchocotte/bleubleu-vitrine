@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-	import { defineProps, onMounted, ref } from 'vue';
+	import { defineProps, onMounted, onUnmounted, ref } from 'vue';
 	defineProps({
 		field: {
 			type: Array,
@@ -33,9 +33,13 @@
 
 	const target = ref();
 
-	onMounted(() => {
+	onMounted(function () {
 		document.addEventListener('mousemove', updateBlur);
 	})
+	onUnmounted(function(){
+		document.removeEventListener('mousemove', updateBlur);
+	})
+
 
 	function updateBlur(arg) {
 		const el = target.value;
@@ -60,9 +64,9 @@
 		/**
 		* Permet d'avoir un affichage visuel de la zone à laquelle le blur s'efface (A enlever lors de la mise en prod)
 		*/
-		const circle = document.createElement('div');
-		circle.style = `width: ${circleOutside.radius * 2}px; height: ${circleOutside.radius * 2}px; top: ${circleOutside.y - (bounding.y + circleOutside.radius)}px; left: ${circleOutside.x - (bounding.x + circleOutside.radius)}px; position: absolute; border-radius: 100%; border: 1px solid red`;
-		el.appendChild(circle);
+		// const circle = document.createElement('div');
+		// circle.style = `width: ${circleOutside.radius * 2}px; height: ${circleOutside.radius * 2}px; top: ${circleOutside.y - (bounding.y + circleOutside.radius)}px; left: ${circleOutside.x - (bounding.x + circleOutside.radius)}px; position: absolute; border-radius: 100%; border: 1px solid red`;
+		// el.appendChild(circle);
 	}
 
 	/**
