@@ -10,11 +10,6 @@
         :text="linkName"
       />
       <div class="content-item__description">
-        <!-- <prismic-text
-          class="content-item__text"
-          :field="description"
-        />
-        <div class="blur" /> -->
         <BlurText 
           :field="description"
         />
