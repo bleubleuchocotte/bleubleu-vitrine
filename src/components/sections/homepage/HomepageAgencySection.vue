@@ -51,5 +51,3 @@ const property = ref([
 <template>
   <AgencyContent :properties="property" />
 </template>
-
-<style></style>
