@@ -32,12 +32,16 @@ $red:             #e3342f;
 
 
 $blue: #0047FF;
+$green: #BBFF65;
+$gray: #969696;
 
 
 // 2. Custom colors
 // ====================================
-$primary: $blue;
+// $primary: $blue;
+$primary: $green;
 
-$color-body:      $white;
-$color-text:      $black;
+// $color-body:      $white;
+$color-body:      $gray;
+$color-text:      $green;
 $color-link:      $primary;
