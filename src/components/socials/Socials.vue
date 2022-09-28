@@ -16,8 +16,8 @@
 
 <script>
 import IconMalt from '@/assets/icons/icon-malt.svg?inline';
-import IconInstagram from '@/assets/icons/icon-instagram.svg?inline';
-import IconLinkedin from '@/assets/icons/icon-linkedin.svg?inline';
+import IconInstagram from '@/assets/icons/icon-instagram-green.svg?inline';
+import IconLinkedin from '@/assets/icons/icon-linkedin-green.svg?inline';
 
 export default {
   components: {
