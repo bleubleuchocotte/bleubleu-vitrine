@@ -1,5 +1,4 @@
 <template>
-  <!-- Soit on recoit un :field et on l'affiche comme un <PrismicRichText> sinon on recoit un texte et on l'affiche comme un <p> -->
   <div
     v-if="field != null"
     ref="target"
