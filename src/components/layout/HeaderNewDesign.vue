@@ -42,7 +42,7 @@ const morphingDuration = ref("8s");
 
 <style scoped lang="scss">
 	header{
-		padding: 110px 91px 18.5px 91px;
+		padding: 110px $global-horizontal-padding 18.5px $global-horizontal-padding;
 		background: linear-gradient(rgba(187, 255, 101, 1), rgba(150, 150, 150, 0) 20%);
     border-bottom: 1px solid $green;
 	}
