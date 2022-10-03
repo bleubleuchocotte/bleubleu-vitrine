@@ -16,20 +16,10 @@ const props = defineProps({
     required: false,
     default: 1
   },
-  leftStart: {
-    type: String,
+  styles: {
+    type: Object,
     required: false,
-    default: "0"
-  },
-  topStart: {
-    type: String,
-    required: false,
-    default: "0"
-  },
-  zIndex: {
-    type: Number,
-    required: false,
-    default: 1
+    default: null
   }
 })
 
@@ -99,16 +89,15 @@ const deltaX = ref("0px");
 </script>
 
 <template>
-  <span ref="containerHTML">{{ text }}</span>
+  <span
+    ref="containerHTML"
+    :style="styles"
+  >{{ text }}</span>
 </template>
 
 <style scoped lang="scss">
 span {
   position: absolute;
-  z-index: v-bind(zIndex);
-
-  left: v-bind(leftStart);
-  top: v-bind(topStart);
 
   display: block;
   width: fit-content;
