@@ -5,14 +5,17 @@ import {ref} from "vue"
 const property = ref([
 	{
 		text: "sound design",
+		direction: "rtl",
 		styles: {
-			left: "50%",
+			right: "0",
 			top: "34px",
 			zIndex: 3,
 		},
+		speed: 1
 	},
 	{
 		text: "web dev",
+		direction: "ltr",
 		styles: {
 			left: "0%",
 			top: "105px",
@@ -21,22 +24,27 @@ const property = ref([
 	},
 	{
 		text: "motion design",
+		direction: "ltr",
 		styles: {
 			left: "0%",
 			top: "136px",
 			zIndex: 3,
 		},
+		speed: 1.25
 	},
 	{
 		text: "brand identity",
+		direction: "rtf",
 		styles: {
-			left: "0%",
+			left: "10%",
 			top: "195px",
 			zIndex: 3,
 		},
+		speed: 0.15
 	},
 	{
 		text: "ux/ui design",
+		direction: "ltr",
 		styles: {
 			left: "0%",
 			top: "237px",
@@ -46,12 +54,13 @@ const property = ref([
 	},
 	{
 		text: "graphic design",
+		direction: "ltr",
 		styles: {
 			left: "0%",
 			top: "64px",
 			zIndex: 3,
 		},
-		speed: 1
+		speed: 0.75
 	}
 ])
 </script>
