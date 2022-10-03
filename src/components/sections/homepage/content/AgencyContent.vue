@@ -19,9 +19,7 @@ import ScrollMovingText from '../../../UI/ScrollMovingText.vue';
       :text="property.text"
       :direction="property.direction"
       :speed="property.speed"
-      :left="property.position.left"
-      :top="property.position.top"
-      :z-index="property.zIndex"
+      :styles="property.styles"
     />
   </section>
 </template>
