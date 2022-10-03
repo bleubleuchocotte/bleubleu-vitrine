@@ -20,6 +20,10 @@ const props = defineProps({
     type: Object,
     required: false,
     default: null
+  },
+  isInView: {
+    type: Boolean,
+    required: true
   }
 })
 
@@ -27,34 +31,17 @@ const props = defineProps({
 
 onMounted(() => {
   document.addEventListener("scroll", onScrollEvent);
-  createIntersectionObserver();
 });
 
 onUnmounted(() => {
   document.removeEventListener("scroll", onScrollEvent);
 });
 
-function createIntersectionObserver() {
-  let options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0,
-  };
-
-  let callback = (entries) => {
-    entries[0].isIntersecting
-      ? (isRunning.value = true)
-      : (isRunning.value = false);
-  };
-  let observer = new IntersectionObserver(callback, options);
-  observer.observe(containerHTML.value);
-}
-
 function onScrollEvent() {
   lastKnownScrollPosition > window.scrollY ? direction = "up": direction = "down";
   lastKnownScrollPosition = window.scrollY;
 
-  if (!ticking && isRunning.value) {
+  if (!ticking && props.isInView) {
     window.requestAnimationFrame(() => {
       updateElementPosition();
       ticking = false;
@@ -69,13 +56,17 @@ function updateElementPosition() {
   const bottom = containerHTML.value.getBoundingClientRect().bottom;
   const top = containerHTML.value.getBoundingClientRect().top;
   let offset = 0;
+
+  let directionNumber = 1;
+  props.direction === "ltr" ? directionNumber = 1 : directionNumber = -1;
+  
   if (direction == "down"){
     offset = (100 - ((bottom  % totalHeight) / totalHeight) * 100);
   } else {
     offset = (100 - ((top  % totalHeight) / totalHeight) * 100);
   }
 
-  deltaX.value = `${offset / 100 * window.innerWidth * props.speed}px`;
+  deltaX.value = `${offset / 100 * window.innerWidth * props.speed * directionNumber}px`;
 }
 
 let lastKnownScrollPosition = 0;
@@ -83,7 +74,6 @@ let ticking = false;
 let direction = "";
 
 const containerHTML = ref(null);
-const isRunning = ref(false);
 
 const deltaX = ref("0px");
 </script>
