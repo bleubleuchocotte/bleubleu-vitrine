@@ -3,6 +3,7 @@ import TextParallax from '../UI/TextParallax.vue';
 import MorphingShape from "../UI/MorphingShape.vue";
 import Socials from '../socials/Socials.vue';
 import {ref,defineProps} from "vue";
+import NavComponent from './NavComponent.vue';
 
 defineProps({
   socials: {
@@ -22,6 +23,7 @@ const morphingDuration = ref("8s");
 
 <template>
   <header>
+    <NavComponent />
     <div class="morphing-container">
       <MorphingShape
         :morphing-paths="morphingPaths"

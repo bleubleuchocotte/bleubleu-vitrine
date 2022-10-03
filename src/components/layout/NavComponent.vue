@@ -1,0 +1,80 @@
+<script setup>
+import { RouterLink } from 'vue-router';
+</script>
+
+<template>
+  <nav>
+    <ul>
+      <li class="nav__little-link">
+        <RouterLink to="/">
+          BleuBleu?
+        </RouterLink>
+      </li>
+      <li class="nav__big-link">
+        <RouterLink to="/">
+          Our projects
+        </RouterLink>
+      </li>
+      <li class="nav__little-link">
+        <RouterLink to="/">
+          Our team
+        </RouterLink>
+      </li>
+      <li class="nav__big-link">
+        <RouterLink to="#footer">
+          Contact us
+        </RouterLink>
+      </li>
+    </ul>
+  </nav>
+</template>
+
+<style scoped lang="scss">
+	nav{
+		position: absolute;
+		width: 100%;
+		top: 0;
+		left: 0;
+
+		color: $gray;
+		font-size: 42px;
+	}
+	ul{
+		display: flex;
+	}
+	li{
+		border: 1px solid $gray;
+		border-radius: 50px;
+
+		transition: all 0.8s ease-out;
+		white-space: nowrap;
+		*{
+			display: inline-flex;
+			height: 100%;
+			width: 100%;
+			padding: 0.2rem 1rem;
+			align-items: center;
+		}
+
+	}
+
+	.nav__big-link{
+		flex: 0.3;
+	}
+	.nav__little-link{
+		flex: 0.2;
+	}
+
+	nav:hover {
+		li:hover{
+			flex: 0.5;
+		}
+		li:not(:hover){
+			font-size: 36px;
+		}
+	}
+
+
+
+	
+</style>
