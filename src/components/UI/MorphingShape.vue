@@ -92,6 +92,8 @@ const containerHTML = ref(null);
         />
       </path>
     </svg>
+
+    <slot v-if="isRunning" />
   </div>
 </template>
 
@@ -108,7 +110,7 @@ svg path {
 
 div {
   min-width: 1060px;
-  min-height: 583px;
+  height: 583px;
   position: absolute;
   background: linear-gradient(
     -106deg,

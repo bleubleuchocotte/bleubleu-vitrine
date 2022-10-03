@@ -26,8 +26,9 @@ const morphingDuration = ref("8s");
       <MorphingShape
         :morphing-paths="morphingPaths"
         :morphing-duration="morphingDuration"
-      />
-      <TextParallax :texts="texts" />
+      >
+        <TextParallax :texts="texts" />
+      </MorphingShape>
     </div>
     <div class="header-bottom">
       <Socials :fields="socials" />
@@ -48,6 +49,7 @@ const morphingDuration = ref("8s");
 	}
 
 	.morphing-container {
+    height: 583px;
 		position: relative;
 		clip-path: url(#clipPath);
 	}
