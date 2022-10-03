@@ -36,7 +36,6 @@ const delta = ref("");
       :key="index"
     >
       {{ text }}
-      <br>
     </span>
   </p>
 </template>
