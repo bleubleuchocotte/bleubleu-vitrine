@@ -1,7 +1,6 @@
 <script setup>
 import IconRobot from "@/assets/icons/icon-robot-bleubleu.svg?inline"
 import BlurText from "@/components/UI/BlurText.vue";
-import MagicString from "magic-string";
 import {defineProps} from "vue";
 
 defineProps({
