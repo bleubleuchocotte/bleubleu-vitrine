@@ -24,6 +24,10 @@ const props = defineProps({
   isInView: {
     type: Boolean,
     required: true
+  },
+  container: {
+    type: undefined, 
+    required: true
   }
 })
 
@@ -52,21 +56,23 @@ function onScrollEvent() {
 }
 
 function updateElementPosition() {
-  const totalHeight = window.innerHeight + containerHTML.value.getBoundingClientRect().height;
+  const totalHeight = window.innerHeight + props.container.getBoundingClientRect().height;
+  const totalWidth = window.innerWidth;
   const bottom = containerHTML.value.getBoundingClientRect().bottom;
   const top = containerHTML.value.getBoundingClientRect().top;
+  const maxPercentage = 75;
   let offset = 0;
 
   let directionNumber = 1;
   props.direction === "ltr" ? directionNumber = 1 : directionNumber = -1;
-  
-  if (direction == "down"){
-    offset = (100 - ((bottom  % totalHeight) / totalHeight) * 100);
-  } else {
-    offset = (100 - ((top  % totalHeight) / totalHeight) * 100);
-  }
 
-  deltaX.value = `${offset / 100 * window.innerWidth * props.speed * directionNumber}px`;
+  if (direction == "down"){
+    offset = (maxPercentage - ((bottom  % totalHeight) / totalHeight) * 100);
+  } else {
+    offset = (maxPercentage - ((top  % totalHeight) / totalHeight) * 100);
+  }
+  
+  deltaX.value = `${offset / 100 * totalWidth * props.speed * directionNumber}px`;
 }
 
 let lastKnownScrollPosition = 0;
