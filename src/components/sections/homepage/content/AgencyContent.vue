@@ -17,11 +17,10 @@ function createIntersectionObserver() {
   let options = {
     root: null,
     rootMargin: "0px",
-    threshold: 0.1,
+    threshold: 0,
   };
 
   let callback = (entries) => {
-    console.log(entries);
     entries[0].isIntersecting
       ? (isInView.value = true)
       : (isInView.value = false);
@@ -30,7 +29,7 @@ function createIntersectionObserver() {
   observer.observe(sectionHTML.value);
 }
 
-const sectionHTML = ref(null);
+let sectionHTML = ref();
 const isInView = ref(false);
 </script>
 
@@ -44,6 +43,8 @@ const isInView = ref(false);
       :speed="property.speed"
       :styles="property.styles"
       :is-in-view="isInView"
+      :direction="property.direction"
+      :container="sectionHTML"
     />
   </section>
 </template>
