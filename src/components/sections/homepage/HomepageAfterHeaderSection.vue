@@ -1,6 +1,7 @@
 <script setup>
 import IconRobot from "@/assets/icons/icon-robot-bleubleu.svg?inline"
 import BlurText from "@/components/UI/BlurText.vue";
+import MagicString from "magic-string";
 import {defineProps} from "vue";
 
 defineProps({
@@ -18,9 +19,7 @@ defineProps({
     <div class="flex left">
       <p>
         <span>BOLD &</span>
-        <br>
-        <IconRobot /><span>STRONG</span>
-        <br>
+        <span id="beep-boop"><IconRobot :style="{margin: 'auto 0'}" />STRONG</span>
         <span>COLLECTIVE</span>
       </p>
 
@@ -67,6 +66,15 @@ defineProps({
 
 	.right{
 		border-right: 1px solid $green;
+	}
+
+	p span{
+		display: block;
+	}
+
+	#beep-boop{
+		display: inline-flex;
+		gap: 5px;
 	}
 
 </style>
