@@ -32,24 +32,6 @@ body {
   // Style frame
   min-height: 100vh;
   position: relative;
-  // padding: 40px 40px;
-
-  // &:before, &:after {
-  //   content: '';
-  //   z-index: 900;
-  //   display: block;
-  //   width: 1px;
-  //   height: 100%;
-  //   background: $black;
-  //   position: absolute;
-  //   bottom: 0;
-  // }
-  // &:before {
-  //   left: 40px;
-  // }
-  // &:after {
-  //   right: 40px;
-  // }
 }
 
 :focus:not(:focus-visible) {
@@ -64,16 +46,3 @@ button {
     outline: none;
   }
 }
-
-// @media #{$lg-up} {
-//   body {
-//     padding: 80px 90px;
-
-//     &:before {
-//       left: 90px;
-//     }
-//     &:after {
-//       right: 90px;
-//     }
-//   }
-// }
