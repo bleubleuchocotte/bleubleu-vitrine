@@ -38,6 +38,8 @@ import { RouterLink } from 'vue-router';
 
 		color: $gray;
 		font-size: 42px;
+		letter-spacing: 1px;
+		font-weight: 400;
 	}
 	ul{
 		display: flex;
@@ -46,7 +48,7 @@ import { RouterLink } from 'vue-router';
 		border: 1px solid $gray;
 		border-radius: 50px;
 
-		transition: all 0.8s ease-out;
+		transition: all 0.5s ease-out;
 		white-space: nowrap;
 		*{
 			display: inline-flex;
@@ -54,6 +56,7 @@ import { RouterLink } from 'vue-router';
 			width: 100%;
 			padding: 0.2rem 1rem;
 			align-items: center;
+			justify-content: center;
 		}
 
 	}
@@ -67,10 +70,12 @@ import { RouterLink } from 'vue-router';
 
 	nav:hover {
 		li:hover{
-			flex: 0.5;
+			flex: 0.4;
+			letter-spacing: 4px;
 		}
 		li:not(:hover){
-			font-size: 36px;
+			// font-size: 36px;
+			letter-spacing: -2px;
 		}
 	}
 
