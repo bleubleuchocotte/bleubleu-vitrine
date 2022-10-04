@@ -9,8 +9,6 @@ defineProps({
     required: true,
   },
 })
-
-
 </script>
 
 <template>
@@ -18,7 +16,7 @@ defineProps({
     <div class="flex left">
       <p>
         <span>BOLD &</span>
-        <span id="beep-boop"><IconRobot :style="{margin: 'auto 0'}" />STRONG</span>
+        <span id="beep-boop"><IconRobot />STRONG</span>
         <span>COLLECTIVE</span>
       </p>
 
@@ -74,6 +72,11 @@ defineProps({
 	#beep-boop{
 		display: inline-flex;
 		gap: 5px;
+	}
+
+	#beep-boop > *{
+		stroke: $green;
+		margin: auto 0;
 	}
 
 </style>
