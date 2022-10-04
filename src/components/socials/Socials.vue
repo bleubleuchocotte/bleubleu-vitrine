@@ -16,8 +16,8 @@
 
 <script>
 import IconMalt from '@/assets/icons/icon-malt.svg?inline';
-import IconInstagram from '@/assets/icons/icon-instagram-green.svg?inline';
-import IconLinkedin from '@/assets/icons/icon-linkedin-green.svg?inline';
+import IconInstagram from '@/assets/icons/icon-instagram.svg?inline';
+import IconLinkedin from '@/assets/icons/icon-linkedin.svg?inline';
 
 export default {
   components: {
@@ -46,6 +46,8 @@ export default {
   height: 36px;
 
   svg {
+    stroke: $primary;
+    fill: $primary;
     width: 100%;
     height: 100%;
   }
