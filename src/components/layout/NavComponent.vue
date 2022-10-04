@@ -36,7 +36,7 @@ import { RouterLink } from 'vue-router';
 		top: 0;
 		left: 0;
 
-		color: $gray;
+		color: $secondary;
 		font-size: 42px;
 		letter-spacing: 1px;
 		font-weight: 400;
@@ -45,7 +45,7 @@ import { RouterLink } from 'vue-router';
 		display: flex;
 	}
 	li{
-		border: 1px solid $gray;
+		border: 1px solid $secondary;
 		border-radius: 50px;
 
 		transition: all 0.5s ease-out;
@@ -74,7 +74,6 @@ import { RouterLink } from 'vue-router';
 			letter-spacing: 4px;
 		}
 		li:not(:hover){
-			// font-size: 36px;
 			letter-spacing: -2px;
 		}
 	}
