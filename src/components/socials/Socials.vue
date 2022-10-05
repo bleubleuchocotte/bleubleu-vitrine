@@ -18,12 +18,14 @@
 import IconMalt from '@/assets/icons/icon-malt.svg?inline';
 import IconInstagram from '@/assets/icons/icon-instagram.svg?inline';
 import IconLinkedin from '@/assets/icons/icon-linkedin.svg?inline';
+import IconBehance from '@/assets/icons/icon-behance.svg?inline';
 
 export default {
   components: {
     IconMalt,
     IconInstagram,
     IconLinkedin,
+    IconBehance,
   },
   props: {
     fields: {
@@ -36,14 +38,29 @@ export default {
     },
   }
 }
+
+
 </script>
 
 <style lang="scss" scoped>
 .social-media {
   display: inline-block;
   margin: 20px;
-  width: 36px;
+
   height: 36px;
+  width: 36px;
+  
+  &[href*='behance']{
+    width: 45px;
+    height: 32px;
+    scale: 1.1;
+    transform-origin: 0 100%;
+
+    &.small {
+      height: 17px;
+      scale: 1.3;
+    }
+  }
 
   svg {
     stroke: $primary;
