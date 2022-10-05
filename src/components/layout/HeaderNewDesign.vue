@@ -44,6 +44,7 @@ defineProps({
 
 	.morphing-container {
     height: 75vh;
+    filter: var(--filter-to-primary);
 	}
 
 	.header-bottom{
