@@ -38,6 +38,7 @@ export default {
     },
   },
   created(){
+    console.log("Ceci est un test");
     console.log(IconBehance, IconMalt);
   }
 }
