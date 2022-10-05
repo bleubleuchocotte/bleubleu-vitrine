@@ -47,6 +47,7 @@ getFooterContent()
 .footer__img {
   width: 100px;
   margin-bottom: 32px;
+  filter: $filter-to-primary;
 }
 
 .footer__copyright {
