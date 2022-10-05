@@ -53,7 +53,7 @@ const isInView = ref(false);
 	section{
 		height: 350px;
 		padding: 0 $global-horizontal-padding 0 $global-horizontal-padding;
-		border-bottom: 1px solid $green;
+		border-bottom: 1px solid $primary;
 		position: relative;
 	}
 
@@ -61,7 +61,7 @@ const isInView = ref(false);
 		width: 100%;
 		height: 100%;
 
-		border-left: 1px solid $green;
-		border-right: 1px solid $green;
+		border-left: 1px solid $primary;
+		border-right: 1px solid $primary;
 	}
 </style>

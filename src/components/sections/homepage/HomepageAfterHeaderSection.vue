@@ -34,7 +34,7 @@ defineProps({
 		display: flex;
 
 		padding: 0 $global-horizontal-padding 0 $global-horizontal-padding;
-		border-bottom: 1px solid $green;
+		border-bottom: 1px solid $primary;
 	}
 	
 	.left{
@@ -58,11 +58,11 @@ defineProps({
 		padding: 30px 0px 10px 15px;
 		flex: 1;
 
-		border-left: 1px solid $green;
+		border-left: 1px solid $primary;
 	}
 
 	.right{
-		border-right: 1px solid $green;
+		border-right: 1px solid $primary;
 	}
 
 	p span{
@@ -75,7 +75,7 @@ defineProps({
 	}
 
 	#beep-boop > *{
-		stroke: $green;
+		stroke: $primary;
 		margin: auto 0;
 	}
 

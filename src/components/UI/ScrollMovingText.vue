@@ -101,10 +101,10 @@ span {
   text-transform: uppercase;
   font-size: 42px;
 
-  border: 1px solid $green;
+  border: 1px solid $primary;
   padding: 0 25px;
 
-  background-color: $gray;
+  background-color: $secondary;
 
   transform: translateX(v-bind(deltaX));
   transition: transform 1s ease-out;
