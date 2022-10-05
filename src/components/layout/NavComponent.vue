@@ -72,7 +72,7 @@ import { RouterLink } from 'vue-router';
 		flex: 0.2;
 	}
 
-	nav:hover {
+	ul:hover {
 		li:hover{
 			flex: 0.4;
 			letter-spacing: 4px;
