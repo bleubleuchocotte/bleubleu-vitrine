@@ -36,6 +36,9 @@ export default {
       type: Boolean,
       default: false,
     },
+  },
+  created(){
+    console.log(IconBehance, IconMalt);
   }
 }
 
