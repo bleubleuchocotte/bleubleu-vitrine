@@ -31,10 +31,14 @@ import { RouterLink } from 'vue-router';
 
 <style scoped lang="scss">
 	nav{
-		position: absolute;
+		position: fixed;
 		width: 100%;
 		top: 0;
 		left: 0;
+		z-index: 1;
+
+		height: 125px;
+		background: $gradient;
 
 		color: $secondary;
 		font-size: 42px;
