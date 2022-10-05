@@ -21,7 +21,10 @@ defineProps({
   <header>
     <NavComponent />
     <div class="morphing-container">
-      <Vue3Lottie :animation-data="video" />
+      <Vue3Lottie
+        :animation-data="video"
+        :speed="0.5"
+      />
     </div>
 
     <div class="header-bottom">
