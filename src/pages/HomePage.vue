@@ -10,8 +10,6 @@
 
     <Footer />
   </div>
-
-  <span class="line-bottom o-grid-item--full-bottom" />
 </template>
 
 <script setup>
