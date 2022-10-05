@@ -38,7 +38,6 @@ defineProps({
 <style scoped lang="scss">
 	header{
 		padding: 110px $global-horizontal-padding 18.5px $global-horizontal-padding;
-		background: $gradient;
     border-bottom: 1px solid $primary;
 	}
 
