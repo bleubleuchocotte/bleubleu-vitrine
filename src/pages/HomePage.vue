@@ -6,6 +6,7 @@
     <HeaderNewDesign :socials="document.data.socials" />
     <HomepageAfterHeaderSection :fields="document.data" />
     <HomepageAgencySection />
+    <HomepageContentV2Section :fields="projects" />
 
 
     <Footer />
@@ -20,15 +21,21 @@ import HeaderNewDesign from '../components/layout/HeaderNewDesign.vue';
 import HomepageAfterHeaderSection from '../components/sections/homepage/HomepageAfterHeaderSection.vue';
 import HomepageAgencySection from '../components/sections/homepage/HomepageAgencySection.vue';
 
+import HomepageContentV2Section from '../components/sections/homepage/HomepageContentV2Section.vue';
+
 const { client } = usePrismic();
 let document = ref(null);
+const projects = ref();
 
 async function getContent() {
   document.value = await client.getSingle('home_page', {
     fetchLinks: ['social_media.name', 'social_media.link'],
   }, null);
-  console.log(document.value);
+}
+async function getProjects() {
+  projects.value = await client.getAllByType('project')
 }
 
-getContent()
+getContent();
+getProjects();
 </script>
