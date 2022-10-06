@@ -1,6 +1,7 @@
 <script setup>
 
 import { defineProps } from 'vue';
+import image from "@/assets/img/logo-bleubleu.jpg";
 
 const props = defineProps({
 fields: {
@@ -42,6 +43,11 @@ console.log(props.fields);
         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quas suscipit, itaque, veritatis facere aut consectetur consequatur dolore aliquam provident voluptas vero cum deserunt accusamus molestiae culpa laborum similique nam.</p>
       </div>
     </div>
+
+    <img
+      :src="image"
+      class="article-bottom"
+    >
   </article>
 </template>
 
@@ -57,9 +63,9 @@ article{
 	border-right: 1px solid $primary;
 
 	&:hover{
-		height: 500px;
+		height: 1000px;
 
-		.article-middle{
+		.article-middle, .article-bottom{
 			opacity: 1;
 			pointer-events: fill;
 		}
@@ -145,6 +151,11 @@ article{
 		background-color: $primary;
 		left: -1px;
 	}
+}
+
+.article-bottom{
+	opacity: 0;
+	pointer-events: none;
 }
 
 p {
