@@ -35,7 +35,7 @@ import { RouterLink } from 'vue-router';
 		width: 100%;
 		top: 0;
 		left: 0;
-		z-index: 1;
+		z-index: 100;
 
 		height: 125px;
 		background: $gradient;
