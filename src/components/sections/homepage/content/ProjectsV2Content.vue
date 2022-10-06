@@ -15,39 +15,38 @@ console.log(props.fields);
 </script>
 
 <template>
-  <!-- <div
+  <article
     v-for="(project, index) in props.fields"
     :key="index"
   >
-    <pre>{{ project.data }}</pre>
-  </div> -->
-
-
-  <article>
     <div class="article-top">
       <div class="article__project-title">
         <p>
-          popcorn x bleubleu
+          {{ project.data.title[0].text }}
         </p>
       </div>
       <div class="article__project-date">
-        <p>2022</p>
+        <p>{{ project.data.date }}</p>
       </div>
     </div>
     <div class="article-middle">
       <div>
-        <p>popcorn x bleubleu</p>
-        <a href="">go to website</a>
+        <p>{{ project.data.title[0].text }}</p>
+        <a
+          :href="project.data.website_link.url"
+          :target="project.data.website_link.target"
+        >go to website</a>
       </div>
       <div>
-        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam quas suscipit, itaque, veritatis facere aut consectetur consequatur dolore aliquam provident voluptas vero cum deserunt accusamus molestiae culpa laborum similique nam.</p>
+        <p> {{ project.data.description[0].text }}</p>
       </div>
     </div>
 
-    <img
-      :src="image"
+    <!-- <img
+      :src="project.data.medias[0].media.url"
+      :alt="project.data.medias[0].media.alt"
       class="article-bottom"
-    >
+    > -->
   </article>
 </template>
 
@@ -62,7 +61,7 @@ article{
 	border-left: 1px solid $primary;
 	border-right: 1px solid $primary;
 
-	&:hover{
+	&:hover, &:focus{
 		height: 1000px;
 
 		.article-middle, .article-bottom{
