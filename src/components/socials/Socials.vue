@@ -36,10 +36,6 @@ export default {
       type: Boolean,
       default: false,
     },
-  },
-  created(){
-    console.log("Ceci est un test");
-    console.log(IconBehance, IconMalt);
   }
 }
 
