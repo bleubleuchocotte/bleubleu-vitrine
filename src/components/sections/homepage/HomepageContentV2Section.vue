@@ -16,7 +16,7 @@ defineProps({
 })
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 	.section{
 		display: flex;
 		flex-direction: column;
