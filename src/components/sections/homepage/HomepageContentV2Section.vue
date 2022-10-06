@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="section">
     <ProjectsV2Content :fields="fields" />
   </section>
 </template>
@@ -17,5 +17,10 @@ defineProps({
 </script>
 
 <style lang="scss">
+	.section{
+		display: flex;
 
+		padding: 0 $global-horizontal-padding 0 $global-horizontal-padding;
+		border-bottom: 1px solid $primary;
+	}
 </style>
