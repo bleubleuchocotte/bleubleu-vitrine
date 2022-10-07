@@ -49,13 +49,17 @@ function paint(position, ctx, dimensions){
 	const y = (position.y / dimensions.scaleY) - height*scale/2;
 
 	baseImage.onload = function(){
-		ctx.drawImage(baseImage, x, y, width*scale, height*scale);
+		ctx.drawImage(baseImage, x - width*scale/2, y - height*scale/2, width*scale, height*scale);
+		setTimeout(erase, 3000, ctx, x - width*scale/2, y - height*scale/2, width, height);
 	}
 
 
 
 }
 
+function erase(ctx, x, y, width, height){
+	ctx.clearRect(x, y, width, height);
+}
 	
 </script>
 
