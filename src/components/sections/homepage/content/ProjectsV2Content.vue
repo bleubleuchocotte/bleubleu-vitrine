@@ -55,6 +55,9 @@ hr{
 	width: 100%;
 	height: 1px;
 	color: $primary;
+
+	border-bottom-style: unset;
+	border-top-style: solid;
 }
 
 article:last-of-type {
@@ -76,11 +79,17 @@ article{
 	border-left: 1px solid $primary;
 	border-right: 1px solid $primary;
 	
-	&:hover .article-middle {
-		height: 250px;
-	}
+	&:hover {
+		.article__project-title p:before {
+			width: 100%;
+		}
 
+		.article-middle{
+			height: 250px;
+		}
+	}
 }
+
 .article-top{
 	display: grid;
 	grid-template-columns: 35% 15% 1fr; 
@@ -99,19 +108,35 @@ article{
 	border-right: 1px solid $primary;
 	
 	p{
+		position: relative;
 		width: fit-content;
 		padding: 10px 20px;
 
 		border: 1px solid $primary;
 		border-radius: 58px;
 	}
+
+	p:before {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 100%;
+
+		left: 0;
+		top: 0;
+
+		border-radius: 30px;
+		background-color: rgba(0,0,255,0.5);
+		transition: width 1s linear;
+	}
+
 }
 
 
 .article-middle{
 	position: relative;
 	height: 0;
-	transition: height 0.5s ease-out;
+	transition: height 0.5s ease-out 1s;
 
 	overflow: hidden;
 
@@ -161,6 +186,28 @@ article{
 p {
 	font-size: 20px;
 	text-transform: uppercase;
+}
+
+@keyframes loader {
+	from {
+		width: 0%;
+	}
+	
+	to {
+		width: 100%;
+
+	}
+
+}
+
+@keyframes expand {
+	from {
+		height: 0;
+	}
+
+	to {
+		height: 250px;
+	}
 }
 
 </style>
