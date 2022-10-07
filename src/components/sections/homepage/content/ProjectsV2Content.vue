@@ -1,6 +1,7 @@
 <script setup>
 
 import { defineProps } from 'vue';
+import IconArrowRight from "@/assets/icons/icon-arrow-right.svg?inline"
 import image from "@/assets/img/logo-bleubleu.jpg";
 
 const props = defineProps({
@@ -10,7 +11,6 @@ fields: {
 }
 
 })
-console.log(props.fields);
 
 </script>
 
@@ -27,18 +27,19 @@ console.log(props.fields);
       </div>
       <div class="article__project-date">
         <p>{{ project.data.date }}</p>
-      </div>
-    </div>
-    <div class="article-middle">
-      <div>
-        <p>{{ project.data.title[0].text }}</p>
         <a
           :href="project.data.website_link.url"
           :target="project.data.website_link.target"
-        >go to website</a>
+        >go to website <IconArrowRight /></a>
       </div>
+    </div>
+    <div class="article-bottom">
       <div>
         <p> {{ project.data.description[0].text }}</p>
+      </div>
+
+      <div>
+        <p>Media goes here</p>
       </div>
 
       <hr>
@@ -47,6 +48,24 @@ console.log(props.fields);
 </template>
 
 <style scoped lang="scss">
+
+	
+p, a {
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+.article-top, .article-bottom {
+
+	div:first-of-type {
+		width: 35%;
+	}
+
+	div:last-of-type {
+		width: 65%;
+	}
+
+}
 
 hr{
 	position: absolute;
@@ -59,19 +78,6 @@ hr{
 	border-bottom-style: unset;
 	border-top-style: solid;
 }
-
-article:last-of-type {
-	hr {
-	top: 0;
-	bottom: unset;
-	}
-
-	.article-middle {
-		border-top: unset;
-	}
-}
-
-
 
 article{
 	width: 100%;
@@ -88,26 +94,28 @@ article{
 			color: $secondary;
 		}
 
-		.article-middle{
+		.article-bottom{
 			height: 250px;
 		}
 	}
 }
 
-.article-top{
-	display: grid;
-	grid-template-columns: 35% 15% 1fr; 
-	height: 75px;
+article:last-of-type {
+	hr {
+		top: 0;
+		bottom: unset;
+	}
+
+	.article-bottom {
+		border-top: unset;
+	}
 }
 
-.article__project-date{
-		display: flex;
-		align-items: center;
-		padding: 13px 20px;
-		border-right: 1px solid $primary;
-		
-}
-.article__project-title{
+.article-top{
+	display: flex;
+	height: 75px;
+
+	.article__project-title{
 	padding: 13px 20px;
 	border-right: 1px solid $primary;
 	
@@ -150,59 +158,47 @@ article{
 
 }
 
+.article__project-date{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
-.article-middle{
+	padding: 13px 20px;
+
+	a {
+		width: fit-content;
+		text-decoration: underline;
+
+		svg {
+			width: 15px;
+			height: 15px;
+			margin-left: 5px;
+
+			stroke: $primary;
+		}
+	}
+}
+}
+
+
+.article-bottom{
 	position: relative;
 	height: 0;
 	transition: height 0.5s $ease-vnr 0.5s;
 
 	overflow: hidden;
 
-	grid-template-columns: 35% 15% 1fr; 
-	display: grid;
+	display: flex;
 
 	border-top: 1px solid $primary;
 	
 	div:first-of-type {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		gap: 60px;
-
 		border-right: 1px solid $primary;
 		padding: 40px 20px;
 	}
 
-	div:first-of-type p {
-		font-size: 42px;
-	}
-
-	div:first-of-type a {
-		width: fit-content;
-		padding: 10px 20px;
-
-		border: 1px solid $primary;
-		border-radius: 58px;
-	}
-
 	div:last-of-type{
-		position: relative;
 		padding: 40px 30px;
-		grid-area: 1 / 3 / 2 / 4;
 	}
-	div:last-of-type:before {
-		content: "";
-		position: absolute;
-		top: 0;
-		height: 100%;
-		width: 1px;
-		background-color: $primary;
-		left: -1px;
-	}
-}
-
-p {
-	font-size: 20px;
-	text-transform: uppercase;
 }
 </style>
