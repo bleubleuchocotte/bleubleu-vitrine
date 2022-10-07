@@ -21,7 +21,7 @@ console.log(props.fields);
   >
     <div class="article-top">
       <div class="article__project-title">
-        <p>
+        <p :data-text="project.data.title[0].text">
           {{ project.data.title[0].text }}
         </p>
       </div>
@@ -84,6 +84,10 @@ article{
 			width: 100%;
 		}
 
+		.article__project-title p:after {
+			color: $secondary;
+		}
+
 		.article-middle{
 			height: 250px;
 		}
@@ -128,7 +132,20 @@ article{
 		top: 0;
 
 		background-color: $primary;
-		transition: width 1s linear;
+		transition: width 0.6s $ease-vnr;
+	}
+	p:after{
+		content: attr(data-text);
+		width: 0;
+		height: 100%;
+
+		position: absolute;
+		left: 0;
+
+		padding-left: 20px;
+
+		color: var($secondary);
+		transition: color 0.6s $ease-vnr;
 	}
 
 }
@@ -137,7 +154,7 @@ article{
 .article-middle{
 	position: relative;
 	height: 0;
-	transition: height 0.5s ease-out 1s;
+	transition: height 0.5s $ease-vnr 0.5s;
 
 	overflow: hidden;
 
@@ -188,27 +205,4 @@ p {
 	font-size: 20px;
 	text-transform: uppercase;
 }
-
-@keyframes loader {
-	from {
-		width: 0%;
-	}
-	
-	to {
-		width: 100%;
-
-	}
-
-}
-
-@keyframes expand {
-	from {
-		height: 0;
-	}
-
-	to {
-		height: 250px;
-	}
-}
-
 </style>
