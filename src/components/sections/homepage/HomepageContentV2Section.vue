@@ -17,11 +17,11 @@ defineProps({
 </script>
 
 <style scoped lang="scss">
-	.section{
-		display: flex;
-		flex-direction: column;
+.section{
+	display: flex;
+	flex-direction: column;
 
-		padding: 0 $global-horizontal-padding 0 $global-horizontal-padding;
-		border-bottom: 1px solid $primary;
-	}
+	padding: 0 $global-horizontal-padding 0 $global-horizontal-padding;
+	border-bottom: 1px solid $primary;
+}
 </style>
