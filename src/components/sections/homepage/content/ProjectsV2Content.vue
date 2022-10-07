@@ -2,7 +2,6 @@
 
 import { defineProps } from 'vue';
 import IconArrowRight from "@/assets/icons/icon-arrow-right.svg?inline"
-import image from "@/assets/img/logo-bleubleu.jpg";
 
 const props = defineProps({
 	fields: {
@@ -10,12 +9,6 @@ const props = defineProps({
 		required: true,
 	}
 })
-
-
-function test(arg){
-	console.log(arg);
-}
-
 </script>
 
 <template>
@@ -42,12 +35,7 @@ function test(arg){
         <p> {{ project.data.description[0].text }}</p>
       </div>
 
-      <div @mousemove="test">
-        <canvas
-          width="500"
-          height="500"
-        />
-      </div>
+      <canvas class="canvas" />
 
       <hr>
     </div>
@@ -68,10 +56,10 @@ p, a {
 		width: 35%;
 	}
 
-	div:last-of-type {
-		width: 65%;
-	}
+}
 
+.canvas {
+	width: 65%;
 }
 
 hr{
@@ -168,6 +156,8 @@ article:last-of-type {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	width: 65%;
 
 	padding: 13px 20px;
 
