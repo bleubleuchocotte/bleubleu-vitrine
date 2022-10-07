@@ -114,6 +114,8 @@ article{
 
 		border: 1px solid $primary;
 		border-radius: 58px;
+
+		overflow: hidden;
 	}
 
 	p:before {
@@ -125,8 +127,7 @@ article{
 		left: 0;
 		top: 0;
 
-		border-radius: 30px;
-		background-color: rgba(0,0,255,0.5);
+		background-color: $primary;
 		transition: width 1s linear;
 	}
 
