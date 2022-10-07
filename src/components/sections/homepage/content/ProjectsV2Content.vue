@@ -5,12 +5,16 @@ import IconArrowRight from "@/assets/icons/icon-arrow-right.svg?inline"
 import image from "@/assets/img/logo-bleubleu.jpg";
 
 const props = defineProps({
-fields: {
-	type: Array,
-	required: true,
-}
-
+	fields: {
+		type: Array,
+		required: true,
+	}
 })
+
+
+function test(arg){
+	console.log(arg);
+}
 
 </script>
 
@@ -38,8 +42,11 @@ fields: {
         <p> {{ project.data.description[0].text }}</p>
       </div>
 
-      <div>
-        <p>Media goes here</p>
+      <div @mousemove="test">
+        <canvas
+          width="500"
+          height="500"
+        />
       </div>
 
       <hr>
@@ -90,7 +97,7 @@ article{
 			width: 100%;
 		}
 
-		.article__project-title p:after {
+		.article__project-title p {
 			color: $secondary;
 		}
 
@@ -144,7 +151,6 @@ article:last-of-type {
 	}
 	p:after{
 		content: attr(data-text);
-		width: 0;
 		height: 100%;
 
 		position: absolute;
