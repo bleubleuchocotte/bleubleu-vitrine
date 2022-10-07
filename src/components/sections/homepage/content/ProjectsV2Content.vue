@@ -40,40 +40,46 @@ console.log(props.fields);
       <div>
         <p> {{ project.data.description[0].text }}</p>
       </div>
-    </div>
 
-    <!-- <img
-      :src="project.data.medias[0].media.url"
-      :alt="project.data.medias[0].media.alt"
-      class="article-bottom"
-    > -->
+      <hr>
+    </div>
   </article>
 </template>
 
 <style scoped lang="scss">
 
+hr{
+	position: absolute;
+	margin: 0;
+	bottom: 0;
+	width: 100%;
+	height: 1px;
+	color: $primary;
+}
+
+article:last-of-type {
+	hr {
+	top: 0;
+	bottom: unset;
+	}
+
+	.article-middle {
+		border-top: unset;
+	}
+}
+
+
+
 article{
 	width: 100%;
-	height: 75px;
-
-	transition: height 0.5s ease-out;
 
 	border-left: 1px solid $primary;
 	border-right: 1px solid $primary;
-
-	&:hover, &:focus{
-		height: 1000px;
-
-		.article-middle, .article-bottom{
-			opacity: 1;
-			pointer-events: fill;
-		}
-	}
-
-	&:not(:first-of-type){
-		border-top: 1px solid $primary;
-	}
 	
+	&:hover .article-middle {
+		height: 250px;
+	}
+
 }
 .article-top{
 	display: grid;
@@ -103,16 +109,16 @@ article{
 
 
 .article-middle{
-	opacity: 0;
-	transition: opacity 0.3s ease-out;
-	
-	pointer-events: none;
+	position: relative;
+	height: 0;
+	transition: height 0.5s ease-out;
+
+	overflow: hidden;
+
 	grid-template-columns: 35% 15% 1fr; 
 	display: grid;
 
-	
 	border-top: 1px solid $primary;
-	border-bottom: 1px solid $primary;
 	
 	div:first-of-type {
 		display: flex;
@@ -150,11 +156,6 @@ article{
 		background-color: $primary;
 		left: -1px;
 	}
-}
-
-.article-bottom{
-	opacity: 0;
-	pointer-events: none;
 }
 
 p {
