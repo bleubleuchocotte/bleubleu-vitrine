@@ -17,14 +17,13 @@ onMounted(() => {
 	dimensions = {
 		width: container.value.clientWidth
 	}
-	console.log(container);
 })
 
 const container = ref();
 const index = ref(-1);
 let dimensions, gridSize;
 
-let currentImage;
+let currentImage, lastImage;
 
 
 
@@ -34,10 +33,17 @@ function updateImage(arg){
 		y: arg.offsetY
 	}
 	index.value = getIndex(position);
-	currentImage.style.transform = `translate(${position.x - currentImage.clientWidth/2}px, ${position.y- currentImage.clientHeight/2}px)`;
+	if (currentImage) {
+		currentImage.style.transform = `translate(${position.x - currentImage.clientWidth/2}px, ${position.y- currentImage.clientHeight/2}px)`;
+	}
 }
 
-watch(index, (newIndex) => {
+watch(index, (newIndex, oldIndex) => {
+	if (oldIndex != -1){
+		lastImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${oldIndex}"]`);
+		lastImage.style.opacity = "0";
+	}
+
 	currentImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
 	currentImage.style.opacity = "1";
 })
@@ -73,7 +79,7 @@ function getIndex(position){
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 	img {
 		pointer-events: none;
 		height: 100%;
@@ -81,10 +87,12 @@ function getIndex(position){
 		position: absolute;
 		opacity: 0;
 		z-index: 1;
+		transition: opacity 0.6s $ease-vnr;
 	}
 
 	div[data-images-container]{
 		position: relative;
 	}
+
 </style>
 
