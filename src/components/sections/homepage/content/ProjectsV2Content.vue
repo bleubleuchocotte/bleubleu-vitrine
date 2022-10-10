@@ -2,6 +2,10 @@
 
 import { defineProps } from 'vue';
 import IconArrowRight from "@/assets/icons/icon-arrow-right.svg?inline"
+import ImagesScrollingEffect from '../../../UI/ImagesScrollingEffect.vue';
+
+import img1 from "@/assets/img/logo-bleubleu.jpg";
+import img2 from "@/assets/img/vnr.png";
 
 const props = defineProps({
 	fields: {
@@ -9,6 +13,8 @@ const props = defineProps({
 		required: true,
 	}
 })
+
+const arr1 = [img1, img2, img1];
 </script>
 
 <template>
@@ -35,7 +41,11 @@ const props = defineProps({
         <p> {{ project.data.description[0].text }}</p>
       </div>
 
-      <canvas class="canvas" />
+      <ImagesScrollingEffect
+        class="container-images"
+        :index="index"
+        :images="arr1"
+      />
 
       <hr>
     </div>
@@ -58,7 +68,7 @@ p, a {
 
 }
 
-.canvas {
+.container-images {
 	width: 65%;
 }
 
@@ -89,7 +99,7 @@ article{
 			color: $secondary;
 		}
 
-		.article-bottom{
+		.article-bottom div:first-of-type{
 			height: 250px;
 		}
 	}
@@ -179,22 +189,21 @@ article:last-of-type {
 
 .article-bottom{
 	position: relative;
-	height: 0;
-	transition: height 0.5s $ease-vnr 0.5s;
-
-	overflow: hidden;
+	height: auto;
 
 	display: flex;
 
 	border-top: 1px solid $primary;
 	
 	div:first-of-type {
+		height: 0;
+		transition: height 0.5s $ease-vnr 0.5s;
+		overflow: hidden;
 		border-right: 1px solid $primary;
-		padding: 40px 20px;
-	}
 
-	div:last-of-type{
-		padding: 40px 30px;
+		p {
+			padding: 40px 20px;
+		}
 	}
 }
 </style>
