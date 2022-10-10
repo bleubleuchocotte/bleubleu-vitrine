@@ -34,11 +34,10 @@ function updateImage(arg){
 		y: arg.offsetY
 	}
 	index.value = getIndex(position);
-	currentImage.style.transform = `translate(${position.x}px, ${position.y}px)`;
+	currentImage.style.transform = `translate(${position.x - currentImage.clientWidth/2}px, ${position.y- currentImage.clientHeight/2}px)`;
 }
 
 watch(index, (newIndex) => {
-	console.log("oke");
 	currentImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
 	currentImage.style.opacity = "1";
 })
@@ -81,6 +80,7 @@ function getIndex(position){
 
 		position: absolute;
 		opacity: 0;
+		z-index: 1;
 	}
 
 	div[data-images-container]{
