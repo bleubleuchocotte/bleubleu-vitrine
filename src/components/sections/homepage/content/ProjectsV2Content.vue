@@ -156,7 +156,6 @@ article:last-of-type {
 
 		padding-left: 20px;
 
-		color: var($secondary);
 		transition: color 0.6s $ease-vnr;
 	}
 
