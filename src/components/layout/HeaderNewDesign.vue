@@ -23,7 +23,7 @@ defineProps({
     <div class="morphing-container">
       <Vue3Lottie
         :animation-data="video"
-        :speed="0.5"
+        :speed="1"
       />
     </div>
 
@@ -42,6 +42,8 @@ defineProps({
 	header{
 		padding: 110px $global-horizontal-padding 18.5px $global-horizontal-padding;
     border-bottom: 1px solid $primary;
+
+    min-height: calc(100vh - 2px);
 	}
 
 	.morphing-container {
