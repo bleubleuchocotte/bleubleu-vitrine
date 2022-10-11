@@ -31,7 +31,7 @@ const arr1 = [img1, img2, img3, img4, img1, img2, img3, img4];
         </p>
       </div>
       <div class="article__project-date">
-        <p>{{ project.data.date }}</p>
+        <p>{{ project.data.date.substring(0,4) }}</p>
         <a
           :href="project.data.website_link.url"
           :target="project.data.website_link.target"
