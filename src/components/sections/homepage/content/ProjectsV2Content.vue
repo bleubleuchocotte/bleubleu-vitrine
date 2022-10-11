@@ -4,8 +4,10 @@ import { defineProps } from 'vue';
 import IconArrowRight from "@/assets/icons/icon-arrow-right.svg?inline"
 import ImagesScrollingEffect from '../../../UI/ImagesScrollingEffect.vue';
 
-import img1 from "@/assets/img/logo-bleubleu.jpg";
-import img2 from "@/assets/img/vnr.png";
+import img1 from "@/assets/img/POPCORN_BIERE.png"
+import img2 from "@/assets/img/POPCORN_BURGER.png"
+import img3 from "@/assets/img/POPCORN_TENTE.png"
+import img4 from "@/assets/img/POPCORN_WC.png"
 
 const props = defineProps({
 	fields: {
@@ -14,7 +16,7 @@ const props = defineProps({
 	}
 })
 
-const arr1 = [img1, img2, img1];
+const arr1 = [img1, img2, img3, img4, img1, img2, img3, img4];
 </script>
 
 <template>
