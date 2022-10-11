@@ -40,6 +40,10 @@ defineProps({
 
 <style scoped lang="scss">
 	header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
 		padding: 110px $global-horizontal-padding 18.5px $global-horizontal-padding;
     border-bottom: 1px solid $primary;
 
