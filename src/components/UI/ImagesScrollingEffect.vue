@@ -36,30 +36,27 @@ function updateImage(arg){
 	index.value = getIndex(position);
 	if (currentImage) {
 		currentImage.style.transform = `translate(${position.x - currentImage.clientWidth/2}px, ${position.y- currentImage.clientHeight/2}px)`;
+		currentImage.style.zIndex = "2";
 	}
-	buffer.value += 1;
 }
 
 watch(index, (newIndex, oldIndex) => {
 	if (oldIndex != -1){
 		lastImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${oldIndex}"]`);
-		lastImage.style.opacity = "0";
-		lastImage.style.height = "50%";
+		lastImage.style.zIndex = "1";
 	}
 
 	currentImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
-	currentImage.style.opacity = "1";
-	currentImage.style.height = "100%";
-})
-
-watch (buffer, (newBuffer, oldBuffer) => {
-	console.log(newBuffer, oldBuffer);
+	const test = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
+	test.style.opacity = "1";
+	test.style.height = "100%";
 	setTimeout(() => {
-		console.log("time");
-	}, 100);
+		test.style.opacity = "0";
+		test.style.height = "50%";
+	}, 2000);
+
+
 })
-
-
 
 /**
  * Retourne l'index de l'image en fonction des coordonées x de la souris dans le container
@@ -67,8 +64,8 @@ watch (buffer, (newBuffer, oldBuffer) => {
  * @param {object} position 
  */
 function getIndex(position){
-	const unit = Math.floor(dimensions.width / gridSize);
-	return (Math.floor(position.x / unit));
+	const unit = Math.floor(dimensions.width / (gridSize * 4 ));
+	return (Math.floor(position.x / unit) % gridSize);
 }
 </script>
 
@@ -98,7 +95,7 @@ function getIndex(position){
 		position: absolute;
 		opacity: 0;
 		z-index: 1;
-		transition: opacity 0.6s $ease-vnr, height 0.6s $ease-vnr;
+		transition: opacity 0.4s $ease-vnr, height 0.4s $ease-vnr;
 	}
 
 	div[data-images-container]{
