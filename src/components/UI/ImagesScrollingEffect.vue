@@ -21,6 +21,7 @@ onMounted(() => {
 
 const container = ref();
 const index = ref(-1);
+const buffer = ref(0);
 let dimensions, gridSize;
 
 let currentImage, lastImage;
@@ -36,16 +37,26 @@ function updateImage(arg){
 	if (currentImage) {
 		currentImage.style.transform = `translate(${position.x - currentImage.clientWidth/2}px, ${position.y- currentImage.clientHeight/2}px)`;
 	}
+	buffer.value += 1;
 }
 
 watch(index, (newIndex, oldIndex) => {
 	if (oldIndex != -1){
 		lastImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${oldIndex}"]`);
 		lastImage.style.opacity = "0";
+		lastImage.style.height = "50%";
 	}
 
 	currentImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
 	currentImage.style.opacity = "1";
+	currentImage.style.height = "100%";
+})
+
+watch (buffer, (newBuffer, oldBuffer) => {
+	console.log(newBuffer, oldBuffer);
+	setTimeout(() => {
+		console.log("time");
+	}, 100);
 })
 
 
@@ -87,7 +98,7 @@ function getIndex(position){
 		position: absolute;
 		opacity: 0;
 		z-index: 1;
-		transition: opacity 0.6s $ease-vnr;
+		transition: opacity 0.6s $ease-vnr, height 0.6s $ease-vnr;
 	}
 
 	div[data-images-container]{
