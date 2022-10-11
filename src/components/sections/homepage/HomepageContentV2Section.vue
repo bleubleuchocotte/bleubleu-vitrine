@@ -1,5 +1,8 @@
 <template>
-  <section class="section">
+  <section
+    id="project"
+    class="section"
+  >
     <ProjectsV2Content :fields="fields" />
   </section>
 </template>
