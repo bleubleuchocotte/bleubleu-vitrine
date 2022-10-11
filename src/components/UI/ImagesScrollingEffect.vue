@@ -35,7 +35,7 @@ function updateImage(arg){
 	}
 	index.value = getIndex(position);
 	if (currentImage) {
-		currentImage.style.transform = `translate(${position.x - currentImage.clientWidth/2}px, ${position.y- currentImage.clientHeight/2}px)`;
+		currentImage.style.transform = `translate(${position.x - currentImage.clientWidth/2}px, ${position.y}px)`;
 		currentImage.style.zIndex = "2";
 	}
 }
@@ -47,13 +47,13 @@ watch(index, (newIndex, oldIndex) => {
 	}
 
 	currentImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
-	const test = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
-	test.style.opacity = "1";
-	test.style.height = "100%";
+	currentImage.style.opacity = "1";
+	currentImage.style.height = "100%";
 	setTimeout(() => {
+		const test = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
 		test.style.opacity = "0";
 		test.style.height = "50%";
-	}, 2000);
+	}, 1000);
 
 
 })
@@ -64,7 +64,7 @@ watch(index, (newIndex, oldIndex) => {
  * @param {object} position 
  */
 function getIndex(position){
-	const unit = Math.floor(dimensions.width / (gridSize * 4 ));
+	const unit = Math.floor(dimensions.width / (gridSize*0.7));
 	return (Math.floor(position.x / unit) % gridSize);
 }
 </script>
@@ -94,6 +94,7 @@ function getIndex(position){
 
 		position: absolute;
 		opacity: 0;
+		bottom: 50%;
 		z-index: 1;
 		transition: opacity 0.4s $ease-vnr, height 0.4s $ease-vnr;
 	}
