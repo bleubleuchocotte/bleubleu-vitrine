@@ -6,7 +6,7 @@ import NavComponent from './NavComponent.vue';
 
 import { Vue3Lottie } from 'vue3-lottie'
 import 'vue3-lottie/dist/style.css'
-import video from '@/assets/video/path.json'
+import video from '@/assets/video/Header_anim.json'
 
 defineProps({
   socials: {
