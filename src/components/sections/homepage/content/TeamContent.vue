@@ -27,13 +27,13 @@ a {
 	text-align: center;
 	font-size: 42px;
 
-	min-width: 510px;
 	width: fit-content;
 
 	margin: 0 auto;
 	padding: 0.5rem 2rem;
 
-	border: 1px solid $primary;
+	border: 0.5px solid $primary;
+	outline: 0.5px solid $primary;
 }
 
 </style>
