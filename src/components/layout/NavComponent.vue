@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router';
   <nav>
     <ul>
       <li class="nav__little-link">
-        <RouterLink to="/">
+        <RouterLink to="#agency">
           BleuBleu?
         </RouterLink>
       </li>
@@ -16,7 +16,7 @@ import { RouterLink } from 'vue-router';
         </RouterLink>
       </li>
       <li class="nav__little-link">
-        <RouterLink to="/">
+        <RouterLink to="#team">
           Our team
         </RouterLink>
       </li>
