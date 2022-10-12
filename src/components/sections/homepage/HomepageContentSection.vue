@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import ProjectsContent from './content/ProjectsContent.vue';
+import ProjectsContent from './content/ProjectsContent__OLD.vue';
 import TeamContent from './content/TeamContent.vue';
 import { defineProps } from 'vue';
 

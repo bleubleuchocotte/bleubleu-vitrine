@@ -1,82 +1,66 @@
+<script setup>
+import {defineProps} from "vue";
+
+import Socials from '../socials/Socials.vue';
+import NavComponent from './NavComponent.vue';
+
+import { Vue3Lottie } from 'vue3-lottie'
+import 'vue3-lottie/dist/style.css'
+import video from '@/assets/video/Header_anim.json'
+
+defineProps({
+  socials: {
+    type: Array,
+    required: true,
+  }
+})
+
+</script>
+
 <template>
-  <header class="header o-grid-item--full-bottom">
-    <h1 class="header__title">
-      <span class="block">
-        <span>multidisciplinary</span>
+  <header>
+    <NavComponent />
+    <div class="morphing-container">
+      <Vue3Lottie
+        :animation-data="video"
+        :speed="1"
+      />
+    </div>
 
-        <span class="icon">
-          <IconKeurKeur />
-        </span>
-
-        <span class="border">collective</span>
-      </span>
-      <span class="block">
-        <span>with a strong</span>
-
-        <span class="icon">
-          <IconKeurKeur />
-        </span>
-
-        <span>personnality</span>
-
-        <span class="icon">
-          <IconKeurKeur />
-        </span>
-      </span>
-    </h1>
+    <div class="header-bottom">
+      <Socials :fields="socials" />
+      <p class="infos__text">
+        <span>Amour &</span>  
+        <br>
+        <span>multimedia</span>
+      </p>
+    </div>
   </header>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import IconKeurKeur from '@/assets/icons/icon-keurkeur.svg?inline';
+<style scoped lang="scss">
+	header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-const keywords = ref(['multidisciplinary' ,'collective', 'with a strong', 'personnality']);
-</script>
+		padding: 110px $global-horizontal-padding 18.5px $global-horizontal-padding;
+    border-bottom: 1px solid $primary;
 
-<style lang="scss" scoped>
-.header__title {
-  font-family: $font-secondary;
-  font-weight: 50;
-  font-size: 40px;
-  font-variation-settings: 'wdth' 200;
-  text-transform: uppercase;
-  padding: 12px 40px;
-  @include fluid(font-size, 992px, 1920px, 25px, 50px);
-  @include fluid(font-size, 576px, 992px, 16px, 25px);
+    min-height: calc(100vh - 2px);
+	}
 
-  span {
-    word-break: break-all;
-  }
-}
+	.morphing-container {
+    height: 75vh;
+    filter: $filter-to-primary;
+	}
 
-.header .icon {
-  display: none;
-  width: 50px;
-  margin: 0 16px;
-
-  svg {
-    vertical-align: middle;
-  }
-}
-
-.block {
-  display: block;
-}
-
-.border {
-  display: inline-block;
-  padding: 0 8px;
-  border: 1px solid $black;
-  border-radius: 12px;
-}
-
-@media #{$lg-up} {
-  .header__title {
-    text-align: center;
-  }
-  .header .icon {
-    display: inline-block;
-  }
-}
+	.header-bottom{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		
+		font-size: 22px;
+		text-align: right;
+	}
 </style>

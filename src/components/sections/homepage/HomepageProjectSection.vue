@@ -1,23 +1,25 @@
+<script setup>
+	import { defineProps } from 'vue';
+	import ProjectsContent from './content/ProjectsContent.vue';
+	
+	defineProps({
+		fields: {
+			type: Array,
+			required: true,
+		}
+	})
+</script>
+
 <template>
   <section
     id="project"
     class="section"
   >
-    <ProjectsV2Content :fields="fields" />
+    <ProjectsContent :fields="fields" />
   </section>
 </template>
   
-<script setup>
-import { defineProps } from 'vue';
-import ProjectsV2Content from './content/ProjectsV2Content.vue';
-  
-defineProps({
-	fields: {
-		type: Array,
-		required: true,
-	}
-})
-</script>
+
 
 <style scoped lang="scss">
 .section{

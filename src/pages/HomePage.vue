@@ -3,10 +3,9 @@
     v-if="document"
     class="home-page"
   >
-    <HeaderNewDesign :socials="document.data.socials" />
-    <HomepageAfterHeaderSection :fields="document.data" />
-    <HomepageAgencySection />
-    <HomepageContentV2Section :fields="projects" />
+    <Header :socials="document.data.socials" />
+    <HomepageAgencySection :fields="document.data" />
+    <HomepageProjectSection :fields="projects" />
 
 
     <Footer />
@@ -16,12 +15,12 @@
 <script setup>
 import { ref } from 'vue';
 import { usePrismic } from '@prismicio/vue';
-import Footer from '../components/layout/Footer.vue';
-import HeaderNewDesign from '../components/layout/HeaderNewDesign.vue';
-import HomepageAfterHeaderSection from '../components/sections/homepage/HomepageAfterHeaderSection.vue';
-import HomepageAgencySection from '../components/sections/homepage/HomepageAgencySection.vue';
 
-import HomepageContentV2Section from '../components/sections/homepage/HomepageContentV2Section.vue';
+import Header from '../components/layout/Header.vue';
+import HomepageAgencySection from '../components/sections/homepage/HomepageAgencySection.vue';
+import HomepageProjectSection from '../components/sections/homepage/HomepageProjectSection.vue';
+import Footer from '../components/layout/Footer.vue';
+
 
 const { client } = usePrismic();
 let document = ref(null);

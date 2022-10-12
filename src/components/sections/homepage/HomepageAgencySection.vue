@@ -1,6 +1,14 @@
 <script setup>
+import AgencyKeywords from './content/AgencyKeywords.vue';
 import AgencyContent from './content/AgencyContent.vue';
-import {ref} from "vue"
+import { ref, defineProps } from "vue"
+
+defineProps({
+	fields: {
+    type: Object,
+    required: true,
+  },
+})
 
 const property = ref([
 	{
@@ -66,5 +74,8 @@ const property = ref([
 </script>
 
 <template>
-  <AgencyContent :properties="property" />
+  <section id="agency">
+    <AgencyContent :fields="fields" />
+    <AgencyKeywords :properties="property" />
+  </section>
 </template>
