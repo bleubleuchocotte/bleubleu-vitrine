@@ -2,7 +2,7 @@
 import { defineProps, ref, onMounted } from 'vue';
 import ScrollMovingText from '../../../UI/ScrollMovingText.vue';
 
-defineProps({
+const props = defineProps({
 	properties: {
 		type: Array,
 		required: true,
@@ -11,6 +11,7 @@ defineProps({
 
 onMounted(() => {
   createIntersectionObserver();
+  console.log(props.properties);
 });
 
 function createIntersectionObserver() {
@@ -42,11 +43,11 @@ const isInView = ref(false);
     <ScrollMovingText
       v-for="(property, index) in properties"
       :key="index"
-      :text="property.text"
-      :speed="property.speed"
-      :styles="property.styles"
+      :text="property.data.text[0].text"
+      :speed="property.data.speed"
+      :styles="property.data.css_style[0].text"
       :is-in-view="isInView"
-      :direction="property.direction"
+      :direction="property.data.direction"
       :container="sectionHTML"
     />
   </div>

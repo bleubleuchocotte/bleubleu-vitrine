@@ -1,11 +1,16 @@
 <template>
   <div
-    v-if="document"
+    v-if="document && keywordsProperties && projects"
     class="home-page"
   >
     <Header :socials="document.data.socials" />
-    <HomepageAgencySection :fields="document.data" />
-    <HomepageProjectSection :fields="projects" />
+    <HomepageAgencySection
+      :fields="document.data"
+      :keywords-properties="keywordsProperties"
+    />
+    <HomepageProjectSection
+      :fields="projects"
+    />
     <HomepageTeamSection :members="document.data.team_members" />
 
 
@@ -26,19 +31,24 @@ import Footer from '../components/layout/Footer.vue';
 
 const { client } = usePrismic();
 let document = ref(null);
-const projects = ref();
+const projects = ref(null);
+const keywordsProperties = ref(null);
 
 async function getContent() {
   document.value = await client.getSingle('home_page', {
     fetchLinks: ['social_media.name', 'social_media.link'],
   }, null);
-  console.log(document.value);
 }
+
 async function getProjects() {
   projects.value = await client.getAllByType('project')
-  console.log(projects.value);
+}
+
+async function getKeywords() {
+  keywordsProperties.value = await client.getAllByType('keyword-agency');
 }
 
 getContent();
 getProjects();
+getKeywords();
 </script>
