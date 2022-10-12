@@ -1,6 +1,6 @@
 <script setup>
-import AgencyKeywords from './content/AgencyKeywords.vue';
-import AgencyContent from './content/AgencyContent.vue';
+import AgencyContentKeywords from './content/AgencyContentKeywords.vue';
+import AgencyContentDescription from './content/AgencyContentDescription.vue';
 import { ref, defineProps } from "vue"
 
 defineProps({
@@ -75,8 +75,8 @@ const property = ref([
 
 <template>
   <section id="agency">
-    <AgencyContent :fields="fields" />
-    <AgencyKeywords :properties="property" />
+    <AgencyContentDescription :fields="fields" />
+    <AgencyContentKeywords :properties="property" />
   </section>
 </template>
 
