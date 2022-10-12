@@ -34,7 +34,10 @@ const isInView = ref(false);
 </script>
 
 <template>
-  <section ref="sectionHTML">
+  <div
+    ref="sectionHTML"
+    class="container"
+  >
     <div class="border" />
     <ScrollMovingText
       v-for="(property, index) in properties"
@@ -46,14 +49,12 @@ const isInView = ref(false);
       :direction="property.direction"
       :container="sectionHTML"
     />
-  </section>
+  </div>
 </template>
 
 <style scoped lang="scss">
-	section{
+	.container{
 		height: 350px;
-		padding: 0 $global-horizontal-padding 0 $global-horizontal-padding;
-		border-bottom: 1px solid $primary;
 		position: relative;
 	}
 

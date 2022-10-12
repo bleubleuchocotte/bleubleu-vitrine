@@ -79,3 +79,10 @@ const property = ref([
     <AgencyKeywords :properties="property" />
   </section>
 </template>
+
+<style scoped lang="scss">
+	section {
+		padding: 0 $global-horizontal-padding 0 $global-horizontal-padding;
+		border-bottom: 1px solid $primary;
+	}
+</style>

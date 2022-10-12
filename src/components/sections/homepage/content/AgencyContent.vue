@@ -1,18 +1,18 @@
 <script setup>
-import IconRobot from "@/assets/icons/icon-robot-bleubleu.svg?inline"
-import BlurText from "@/components/UI/BlurText.vue";
-import {defineProps} from "vue";
+	import IconRobot from "@/assets/icons/icon-robot-bleubleu.svg?inline"
+	import BlurText from "@/components/UI/BlurText.vue";
+	import {defineProps} from "vue";
 
-defineProps({
-	fields: {
-    type: Object,
-    required: true,
-  },
-})
+	defineProps({
+		fields: {
+		type: Object,
+		required: true,
+	},
+	})
 </script>
 
 <template>
-  <section class="section">
+  <div class="container">
     <div class="flex left">
       <p>
         <span>BOLD &</span>
@@ -26,14 +26,12 @@ defineProps({
       />
     </div>
     <div class="flex right" />
-  </section>
+  </div>
 </template>
 
 <style scoped lang="scss">
-	.section{
+	.container{
 		display: flex;
-
-		padding: 0 $global-horizontal-padding 0 $global-horizontal-padding;
 		border-bottom: 1px solid $primary;
 	}
 	

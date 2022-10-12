@@ -11,10 +11,7 @@
 </script>
 
 <template>
-  <section
-    id="project"
-    class="section"
-  >
+  <section id="project">
     <ProjectsContent :fields="fields" />
   </section>
 </template>
@@ -22,7 +19,7 @@
 
 
 <style scoped lang="scss">
-.section{
+section{
 	display: flex;
 	flex-direction: column;
 
