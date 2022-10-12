@@ -30,7 +30,6 @@ async function getFooterContent() {
   footer.value = await client.getSingle('footer', {
     fetchLinks: ['social_media.name', 'social_media.link'],
   }, null);
-  console.log(footer.value);
 }
 
 const year = ref(new Date().getFullYear());
@@ -52,7 +51,7 @@ getFooterContent()
 
 .footer__copyright {
   margin-top: 16px;
-  font-family: $font-secondary;
+  font-family: $font-primary;
   font-weight: 10;
   font-variation-settings: 'wdth' 150;
   text-transform: uppercase;
