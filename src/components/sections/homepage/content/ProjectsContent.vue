@@ -40,7 +40,7 @@ const props = defineProps({
       <ImagesScrollingEffect
         class="container-images"
         :index="index"
-        :images="project.data.medias"
+        :images="project.data.medias.concat(project.data.medias)"
       />
 
       <hr>
