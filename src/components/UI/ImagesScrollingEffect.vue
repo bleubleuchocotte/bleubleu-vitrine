@@ -21,7 +21,6 @@ onMounted(() => {
 
 const container = ref();
 const index = ref(-1);
-const buffer = ref(0);
 let dimensions, gridSize;
 
 let currentImage, lastImage;
@@ -64,7 +63,7 @@ watch(index, (newIndex, oldIndex) => {
  * @param {object} position 
  */
 function getIndex(position){
-	const unit = Math.floor(dimensions.width / (gridSize*0.7));
+	const unit = Math.floor(dimensions.width / (gridSize));
 	return (Math.floor(position.x / unit) % gridSize);
 }
 </script>
@@ -80,9 +79,9 @@ function getIndex(position){
       v-for="(image, key) in images"
       :key="key"
       :ref="`image-${key}`"
-      :src="image"
+      :src="image.media.url"
       :data-index="key"
-      alt="test"
+      :alt="image.media.alt"
     >
   </div>
 </template>
