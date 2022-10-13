@@ -17,7 +17,7 @@ const props = defineProps({
     default: 1
   },
   styles: {
-    type: Object,
+    type: String,
     required: false,
     default: null
   },
