@@ -2,6 +2,7 @@
 	import IconRobot from "@/assets/icons/icon-robot-bleubleu.svg?inline"
 	import BlurText from "@/components/UI/BlurText.vue";
 	import {defineProps} from "vue";
+import GridChelou from "../../../UI/GridChelou.vue";
 
 	defineProps({
 		fields: {
@@ -25,7 +26,9 @@
         class="blur-text"
       />
     </div>
-    <div class="flex right" />
+    <div class="flex">
+      <GridChelou />
+    </div>
   </div>
 </template>
 
@@ -39,6 +42,9 @@
 		display: flex;
 		flex-direction: column;
 		gap: 388px;
+		padding: 30px 0px 10px 15px;
+		
+		border-left: 1px solid $primary;
 
 		justify-content: space-between;
 	}
@@ -53,16 +59,9 @@
 	}
 	
 	.flex{
-		padding: 30px 0px 10px 15px;
 		flex: 1;
 
-		border-left: 1px solid $primary;
 	}
-
-	.right{
-		border-right: 1px solid $primary;
-	}
-
 	p span{
 		display: block;
 	}
