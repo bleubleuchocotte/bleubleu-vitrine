@@ -6,7 +6,7 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 
 
 <template>
-  <div class="flex">
+  <div class="dynamic-grid">
     <div class="left">
       <div>
         <IconBleubleu class="svg" />
@@ -31,9 +31,13 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 
 
 
-	.flex {
+	.dynamic-grid {
 		display: flex;
 		height: 100%;
+
+		border-left: 1px solid $primary;
+		border-right: 1px solid $primary;
+
 	}
 
 	.right, .left {
@@ -48,16 +52,15 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 			align-items: center;
 			overflow: hidden;
 
-			border: 1px solid $primary;
-			outline: 1px solid $primary;
-
 			transition: flex 0.5s $ease-vnr;
 		}
 	}
 
 	.left {
+		border-right: 1px solid $primary;
 		flex: 0.4;
 		div:first-of-type {
+			border-bottom: 1px solid $primary;
 			flex: 0.4;
 
 			&:hover{
@@ -91,6 +94,7 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 				flex: 0.7;
 		}
 		div:first-of-type {
+			border-bottom: 1px solid $primary;
 			flex: 0.7;
 
 			&:hover{
