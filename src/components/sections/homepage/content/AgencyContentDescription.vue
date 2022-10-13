@@ -14,7 +14,7 @@ import GridChelou from "../../../UI/GridChelou.vue";
 
 <template>
   <div class="container">
-    <div class="flex left">
+    <div class="left">
       <p>
         <span>BOLD &</span>
         <span id="beep-boop"><IconRobot />STRONG</span>
@@ -26,7 +26,7 @@ import GridChelou from "../../../UI/GridChelou.vue";
         class="blur-text"
       />
     </div>
-    <div class="flex">
+    <div>
       <GridChelou />
     </div>
   </div>
@@ -36,14 +36,16 @@ import GridChelou from "../../../UI/GridChelou.vue";
 	.container{
 		display: flex;
 		border-bottom: 1px solid $primary;
+
+		& > div {
+			flex: 1;
+		}
 	}
-	
 	.left{
 		display: flex;
 		flex-direction: column;
 		gap: 388px;
 		padding: 30px 0px 10px 15px;
-		
 		border-left: 1px solid $primary;
 
 		justify-content: space-between;
@@ -58,10 +60,6 @@ import GridChelou from "../../../UI/GridChelou.vue";
 		max-width: 450px;
 	}
 	
-	.flex{
-		flex: 1;
-
-	}
 	p span{
 		display: block;
 	}
