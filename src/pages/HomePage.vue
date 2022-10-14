@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { usePrismic } from '@prismicio/vue';
 
 import Header from '../components/layout/Header.vue';
@@ -86,8 +86,8 @@ watch(cursor, () => {
 
   border-radius: 50%;
 
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
 
   filter: blur(15px);
 
