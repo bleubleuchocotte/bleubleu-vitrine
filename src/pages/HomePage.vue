@@ -15,11 +15,16 @@
 
 
     <Footer />
+
+    <div
+      ref="cursor"
+      class="cursor"
+    />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
 import { usePrismic } from '@prismicio/vue';
 
 import Header from '../components/layout/Header.vue';
@@ -51,4 +56,49 @@ async function getKeywords() {
 getContent();
 getProjects();
 getKeywords();
+
+const cursor = ref();
+
+
+watch(cursor, () => {
+  window.addEventListener('mousemove', (arg) => {
+    cursor.value.style.transform = `translate(${arg.clientX - 30}px, ${arg.clientY-30}px)`;
+
+    if (arg.target.localName === "a"){
+      cursor.value.style.filter = "none";
+      cursor.value.style.transform = `translate(${arg.clientX - 30}px, ${arg.clientY-30}px) scale(0.7)`;
+    } else {
+      cursor.value.style.filter = "blur(15px)"
+      cursor.value.style.transform = `translate(${arg.clientX - 30}px, ${arg.clientY-30}px) scale(1)`;
+    }
+  })
+
+})
 </script>
+
+<style scoped lang="scss">
+.cursor{
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  transform-origin: center;
+
+  border-radius: 50%;
+
+  width: 80px;
+  height: 80px;
+
+  filter: blur(15px);
+
+  background-color: $primary;
+
+  z-index: 1000;
+
+  transition: transform 0.1s ease;
+  transition: filter 0.1s ease;
+
+  pointer-events: none;
+}
+
+</style>
