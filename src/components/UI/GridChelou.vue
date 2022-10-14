@@ -99,6 +99,10 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 
 		}
 
+		&:hover {
+			flex: 0.6;
+		}
+
 	}
 	.right {
 		flex: 0.6;
