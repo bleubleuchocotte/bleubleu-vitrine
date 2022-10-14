@@ -57,7 +57,7 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 		display: flex;
 		flex-direction: column;
 
-		transition: flex 0.5s $ease-vnr;
+		transition: flex 0.6s $ease-vnr;
 		
 		div {
 			display: flex;
@@ -65,7 +65,7 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 			align-items: center;
 			overflow: hidden;
 
-			transition: flex 0.5s $ease-vnr;
+			transition: flex 0.6s $ease-vnr;
 		}
 	}
 
@@ -83,6 +83,10 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 			
 			&:hover{
 				flex: 0.5;
+
+				svg {
+					animation-play-state: paused;
+				}
 			}
 		}
 		div:last-of-type {
@@ -90,6 +94,10 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 
 			&:hover{
 				flex: 0.8;
+				
+				svg {
+					animation-play-state: paused;
+				}
 			}
 			
 			svg {
@@ -109,6 +117,7 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 
 		&:hover{
 				flex: 0.7;
+				
 		}
 		div:first-of-type {
 			border-bottom: 1px solid $primary;
@@ -116,6 +125,10 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 
 			&:hover{
 				flex: 1.2;
+				
+				svg {
+					animation-play-state: paused;
+				}
 			}
 
 			svg {
@@ -127,6 +140,10 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 			flex: 0.3;
 			&:hover{
 				flex: 0.5;
+				
+				svg {
+					animation-play-state: paused;
+				}
 			}
 			svg {
 				transform: rotate(78.9deg) scale(4.0) skew(40deg, 10deg) translate(-20px,-20px);
