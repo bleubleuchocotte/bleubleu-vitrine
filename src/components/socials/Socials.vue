@@ -63,6 +63,7 @@ export default {
   }
 
   svg {
+    pointer-events: none;
     stroke: $primary;
     fill: $primary;
     width: 100%;
