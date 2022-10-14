@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, defineEmits } from "vue";
 
 defineProps({
 	members: {
@@ -7,6 +7,9 @@ defineProps({
 		required: true
 	}
 })
+
+defineEmits(['activeBitMap']);
+
 </script>
 
 <template>
@@ -15,6 +18,7 @@ defineProps({
     :key="index"
     :href="member.link.url"
     :target="member.link.target"
+    @mouseover="$emit('activeBitMap', member.image_bitmap)"
   > 
     {{ member.name }} 
   </a>
