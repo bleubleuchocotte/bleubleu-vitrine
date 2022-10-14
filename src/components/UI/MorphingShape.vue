@@ -58,64 +58,64 @@ const containerHTML = ref(null);
 </script>
 
 <template>
-  <div ref="containerHTML">
-    <svg
-      width="100%"
-      height="100%"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <clipPath id="clipPath">
-          <path :d="props.morphingPaths[0]">
-            <animate
-              v-if="isRunning"
-              attributeName="d"
-              :values="morphingPaths"
-              :dur="morphingDuration"
-              repeatCount="indefinite"
-            />
-          </path>
-        </clipPath>
-      </defs>
-
-      <path
-        :d="props.morphingPaths[0]"
-        style="stroke-width: 2"
+  <div class="morphing-container">
+    <div ref="containerHTML">
+      <svg
+        width="100%"
+        height="100%"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <animate
-          v-if="isRunning"
-          attributeName="d"
-          :values="morphingPaths"
-          :dur="morphingDuration"
-          repeatCount="indefinite"
-        />
-      </path>
-    </svg>
+        <defs>
+          <clipPath id="clipPath">
+            <path :d="props.morphingPaths[0]">
+              <animate
+                v-if="isRunning"
+                attributeName="d"
+                :values="morphingPaths"
+                :dur="morphingDuration"
+                repeatCount="indefinite"
+              />
+            </path>
+          </clipPath>
+        </defs>
+  
+        <path
+          :d="props.morphingPaths[0]"
+          style="stroke-width: 2"
+        >
+          <animate
+            v-if="isRunning"
+            attributeName="d"
+            :values="morphingPaths"
+            :dur="morphingDuration"
+            repeatCount="indefinite"
+          />
+        </path>
+      </svg>
+    </div>
 
-    <slot v-if="isRunning" />
+    <slot />
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 svg {
   position: absolute;
   top: 0;
-  stroke: #bbff65;
+  stroke: $primary;
 }
-
-svg path {
-  filter: drop-shadow(1px 1px 10px #bbff65);
-}
-
-div {
-  min-width: 1060px;
-  height: 583px;
+div:not(.morphing-container) {
+  min-width: 605px;
+  height: 100%;
   position: absolute;
-  background: linear-gradient(
-    -106deg,
-    rgba(187, 255, 101, 0) 65%,
-    rgba(187, 255, 101, 1) 83%
-  );
+}
+
+.morphing-container {
+  position: relative;
+  clip-path: url(#clipPath);
+  height: 605px;
+  left: calc(50% - 300px);
+  margin: 60px 0;
 }
 </style>
