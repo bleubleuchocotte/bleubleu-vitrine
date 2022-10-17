@@ -28,22 +28,29 @@ const imageBitmapSrc = ref("");
 
 <template>
   <section id="team">
+    <TeamContent
+      :members="members"
+      @activeBitMap="updateSrc"
+    />
     <MorphingShape
       :morphing-duration="'10s'"
       :morphing-paths="paths"
     >
       <ImageParallax :path="imageBitmapSrc" />
     </morphingshape>
-    <TeamContent
-      :members="members"
-      @activeBitMap="updateSrc"
-    />
   </section>
 </template>
 
 <style scoped lang="scss">
 
 	section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		min-height: 80vh;
+
 		padding: 0 $global-horizontal-padding 0 $global-horizontal-padding;
 	}
 
