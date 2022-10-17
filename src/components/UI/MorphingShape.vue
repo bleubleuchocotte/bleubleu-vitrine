@@ -112,10 +112,13 @@ div:not(.morphing-container) {
 }
 
 .morphing-container {
-  position: relative;
+  position: absolute;
   clip-path: url(#clipPath);
   height: 605px;
-  left: calc(50% - 300px);
+  width: 605px;
+
   margin: 60px 0;
+
+  pointer-events: none;
 }
 </style>
