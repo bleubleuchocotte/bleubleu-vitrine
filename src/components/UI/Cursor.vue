@@ -11,16 +11,17 @@ onUnmounted(() => {
 const cursor = ref();
 
 function updateCursor(arg){
-	cursor.value.style.transform = `translate(${arg.clientX - 30}px, ${arg.clientY-30}px)`;
-
 	if (arg.target.localName === "a"){
 		cursor.value.style.filter = "none";
 		cursor.value.style.transform = `translate(${arg.clientX - 30}px, ${arg.clientY-30}px) scale(0.7)`;
 		cursor.value.style.borderWidth = "1px";
+		cursor.value.style.boxShadow = "none";
 	} else {
+		const lastPosition = cursor.value.getBoundingClientRect() || {x: 0, y: 0};
 		cursor.value.style.filter = "blur(15px)"
 		cursor.value.style.transform = `translate(${arg.clientX - 30}px, ${arg.clientY-30}px) scale(1)`;
 		cursor.value.style.borderWidth = "0px";
+		cursor.value.style.boxShadow = `${lastPosition.x + 30 - arg.clientX}px ${lastPosition.y + 30 - arg.clientY}px 0px -5px, ${(lastPosition.x + 30 - arg.clientX)*1.5}px ${(lastPosition.y + 30 - arg.clientY)*1.5}px 0px -10px, ${(lastPosition.x + 30 - arg.clientX)*2}px ${(lastPosition.y + 30 - arg.clientY)*2}px 0px -20px`;
 	}
 }
 </script>
@@ -54,3 +55,9 @@ function updateCursor(arg){
 }
 
 </style>
+
+<script>
+
+const shadow = {};
+
+</script>
