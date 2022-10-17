@@ -44,7 +44,6 @@ const pathURL = ref("");
 <style scoped lang="scss">
 img {
   object-position: v-bind(delta);
-  background-repeat: no-repeat;
 
   filter: invert(1) $filter-to-primary;
 }
