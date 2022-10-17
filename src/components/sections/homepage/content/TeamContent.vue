@@ -7,37 +7,60 @@ defineProps({
 		required: true
 	}
 })
+const emit = defineEmits(['activeBitMap']);
 
-defineEmits(['activeBitMap']);
+function updatePicture(index, image_src){
+	const notActive = document.querySelectorAll(`.team-member:not([data-index="${index}"])`);
+	notActive.forEach(el => {
+		el.classList.remove("active")
+	})
+
+	document.querySelector(`.team-member[data-index="${index}"]`).classList.add('active');
+
+	emit('activeBitMap', image_src);
+} 
 
 </script>
 
 <template>
-  <a
-    v-for="(member, index) in members"
-    :key="index"
-    :href="member.link.url"
-    :target="member.link.target"
-    @mouseover="$emit('activeBitMap', member.image_bitmap)"
-  > 
-    {{ member.name }} 
-  </a>
+  <ul>
+    <li
+      v-for="(member, index) in members"
+      :key="index"
+    >
+      <a
+        :href="member.link.url"
+        :target="member.link.target"
+        :data-index="index"
+        class="team-member active"
+        @mouseover="updatePicture(index, member.image_bitmap)"
+      > 
+        {{ member.name }} 
+      </a>
+    </li>
+  </ul>
 </template>
 
 <style scoped lang="scss">
 
-a {
+ul {
+	z-index: 1;
+}
+
+a.team-member {
 	display: block;
 	text-align: center;
-	font-size: 42px;
+	font-size: 20px;
 
 	width: fit-content;
 
 	margin: 0 auto;
 	padding: 0.5rem 2rem;
+	opacity: 1;
+}
 
-	border: 0.5px solid $primary;
-	outline: 0.5px solid $primary;
+a:not(.active) {
+	opacity: 0.3;
 }
 
 </style>
