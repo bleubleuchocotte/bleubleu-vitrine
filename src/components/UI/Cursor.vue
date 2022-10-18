@@ -11,6 +11,7 @@ onUnmounted(() => {
 const cursor = ref();
 
 function updateCursor(arg){
+	cursor.value.style.zIndex = "100";
 	if (arg.target.localName === "a"){
 		cursor.value.style.filter = "none";
 		cursor.value.style.transform = `translate(${arg.clientX - 30}px, ${arg.clientY-30}px) scale(0.7)`;
@@ -42,7 +43,6 @@ function updateCursor(arg){
   position: fixed;
   top: 0;
   left: 0;
-	z-index: 1000;
 
 	pointer-events: none;
 
