@@ -13,15 +13,17 @@ const props = defineProps({
 })
 
 onMounted(() => {
-	gridSize = props.images.length;
+	column = props.images.length;
+	row = 2;
 	dimensions = {
-		width: container.value.clientWidth
+		width: container.value.clientWidth,
+		height: 500
 	}
 })
 
 const container = ref();
 const index = ref(-1);
-let dimensions, gridSize;
+let dimensions, column, row;
 
 let currentImage, lastImage;
 
@@ -58,13 +60,14 @@ watch(index, (newIndex, oldIndex) => {
 })
 
 /**
- * Retourne l'index de l'image en fonction des coordonées x de la souris dans le container
+ * Retourne l'index de l'image en fonction des coordonées (x,y) de la souris dans le container
  * 
  * @param {object} position 
  */
 function getIndex(position){
-	const unit = Math.floor(dimensions.width / (gridSize));
-	return (Math.floor(position.x / unit) % gridSize);
+	const unitX = Math.floor(dimensions.width / column);
+	const unitY = Math.floor(dimensions.height / row);
+	return ( (Math.floor(position.x / unitX) + Math.floor(position.y / unitY)) % (props.images.length));	
 }
 </script>
 
