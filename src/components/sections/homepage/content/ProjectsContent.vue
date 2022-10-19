@@ -185,7 +185,6 @@ article:last-of-type {
 
 .article-bottom{
 	position: relative;
-	height: auto;
 
 	display: flex;
 
