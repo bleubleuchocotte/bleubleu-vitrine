@@ -65,7 +65,8 @@ p, a {
 }
 
 .container-images {
-	width: 65%;
+	width: 100%;
+	height: 100%;
 }
 
 hr{
@@ -95,8 +96,8 @@ article{
 			color: $secondary;
 		}
 
-		.article-bottom div:first-of-type{
-			height: 250px;
+		.article-bottom {
+			height: 500px;
 		}
 	}
 }
@@ -188,13 +189,13 @@ article:last-of-type {
 
 	display: flex;
 
+	height: 0;
+	transition: height 0.5s $ease-vnr 0.5s;
+
 	border-top: 1px solid $primary;
 	
 	div:first-of-type {
-		height: 0;
-		transition: height 0.5s $ease-vnr 0.5s;
 		overflow: hidden;
-		border-right: 1px solid $primary;
 
 		p {
 			padding: 40px 20px;
