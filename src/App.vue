@@ -129,7 +129,7 @@ import { onMounted } from 'vue';
 			name: "Eniarku",
 			primary: "#FBFE56",
 			secondary: "#0B64C0",
-			filter: "invert(97%) sepia(30%) saturate(5471%) hue-rotate(320deg) brightness(127%) contrast(99%)"
+			filter: "invert(100%) sepia(41%) saturate(3875%) hue-rotate(322deg) brightness(123%) contrast(99%)"
 		}
 		,
 		{
