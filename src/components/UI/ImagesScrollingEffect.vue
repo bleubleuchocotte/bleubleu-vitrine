@@ -25,7 +25,24 @@ const container = ref();
 const index = ref(-1);
 let dimensions, column, row;
 
-let currentImage, lastImage;
+const containerImage = ref();
+const image = ref();
+
+let currentImage;
+let currentContainerImage, lastContainerImage;
+
+let counter = 0;
+
+const scaleDownSettings = [
+	{opacity: '1', transform: "scale(1)"},
+	{opacity: '0', transform: "scale(0.2)"}
+]
+
+const timing = {
+	duration: 400,
+	iteration: 1,
+	delay: 1000
+}
 
 
 
@@ -35,28 +52,58 @@ function updateImage(arg){
 		y: arg.offsetY
 	}
 	index.value = getIndex(position);
-	if (currentImage) {
-		currentImage.style.transform = `translate(${position.x - currentImage.clientWidth/2}px, ${position.y}px)`;
-		currentImage.style.zIndex = "1002";
+	if (containerImage.value) {
+		containerImage.value.style.transform = `translate(${position.x - containerImage.value.clientWidth / 2}px, ${position.y - containerImage.value.clientHeight / 2}px)`;
+		containerImage.value.style.zIndex = "1002";
 	}
+	// if (currentContainerImage) {
+	// 	currentContainerImage.style.transform = `translate(${position.x - currentContainerImage.clientWidth / 2}px, ${position.y - currentContainerImage.clientHeight / 2}px)`;
+	// 	currentContainerImage.style.zIndex = "1002";
+	// }
 }
 
-watch(index, (newIndex, oldIndex) => {
-	if (oldIndex != -1){
-		lastImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${oldIndex}"]`);
-		lastImage.style.zIndex = "1001";
+watch(index, () => {
+	// if (counter != 0){
+	// 	lastContainerImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${(counter-1) % props.images.length}"]`);
+	// 	lastContainerImage.style.zIndex = "1001";
+	// }
+
+
+	// currentContainerImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${counter % props.images.length}"]`)
+	containerImage.value = document.querySelector(`[data-images-container="${props.index}"] [data-index="${counter % props.images.length}"]`)
+
+	// currentImage = currentContainerImage.firstChild;
+	// currentImage.style.opacity = "1";
+
+	// currentImage.animate(scaleDownSettings, timing);
+
+	// Promise.all(
+	// 	currentImage.getAnimations()
+	// 	.map((animation) => animation.finished)
+	// ).then((arg) => {
+	// 	arg.forEach(el => {
+	// 		el.effect.target.style.opacity = "0"; // Permet de remettre à 0 l'opacité de la target pour annuler l'animation après
+	// 		el.cancel();
+	// 	})
+	// });
+
+	counter += 1;
+})
+
+watch(containerImage, (newContainer, oldContainer) => {
+	if (oldContainer){
+		oldContainer.style.zIndex = "1001";
 	}
+	image.value = newContainer.firstChild;
+})
 
-	currentImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
-	currentImage.style.opacity = "1";
-	currentImage.style.height = "50%";
-	setTimeout(() => {
-		const test = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
-		test.style.opacity = "0";
-		test.style.height = "25%";
-	}, 1000);
-
-
+watch(image, (newImage, oldImage) => {
+	if (oldImage) {
+		oldImage.style.opacity = "0";
+		oldImage.style.transform = "scale(0.2)";
+	}
+	newImage.style.opacity = "1";
+	newImage.style.transform = "scale(1)";
 })
 
 /**
@@ -78,31 +125,38 @@ function getIndex(position){
     :data-images-container="props.index"
     @mousemove="updateImage"
   >
-    <img
+    <div
       v-for="(image, key) in images"
       :key="key"
       :ref="`image-${key}`"
-      :src="image.media.url"
       :data-index="key"
-      :alt="image.media.alt"
+      class="image-container"
     >
+      <img
+        :src="image.media.url"
+        :alt="image.media.alt"
+      >
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 	img {
-		pointer-events: none;
-		height: 50%;
-
-		position: absolute;
 		opacity: 0;
-		bottom: 75%;
-		transition: opacity 0.4s $ease-vnr, height 0.4s $ease-vnr;
+
+		transition: opacity 0.4s $ease-vnr, transform 0.4s $ease-vnr;
 	}
 
 	div[data-images-container]{
 		position: absolute;
 	}
 
+	.image-container {
+		position: absolute;
+		height: 400px;
+		width: 400px;
+
+		pointer-events: none;
+	}
 </style>
 
