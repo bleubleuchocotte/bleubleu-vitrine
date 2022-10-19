@@ -55,9 +55,3 @@ function updateCursor(arg){
 }
 
 </style>
-
-<script>
-
-const shadow = {};
-
-</script>
