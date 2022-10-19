@@ -37,14 +37,14 @@ function updateImage(arg){
 	index.value = getIndex(position);
 	if (currentImage) {
 		currentImage.style.transform = `translate(${position.x - currentImage.clientWidth/2}px, ${position.y}px)`;
-		currentImage.style.zIndex = "2";
+		currentImage.style.zIndex = "1002";
 	}
 }
 
 watch(index, (newIndex, oldIndex) => {
 	if (oldIndex != -1){
 		lastImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${oldIndex}"]`);
-		lastImage.style.zIndex = "1";
+		lastImage.style.zIndex = "1001";
 	}
 
 	currentImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
@@ -97,7 +97,6 @@ function getIndex(position){
 		position: absolute;
 		opacity: 0;
 		bottom: 75%;
-		z-index: 1;
 		transition: opacity 0.4s $ease-vnr, height 0.4s $ease-vnr;
 	}
 
