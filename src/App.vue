@@ -98,7 +98,7 @@ import { onMounted } from 'vue';
 		}
 		,
 		{
-			name: "Sunset",
+			name: "Halloween",
 			primary: "#FF8A00",
 			secondary: "#573A6D",
 			filter: "invert(55%) sepia(72%) saturate(1497%) hue-rotate(357deg) brightness(98%) contrast(110%)"
