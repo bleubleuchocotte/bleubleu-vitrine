@@ -31,7 +31,7 @@ import { onMounted } from 'vue';
 			name: "Mint",
 			primary: "#62BFAD",
 			secondary: "#F9F7E8",
-			filter: "invert(69%) sepia(16%) saturate(7498%) hue-rotate(183deg) brightness(99%) contrast(105%)"
+			filter: "invert(71%) sepia(8%) saturate(1994%) hue-rotate(119deg) brightness(96%) contrast(86%)"
 		}
 		,
 		{
@@ -59,11 +59,11 @@ import { onMounted } from 'vue';
 			name: "Cyan",
 			primary: "#178E96",
 			secondary: "#EFEAE5",
-			filter: "invert(40%) sepia(80%) saturate(703%) hue-rotate(140deg) brightness(91%) contrast(82%)"
+			filter: "invert(42%) sepia(66%) saturate(552%) hue-rotate(135deg) brightness(95%) contrast(87%)"
 		}
 		,
 		{
-			name: "Barbie",
+			name: "Malabar",
 			primary: "#FF8FA4",
 			secondary: "#E5E8DC",
 			filter: "invert(88%) sepia(33%) saturate(4570%) hue-rotate(296deg) brightness(102%) contrast(101%)"
@@ -143,7 +143,7 @@ import { onMounted } from 'vue';
 			name: "Vintage",
 			primary: "#FFCC4C",
 			secondary: "#19AAD1",
-			filter: "invert(87%) sepia(72%) saturate(5497%) hue-rotate(316deg) brightness(100%) contrast(105%)"
+			filter: "invert(96%) sepia(65%) saturate(4920%) hue-rotate(317deg) brightness(101%) contrast(102%)"
 		}
 		,
 		{
