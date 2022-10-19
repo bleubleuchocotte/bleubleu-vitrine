@@ -47,11 +47,11 @@ watch(index, (newIndex, oldIndex) => {
 
 	currentImage = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
 	currentImage.style.opacity = "1";
-	currentImage.style.height = "100%";
+	currentImage.style.height = "50%";
 	setTimeout(() => {
 		const test = document.querySelector(`[data-images-container="${props.index}"] [data-index="${newIndex}"]`);
 		test.style.opacity = "0";
-		test.style.height = "50%";
+		test.style.height = "25%";
 	}, 1000);
 
 
@@ -89,17 +89,17 @@ function getIndex(position){
 <style scoped lang="scss">
 	img {
 		pointer-events: none;
-		height: 100%;
+		height: 50%;
 
 		position: absolute;
 		opacity: 0;
-		bottom: 50%;
+		bottom: 75%;
 		z-index: 1;
 		transition: opacity 0.4s $ease-vnr, height 0.4s $ease-vnr;
 	}
 
 	div[data-images-container]{
-		position: relative;
+		position: absolute;
 	}
 
 </style>
