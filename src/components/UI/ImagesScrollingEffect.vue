@@ -52,7 +52,7 @@ watch(containerImage, (newContainer, oldContainer) => {
 	if (oldContainer){
 		oldContainer.style.zIndex = "1001";
 
-		oldContainer.animation = getAnimationObject(oldContainer, 1, 0, 0.05, "opacity");
+		oldContainer.animation = getAnimationObject(oldContainer, 1, -0.5, 0.06, "opacity");
 		oldContainer.animation.init(400);
 	}
 
@@ -94,22 +94,23 @@ function getIndex(position){
 	return ( (Math.floor(position.x / unitX) + Math.floor(position.y / unitY)) % (props.images.length));	
 }
 
-function getAnimationObject(el, initValue, endValue, stepValue, mode = "scale") {
+function getAnimationObject(element, initValue, endValue, stepValue, mode = "scale") {
 	const animation =  {
 		initValue: initValue,
 		endValue: endValue,
 		stepValue: stepValue,
+		el: element,
 
 		render: function () {
-			if (el.animation.currentValue > el.animation.endValue) {
-				el.style.transform = `scale(${el.animation.currentValue})`;
-				el.animation.update();
-				requestAnimationFrame(el.animation.render);
+			if (animation.currentValue > animation.endValue) {
+				animation.el.style.transform = `scale(${animation.currentValue})`;
+				animation.update();
+				animation.requestID = requestAnimationFrame(animation.render);
 			}
 		},
 
 		update: function() {
-			el.animation.currentValue -= el.animation.stepValue;
+			animation.currentValue -= animation.stepValue;
 		},
 
 		/**
@@ -117,24 +118,24 @@ function getAnimationObject(el, initValue, endValue, stepValue, mode = "scale") 
 		 * @param {number} delay Delay in milliseconds 
 		 */
 		init: function(delay) {
-			el.animation.timeoutID = setTimeout(() => {
-				el.animation.currentValue = el.animation.initValue;
-				el.animation.requestID = requestAnimationFrame(el.animation.render);
+			animation.timeoutID = setTimeout(() => {
+				animation.currentValue = animation.initValue;
+				animation.requestID = requestAnimationFrame(animation.render);
 			}, delay);
 		},
 
 		cancel: function(){
-			clearTimeout(el.animation.timeoutID);
-			cancelAnimationFrame(el.animation.requestID);
+			clearTimeout(animation.timeoutID);
+			cancelAnimationFrame(animation.requestID);
 		}
 	}
 
 	if (mode == "opacity") {
 		animation.render =  function () {
-			if (el.animation.currentValue > el.animation.endValue) {
-				el.style.opacity = `${el.animation.currentValue}`;
-				el.animation.update();
-				requestAnimationFrame(el.animation.render);
+			if (animation.currentValue > animation.endValue) {
+				animation.el.style.opacity = `${animation.currentValue}`;
+				animation.update();
+				animation.requestID = requestAnimationFrame(animation.render);
 			}
 		}
 	}
@@ -182,7 +183,7 @@ function getAnimationObject(el, initValue, endValue, stepValue, mode = "scale") 
 
 		opacity: 0;
 
-		transition: opacity 0.1s $ease-vnr;
+		// transition: opacity 0.1s $ease-vnr;
 
 		pointer-events: none;
 	}
