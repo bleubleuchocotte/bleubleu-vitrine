@@ -68,6 +68,7 @@ watch(containerImage, (newContainer, oldContainer) => {
 
 watch(image, (newImage, oldImage) => {
 	if (oldImage) {
+
 		oldImage.animation =  {
 			initValue: 1,
 			endValue: 0.2,
@@ -86,19 +87,26 @@ watch(image, (newImage, oldImage) => {
 				oldImage.animation.currentValue -= oldImage.animation.stepValue;
 			},
 
-			init: function() {
-				oldImage.animation.currentValue = oldImage.animation.initValue;
-				oldImage.animation.requestID = requestAnimationFrame(oldImage.animation.render);
-				oldImage.animation.run = true;
+			/**
+			 * 
+			 * @param {number} delay Delay in milliseconds 
+			 */
+			init: function(delay) {
+				oldImage.animation.timeoutID = setTimeout(() => {
+					oldImage.animation.currentValue = oldImage.animation.initValue;
+					oldImage.animation.requestID = requestAnimationFrame(oldImage.animation.render);
+					oldImage.animation.run = true;
+				}, delay);
 			},
 
 			cancel: function(){
+				clearTimeout(oldImage.animation.timeoutID);
 				cancelAnimationFrame(oldImage.animation.requestID);
 				oldImage.animation.run = false;
 			}
 		}
 
-		setTimeout(oldImage.animation.init, 400);
+		oldImage.animation.init(400);
 	}
 
 	if (newImage) {
@@ -107,7 +115,7 @@ watch(image, (newImage, oldImage) => {
 	
 		if (newImage.animation){
 			newImage.animation.cancel();
-			newImage.animation = {}
+			newImage.animation = {};
 		}
 	}
 })
