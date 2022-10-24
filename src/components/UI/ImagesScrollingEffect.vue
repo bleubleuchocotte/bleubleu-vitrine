@@ -59,10 +59,55 @@ watch(index, () => {
 watch(containerImage, (newContainer, oldContainer) => {
 	if (oldContainer){
 		oldContainer.style.zIndex = "1001";
+
+		oldContainer.animation =  {
+			initValue: 1,
+			endValue: 0,
+			stepValue: 0.03,
+			run: false,
+
+			render: function () {
+				if (oldContainer.animation.currentValue > oldContainer.animation.endValue) {
+					oldContainer.style.opacity = `${oldContainer.animation.currentValue}`;
+					oldContainer.animation.update();
+					requestAnimationFrame(oldContainer.animation.render);
+				}
+			},
+
+			update: function() {
+				oldContainer.animation.currentValue -= oldContainer.animation.stepValue;
+			},
+
+			/**
+			 * 
+			 * @param {number} delay Delay in milliseconds 
+			 */
+			init: function(delay) {
+				oldContainer.animation.timeoutID = setTimeout(() => {
+					oldContainer.animation.currentValue = oldContainer.animation.initValue;
+					oldContainer.animation.requestID = requestAnimationFrame(oldContainer.animation.render);
+					oldContainer.animation.run = true;
+				}, delay);
+			},
+
+			cancel: function(){
+				clearTimeout(oldContainer.animation.timeoutID);
+				cancelAnimationFrame(oldContainer.animation.requestID);
+				oldContainer.animation.run = false;
+			}
+		}
+
+		oldContainer.animation.init(400);
 	}
 
 	if (newContainer){
 		image.value = newContainer.firstChild;
+		newContainer.style.opacity = "1";
+
+		if (newContainer.animation){
+			newContainer.animation.cancel();
+			newContainer.animation = {};
+		}
 	}
 })
 
@@ -111,7 +156,6 @@ watch(image, (newImage, oldImage) => {
 
 	if (newImage) {
 		newImage.style.transform = "scale(1)";
-		newImage.style.opacity = "1";
 	
 		if (newImage.animation){
 			newImage.animation.cancel();
@@ -156,9 +200,6 @@ function getIndex(position){
 
 <style scoped lang="scss">
 	img {
-		opacity: 0;
-
-		// transition: opacity 0.4s $ease-vnr;
 		background-color: $primary;
 	}
 
@@ -171,7 +212,7 @@ function getIndex(position){
 		height: 400px;
 		width: 400px;
 
-		// opacity: 0;
+		opacity: 0;
 
 		pointer-events: none;
 
