@@ -99,6 +99,8 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 
 			if (animation.requestScaleDownID) {
 				animation.requestInertieID = requestAnimationFrame(animation.renderInertie);
+			} else {
+				animation.requestInertieID = requestAnimationFrame(animation.renderInertie)
 			}
 		
 		},
