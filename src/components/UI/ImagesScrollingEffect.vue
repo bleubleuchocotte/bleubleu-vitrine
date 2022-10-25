@@ -159,6 +159,7 @@ function getAnimationObject(element, initValue, endValue, stepValue, mode = "sca
 <style scoped lang="scss">
 	img {
 		background-color: $primary;
+		height: 100%;
 	}
 
 	div[data-images-container]{
@@ -171,6 +172,8 @@ function getAnimationObject(element, initValue, endValue, stepValue, mode = "sca
 		width: 400px;
 
 		opacity: 0;
+
+		border: 1px solid $primary;
 
 		// transition: opacity 0.1s $ease-vnr;
 
