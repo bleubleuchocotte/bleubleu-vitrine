@@ -59,7 +59,6 @@ watch(containerImage, (newContainer, oldContainer) => {
 
 	if (newContainer){
 		image.value = newContainer.firstChild;
-		// newContainer.style.opacity = "1";
 
 		if (newContainer.animation){
 			newContainer.animation.cancel();
