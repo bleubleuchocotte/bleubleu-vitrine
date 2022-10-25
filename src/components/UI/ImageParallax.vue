@@ -45,6 +45,6 @@ const pathURL = ref("");
 img {
   object-position: v-bind(delta);
 
-  filter: invert(1) $filter-to-primary;
+  filter: $filter-to-primary;
 }
 </style>
