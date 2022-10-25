@@ -34,12 +34,14 @@ let lastMousePos = {};
 
 
 function updateImage(arg){
-	currentMousePos ? lastMousePos = currentMousePos : lastMousePos = {x: 0, y: 0};
+	currentMousePos ? lastMousePos = currentMousePos : lastMousePos = null;
 	currentMousePos = {
 		x: arg.offsetX,
 		y: arg.offsetY
 	}
-	index.value = getIndex(currentMousePos);
+	if (lastMousePos) {
+		index.value = getIndex(currentMousePos);
+	}
 }
 
 watch(index, () => {
