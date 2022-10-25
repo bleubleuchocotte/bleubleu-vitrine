@@ -13,7 +13,7 @@ const props = defineProps({
 })
 
 onMounted(() => {
-	column = props.images.length * 3;
+	column = 15;
 	row = 2;
 	dimensions = {
 		width: container.value.clientWidth,
@@ -25,61 +25,37 @@ const container = ref();
 const index = ref(-1);
 let dimensions, column, row;
 
-const containerImage = ref();
 const image = ref();
 
 let counter = 0;
 
+let currentMousePos = null;
+let lastMousePos = {};
+
 
 function updateImage(arg){
-	const position = {
+	currentMousePos ? lastMousePos = currentMousePos : lastMousePos = {x: 0, y: 0};
+	currentMousePos = {
 		x: arg.offsetX,
 		y: arg.offsetY
 	}
-	index.value = getIndex(position);
-	if (containerImage.value) {
-		containerImage.value.style.transform = `translate(${position.x - containerImage.value.clientWidth / 2}px, ${position.y - containerImage.value.clientHeight / 2}px)`;
-		containerImage.value.style.zIndex = "1002";
-		containerImage.value.style.opacity = "1";
-	}
+	index.value = getIndex(currentMousePos);
 }
 
 watch(index, () => {
-	containerImage.value = document.querySelector(`[data-images-container="${props.index}"] [data-index="${counter % props.images.length}"]`)
+	image.value = document.querySelector(`[data-images-container="${props.index}"] [data-index="${counter % props.images.length}"]`)
+	image.value.positions = {
+		last: lastMousePos,
+		current: currentMousePos
+	}
 	counter += 1;
 })
 
-watch(containerImage, (newContainer, oldContainer) => {
-	if (oldContainer){
-		oldContainer.style.zIndex = "1001";
-
-		oldContainer.animation = getAnimationObject(oldContainer, 1, -0.5, 0.06, "opacity");
-		oldContainer.animation.init(400);
-	}
-
-	if (newContainer){
-		image.value = newContainer.firstChild;
-
-		if (newContainer.animation){
-			newContainer.animation.cancel();
-			newContainer.animation = {};
-		}
-	}
-})
-
-watch(image, (newImage, oldImage) => {
-	if (oldImage) {
-		oldImage.animation = getAnimationObject(oldImage, 1, 0.2, 0.03, "scale");
-		oldImage.animation.init(400);
-	}
+watch(image, (newImage) => {
 
 	if (newImage) {
-		newImage.style.transform = "scale(1)";
-	
-		if (newImage.animation){
-			newImage.animation.cancel();
-			newImage.animation = {};
-		}
+		newImage.animation = getAnimationObject(newImage, 1, 0.2, 0.03);
+		newImage.animation.init(400);
 	}
 })
 
@@ -94,39 +70,64 @@ function getIndex(position){
 	return ( (Math.floor(position.x / unitX) + Math.floor(position.y / unitY)) % (props.images.length));	
 }
 
-function getAnimationObject(element, initValue, endValue, stepValue, mode = "scale") {
+function getAnimationObject(element, initValue, endValue, stepValue) {
 	const animation =  {
 		initValue: initValue,
 		endValue: endValue,
 		stepValue: stepValue,
 		el: element,
 
-		render: function () {
+		renderScaleDown: function () {
 			if (animation.currentValue > animation.endValue) {
-				mode == "opacity" ? animation.el.style.opacity = `${animation.currentValue}` : animation.el.style.transform = `scale(${animation.currentValue})`;
+
+				animation.el.style = `transform: translate(${animation.x - animation.el.clientWidth / 2}px, ${animation.y  - animation.el.clientHeight / 2}px) scale(${animation.currentValue}); opacity: ${animation.currentValue - 0.25}; z-index: 1001`;
 				animation.update();
-				animation.requestID = requestAnimationFrame(animation.render);
+				animation.requestScaleDownID = requestAnimationFrame(animation.renderScaleDown);
 			}
+		},
+
+		renderInertie: function() {
+			animation.x = animation.lerp(animation.x, animation.el.positions.last.x, 0.1);
+			animation.y = animation.lerp(animation.y, animation.el.positions.last.y, 0.1);
+
+			animation.el.style = `transform: translate(${animation.x - animation.el.clientWidth / 2}px, ${animation.y  - animation.el.clientHeight / 2}px) scale(1); opacity: 1; z-index: 1001`;
+
+			if (animation.requestScaleDownID) {
+				animation.requestInertieID = requestAnimationFrame(animation.renderInertie);
+			}
+		
 		},
 
 		update: function() {
 			animation.currentValue -= animation.stepValue;
 		},
 
+		lerp: function(start, end, amt){
+			return (1-amt)*start+amt*end
+		},
+
+
 		/**
 		 * 
 		 * @param {number} delay Delay in milliseconds 
 		 */
 		init: function(delay) {
+			animation.currentValue = animation.initValue;
+			animation.x = animation.el.positions.current.x;
+			animation.y = animation.el.positions.current.y;
+			animation.requestScaleDownID = null;
+
+			animation.requestInertieID = requestAnimationFrame(animation.renderInertie)
+
 			animation.timeoutID = setTimeout(() => {
-				animation.currentValue = animation.initValue;
-				animation.requestID = requestAnimationFrame(animation.render);
+				animation.requestScaleDownID = requestAnimationFrame(animation.renderScaleDown);
 			}, delay);
 		},
 
 		cancel: function(){
 			clearTimeout(animation.timeoutID);
-			cancelAnimationFrame(animation.requestID);
+			cancelAnimationFrame(animation.requestScaleDownID);
+			cancelAnimationFrame(animation.requestInertieID);
 		}
 	}
 
@@ -141,41 +142,33 @@ function getAnimationObject(element, initValue, endValue, stepValue, mode = "sca
     :data-images-container="props.index"
     @mousemove="updateImage"
   >
-    <div
+    <img
       v-for="(imageLoop, key) in images"
       :key="key"
-      :ref="`image-${key}`"
+
+      :src="imageLoop.media.url"
+      :alt="imageLoop.media.alt"
       :data-index="key"
-      class="image-container"
     >
-      <img
-        :src="imageLoop.media.url"
-        :alt="imageLoop.media.alt"
-      >
-    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 	img {
-		background-color: $primary;
+		height: 400px;
+		width: 400px;
+		border: 1px solid $primary;
 		height: 100%;
+		pointer-events: none;
+		
+		opacity: 0;
+
+		position: absolute;
 	}
 
 	div[data-images-container]{
 		position: absolute;
 	}
 
-	.image-container {
-		position: absolute;
-		height: 400px;
-		width: 400px;
-
-		opacity: 0;
-
-		border: 1px solid $primary;
-
-		pointer-events: none;
-	}
 </style>
 
