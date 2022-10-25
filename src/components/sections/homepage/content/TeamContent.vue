@@ -57,10 +57,18 @@ a.team-member {
 	margin: 0 auto;
 	padding: 0.5rem 2rem;
 	opacity: 1;
+
+	color: $secondary;
+
+	text-decoration: underline;
+	text-decoration-thickness: 1.5px;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
 }
 
 a:not(.active) {
-	opacity: 0.3;
+	text-decoration: none;
+	opacity: 0.6;
 }
 
 </style>
