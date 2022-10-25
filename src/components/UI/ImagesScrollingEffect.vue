@@ -40,6 +40,7 @@ function updateImage(arg){
 	if (containerImage.value) {
 		containerImage.value.style.transform = `translate(${position.x - containerImage.value.clientWidth / 2}px, ${position.y - containerImage.value.clientHeight / 2}px)`;
 		containerImage.value.style.zIndex = "1002";
+		containerImage.value.style.opacity = "1";
 	}
 }
 
@@ -58,7 +59,7 @@ watch(containerImage, (newContainer, oldContainer) => {
 
 	if (newContainer){
 		image.value = newContainer.firstChild;
-		newContainer.style.opacity = "1";
+		// newContainer.style.opacity = "1";
 
 		if (newContainer.animation){
 			newContainer.animation.cancel();
@@ -174,8 +175,6 @@ function getAnimationObject(element, initValue, endValue, stepValue, mode = "sca
 		opacity: 0;
 
 		border: 1px solid $primary;
-
-		// transition: opacity 0.1s $ease-vnr;
 
 		pointer-events: none;
 	}
