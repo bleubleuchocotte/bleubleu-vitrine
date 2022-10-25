@@ -13,7 +13,7 @@ const props = defineProps({
 })
 
 onMounted(() => {
-	column = props.images.length * 4;
+	column = props.images.length * 3;
 	row = 2;
 	dimensions = {
 		width: container.value.clientWidth,
@@ -103,7 +103,7 @@ function getAnimationObject(element, initValue, endValue, stepValue, mode = "sca
 
 		render: function () {
 			if (animation.currentValue > animation.endValue) {
-				animation.el.style.transform = `scale(${animation.currentValue})`;
+				mode == "opacity" ? animation.el.style.opacity = `${animation.currentValue}` : animation.el.style.transform = `scale(${animation.currentValue})`;
 				animation.update();
 				animation.requestID = requestAnimationFrame(animation.render);
 			}
@@ -130,18 +130,7 @@ function getAnimationObject(element, initValue, endValue, stepValue, mode = "sca
 		}
 	}
 
-	if (mode == "opacity") {
-		animation.render =  function () {
-			if (animation.currentValue > animation.endValue) {
-				animation.el.style.opacity = `${animation.currentValue}`;
-				animation.update();
-				animation.requestID = requestAnimationFrame(animation.render);
-			}
-		}
-	}
-
 	return animation;
-
 }
 </script>
 
