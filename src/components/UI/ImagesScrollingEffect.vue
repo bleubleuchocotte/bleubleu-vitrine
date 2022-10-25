@@ -97,11 +97,9 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 
 			animation.el.style = `transform: translate(${animation.x - animation.el.clientWidth / 2}px, ${animation.y  - animation.el.clientHeight / 2}px) scale(1); opacity: 1; z-index: ${animation.zIndex + 1000}`;
 
-			if (animation.requestScaleDownID) {
+			if (!animation.requestScaleDownID) {
 				animation.requestInertieID = requestAnimationFrame(animation.renderInertie);
-			} else {
-				animation.requestInertieID = requestAnimationFrame(animation.renderInertie)
-			}
+			} 
 		
 		},
 
