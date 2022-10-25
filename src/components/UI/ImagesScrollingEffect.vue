@@ -54,7 +54,11 @@ watch(index, () => {
 watch(image, (newImage) => {
 
 	if (newImage) {
-		newImage.animation = getAnimationObject(newImage, 1, 0.2, 0.03);
+		if (newImage.animation) {
+			newImage.animation.cancel();
+			newImage.animation = {};
+		}
+		newImage.animation = getAnimationObject(newImage, 1, 0.2, 0.03, counter);
 		newImage.animation.init(400);
 	}
 })
@@ -70,12 +74,13 @@ function getIndex(position){
 	return ( (Math.floor(position.x / unitX) + Math.floor(position.y / unitY)) % (props.images.length));	
 }
 
-function getAnimationObject(element, initValue, endValue, stepValue) {
+function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 	const animation =  {
 		initValue: initValue,
 		endValue: endValue,
 		stepValue: stepValue,
 		el: element,
+		zIndex: zIndex,
 
 		renderScaleDown: function () {
 			if (animation.currentValue > animation.endValue) {
@@ -90,7 +95,7 @@ function getAnimationObject(element, initValue, endValue, stepValue) {
 			animation.x = animation.lerp(animation.x, animation.el.positions.last.x, 0.1);
 			animation.y = animation.lerp(animation.y, animation.el.positions.last.y, 0.1);
 
-			animation.el.style = `transform: translate(${animation.x - animation.el.clientWidth / 2}px, ${animation.y  - animation.el.clientHeight / 2}px) scale(1); opacity: 1; z-index: 1001`;
+			animation.el.style = `transform: translate(${animation.x - animation.el.clientWidth / 2}px, ${animation.y  - animation.el.clientHeight / 2}px) scale(1); opacity: 1; z-index: ${animation.zIndex + 1000}`;
 
 			if (animation.requestScaleDownID) {
 				animation.requestInertieID = requestAnimationFrame(animation.renderInertie);
