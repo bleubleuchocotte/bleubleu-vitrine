@@ -32,6 +32,11 @@ let counter = 0;
 let currentMousePos = null;
 let lastMousePos = {};
 
+function leaveContainer(){
+	currentMousePos = null;
+	lastMousePos = null;
+}
+
 
 function updateImage(arg){
 	currentMousePos ? lastMousePos = currentMousePos : lastMousePos = null;
@@ -148,6 +153,7 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
     ref="container"
     :data-images-container="props.index"
     @mousemove="updateImage"
+    @mouseleave="leaveContainer"
   >
     <img
       v-for="(imageLoop, key) in images"
