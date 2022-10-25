@@ -25,7 +25,7 @@ function parallax(e) {
   let _h = window.innerHeight / 2;
   let _mouseX = e.clientX;
   let _mouseY = e.clientY;
-  let _depth = `${0 - (_mouseX - _w) * 0.1}px ${0 - (_mouseY - _h) * 0.1}px`;
+  let _depth = `${0 - (_mouseX - _w) * 0.05}px ${0 - (_mouseY - _h) * 0.05}px`;
   let _delta = `${_depth}`;
 
   delta.value = _delta;
@@ -44,6 +44,8 @@ const pathURL = ref("");
 <style scoped lang="scss">
 img {
   object-position: v-bind(delta);
+
+  transform: scale(1.3);
 
   filter: $filter-to-primary;
 }
