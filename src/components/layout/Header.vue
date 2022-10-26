@@ -57,6 +57,9 @@ defineProps({
 
 	.morphing-container {
     height: 75vh;
+    @media #{$md-down} {
+      height: 50vh;
+    }
     filter: $filter-to-primary;
 	}
 
@@ -67,7 +70,7 @@ defineProps({
 		
 		font-size: 22px;
     @media #{$md-down} {
-      font-size: 18px;
+      font-size: 20px;
     }
 		text-align: right;
 	}
