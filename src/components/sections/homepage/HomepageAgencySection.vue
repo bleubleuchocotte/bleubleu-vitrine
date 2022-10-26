@@ -17,7 +17,7 @@ defineProps({
 </script>
 
 <template>
-  <section id="agency">
+  <section>
     <AgencyContentDescription :fields="fields" />
     <AgencyContentKeywords :properties="keywordsProperties" />
   </section>

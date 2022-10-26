@@ -18,7 +18,7 @@ defineProps({
 </script>
 
 <template>
-  <header>
+  <header id="agency">
     <NavComponent />
     <div class="morphing-container">
       <Vue3Lottie
