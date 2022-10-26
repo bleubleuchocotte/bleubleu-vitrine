@@ -16,7 +16,10 @@ export const router = createRouter({
         return {top: 0}
             
       default:
-        return { el: to.hash }
+        return { 
+          el: to.hash,
+          top: 125,
+        }
     }
   }
 })
