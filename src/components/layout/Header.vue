@@ -47,7 +47,7 @@ defineProps({
 		padding: 110px $global-horizontal-padding 18.5px $global-horizontal-padding;
     border-bottom: 1px solid $primary;
 
-    min-height: calc(100vh - 2px);
+    min-height: calc(100vh - 1px);
 	}
 
 	.morphing-container {
