@@ -8,6 +8,7 @@ $primary: var(--primary-color);
 $secondary: var(--secondary-color);
 $filter-to-primary: var(--filter-to-primary);
 $gradient: linear-gradient($primary 50%, transparent);
+$gradient-mobile: linear-gradient($primary 60%, transparent);
 
 $color-body: $secondary;
 $color-text: $primary;
