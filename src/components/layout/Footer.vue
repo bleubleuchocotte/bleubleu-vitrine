@@ -52,10 +52,6 @@ getFooterContent()
 
 .footer__copyright {
   margin-top: 16px;
-  font-family: $font-primary;
-  font-weight: 10;
-  font-variation-settings: 'wdth' 150;
-  text-transform: uppercase;
 }
 
 @media #{$sm-up} {
