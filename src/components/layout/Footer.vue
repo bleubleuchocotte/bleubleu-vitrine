@@ -1,6 +1,7 @@
 <template>
   <footer
     v-if="footer"
+    id="footer"
     class="footer"
   >
     <prismic-image
