@@ -45,6 +45,11 @@ defineProps({
     justify-content: space-between;
 
 		padding: 110px $global-horizontal-padding 18.5px $global-horizontal-padding;
+    
+    @media #{$md-down} {
+      padding-inline: 20px;
+    }
+
     border-bottom: 1px solid $primary;
 
     min-height: calc(100vh - 1px);

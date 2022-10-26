@@ -52,6 +52,10 @@ const imageBitmapSrc = ref("");
 		min-height: 80vh;
 
 		padding: 0 $global-horizontal-padding 0 $global-horizontal-padding;
+
+		@media #{$md-down} {
+      padding-inline: 20px;
+    }
 	}
 
 </style>
