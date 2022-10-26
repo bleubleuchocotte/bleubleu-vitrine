@@ -56,7 +56,6 @@ getFooterContent()
   font-weight: 10;
   font-variation-settings: 'wdth' 150;
   text-transform: uppercase;
-  @include fluid(font-size, 320px, 576px, 11px, 15px);
 }
 
 @media #{$sm-up} {
