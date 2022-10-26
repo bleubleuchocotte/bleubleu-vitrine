@@ -100,9 +100,6 @@ span {
 
   text-transform: uppercase;
   font-size: 42px;
-  @media #{$md-down} {
-    font-size: 32px;
-  }
 
   border: 1px solid $primary;
   padding: 0 25px;
@@ -111,5 +108,10 @@ span {
 
   transform: translateX(v-bind(deltaX));
   transition: transform 1s ease-out;
+
+  @media #{$md-down} {
+    font-size: 20px;
+    white-space: nowrap;
+  }
 }
 </style>

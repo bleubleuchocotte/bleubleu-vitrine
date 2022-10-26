@@ -38,9 +38,6 @@ import { RouterLink } from 'vue-router';
 		z-index: 100;
 
 		height: 125px;
-		@media #{$md-down}{
-			height: 100px;
-		}
 		background: $gradient;
 
 		color: $secondary;
@@ -49,7 +46,9 @@ import { RouterLink } from 'vue-router';
 		font-weight: 400;
 
 		@media #{$md-down}{
+			height: 100px;
 			font-size: 20px;
+			background: $gradient-mobile;
 		}
 	}
 	ul{

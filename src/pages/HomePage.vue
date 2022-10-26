@@ -16,7 +16,7 @@
 
     <Footer />
 
-    <Cursor />
+    <Cursor class="only-desktop" />
   </div>
 </template>
 
