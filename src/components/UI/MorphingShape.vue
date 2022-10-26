@@ -102,8 +102,8 @@ const containerHTML = ref(null);
 <style scoped lang="scss">
 svg {
   position: absolute;
-  top: 0;
   stroke: $primary;
+  z-index: 1;
 }
 div:not(.morphing-container) {
   min-width: 605px;
