@@ -8,7 +8,9 @@
 :before,
 :after {
   box-sizing: border-box;
-  cursor: none;
+  @media #{$md-up} {
+    cursor: none;
+  }
 }
 
 html {
