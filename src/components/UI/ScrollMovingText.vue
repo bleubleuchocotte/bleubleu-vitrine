@@ -100,6 +100,9 @@ span {
 
   text-transform: uppercase;
   font-size: 42px;
+  @media #{$md-down} {
+    font-size: 32px;
+  }
 
   border: 1px solid $primary;
   padding: 0 25px;
