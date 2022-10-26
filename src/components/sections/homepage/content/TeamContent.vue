@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, defineEmits } from "vue";
+import { defineProps, defineEmits, ref } from "vue";
 
 defineProps({
 	members: {
@@ -10,6 +10,7 @@ defineProps({
 const emit = defineEmits(['activeBitMap']);
 
 function updatePicture(index, image_src){
+	hasHovered.value = true;
 	const notActive = document.querySelectorAll(`.team-member:not([data-index="${index}"])`);
 	notActive.forEach(el => {
 		el.classList.remove("active")
@@ -20,10 +21,12 @@ function updatePicture(index, image_src){
 	emit('activeBitMap', image_src);
 } 
 
+const hasHovered = ref(false);
+
 </script>
 
 <template>
-  <ul>
+  <ul :class="[hasHovered ? '' : 'no-picture']">
     <li
       v-for="(member, index) in members"
       :key="index"
@@ -64,6 +67,10 @@ a.team-member {
 	text-decoration-thickness: 1.5px;
 	text-decoration-thickness: 2px;
 	text-underline-offset: 3px;
+
+	.no-picture &{
+		color: $primary
+	}
 }
 
 a:not(.active) {
