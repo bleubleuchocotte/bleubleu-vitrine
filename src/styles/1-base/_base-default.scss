@@ -49,3 +49,9 @@ button {
     outline: none;
   }
 }
+
+@media #{$md-down} {
+  .only-desktop {
+    display: none;
+  }
+}

@@ -66,6 +66,9 @@ defineProps({
 		align-items: center;
 		
 		font-size: 22px;
+    @media #{$md-down} {
+      font-size: 18px;
+    }
 		text-align: right;
 	}
 </style>

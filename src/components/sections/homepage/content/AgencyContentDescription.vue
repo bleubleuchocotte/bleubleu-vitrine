@@ -26,7 +26,7 @@ import GridChelou from "../../../UI/GridChelou.vue";
         class="blur-text"
       />
     </div>
-    <div>
+    <div class="only-desktop">
       <GridChelou />
     </div>
   </div>
@@ -47,6 +47,10 @@ import GridChelou from "../../../UI/GridChelou.vue";
 		gap: 388px;
 		padding: 30px 0px 10px 15px;
 		border-left: 1px solid $primary;
+
+		@media #{$md-down}{
+			border-right: 1px solid $primary;
+		}
 
 		justify-content: space-between;
 	}
@@ -73,5 +77,4 @@ import GridChelou from "../../../UI/GridChelou.vue";
 		stroke: $primary;
 		margin: auto 0;
 	}
-
 </style>

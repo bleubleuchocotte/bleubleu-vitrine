@@ -53,6 +53,8 @@ export default {
   @media #{$md-down} {
     height: 24px;
     width: 24px;
+
+    margin: 15px;
   }
   
   &[href*='behance']{

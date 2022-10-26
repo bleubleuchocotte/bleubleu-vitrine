@@ -38,21 +38,35 @@ import { RouterLink } from 'vue-router';
 		z-index: 100;
 
 		height: 125px;
+		@media #{$md-down}{
+			height: 100px;
+		}
 		background: $gradient;
 
 		color: $secondary;
 		font-size: 42px;
 		letter-spacing: 1px;
 		font-weight: 400;
+
+		@media #{$md-down}{
+			font-size: 18px;
+		}
 	}
 	ul{
 		display: flex;
+		@media #{$md-down}{
+			flex-wrap: wrap;
+		}
 	}
 	li{
 		border: 1px solid $secondary;
 		border-radius: 50px;
 
 		transition: all 0.5s ease-out;
+		@media #{$md-down}{
+			transition: none;
+			width: 50%;
+		}
 		white-space: nowrap;
 		*{
 			display: inline-flex;
@@ -66,23 +80,25 @@ import { RouterLink } from 'vue-router';
 	}
 
 	.nav__big-link{
-		flex: 0.3;
+		@media #{$md-up}{
+			flex: 0.3;
+		}
 	}
 	.nav__little-link{
-		flex: 0.2;
-	}
-
-	ul:hover {
-		li:hover{
-			flex: 0.4;
-			letter-spacing: 4px;
-		}
-		li:not(:hover){
-			letter-spacing: -2px;
+		@media #{$md-up}{
+			flex: 0.2;
 		}
 	}
 
-
-
-	
+	@media #{$md-up} {
+		ul:hover {
+			li:hover{
+				flex: 0.4;
+				letter-spacing: 4px;
+			}
+			li:not(:hover){
+				letter-spacing: -2px;
+			}
+		}
+	}	
 </style>
