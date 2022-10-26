@@ -168,7 +168,7 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 
 <style scoped lang="scss">
 	img {
-		height: 55%;
+		height: 275px;
 		width: 450px;
 		border: 1px solid $primary;
 		pointer-events: none;
