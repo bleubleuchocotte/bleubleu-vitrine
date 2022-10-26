@@ -59,4 +59,10 @@ getFooterContent()
     padding: 56px 22px;
   }
 }
+
+@media #{$md-down} {
+  .footer {
+    font-size: 14px;
+  }
+}
 </style>

@@ -70,7 +70,7 @@ defineProps({
 		
 		font-size: 22px;
     @media #{$md-down} {
-      font-size: 20px;
+      font-size: 12px;
     }
 		text-align: right;
 	}
