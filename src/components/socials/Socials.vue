@@ -49,10 +49,21 @@ export default {
 
   height: 36px;
   width: 36px;
+
+  @media #{$md-down} {
+    height: 24px;
+    width: 24px;
+  }
   
   &[href*='behance']{
-    width: 45px;
     height: 32px;
+    width: 45px;
+
+    @media #{$md-down} {
+      height: 18px;
+      width: 24px;
+    }
+
     scale: 1.1;
     transform-origin: 0 100%;
 
