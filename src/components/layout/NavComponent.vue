@@ -49,7 +49,7 @@ import { RouterLink } from 'vue-router';
 		font-weight: 400;
 
 		@media #{$md-down}{
-			font-size: 18px;
+			font-size: 20px;
 		}
 	}
 	ul{
