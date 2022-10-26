@@ -54,7 +54,7 @@ export default {
     height: 24px;
     width: 24px;
 
-    margin: 15px;
+    margin: 10px;
   }
   
   &[href*='behance']{
