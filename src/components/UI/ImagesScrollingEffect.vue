@@ -66,7 +66,7 @@ watch(image, (newImage) => {
 			newImage.animation = {};
 		}
 		newImage.animation = getAnimationObject(newImage, 1, 0.2, 0.03, counter);
-		newImage.animation.init(400);
+		newImage.animation.init(600);
 	}
 })
 
