@@ -52,7 +52,14 @@ button {
   }
 }
 
+.only-mobile {
+  display: none;
+}
+
 @media #{$md-down} {
+  .only-mobile {
+    display: block;
+  }
   .only-desktop {
     display: none;
   }
