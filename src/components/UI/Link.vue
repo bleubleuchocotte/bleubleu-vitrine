@@ -22,7 +22,14 @@ defineProps({
     :target="target"
     class="only-desktop"
   >
-    go to website<IconArrowRight />
+    Go to website<IconArrowRight />
+  </a>
+  <a
+    :href="href"
+    :target="target"
+    class="only-mobile"
+  >
+    Website<IconArrowRight />
   </a>
 </template>
 
@@ -38,7 +45,12 @@ a {
 		margin-left: 10px;
 
 		stroke: $primary;
-		text-decoration: none;
+		
+		@media #{$md-down} {
+			vertical-align: middle;
+			transform: rotate(-45deg);
+			margin-left: 5px;
+		}
 	}
 }
 </style>
