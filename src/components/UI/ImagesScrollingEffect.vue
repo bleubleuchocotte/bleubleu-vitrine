@@ -1,5 +1,5 @@
 <script setup>
-import {defineProps, onMounted, ref, watch} from "vue";
+import {defineProps, onMounted, onUnmounted, ref, watch} from "vue";
 
 const props = defineProps({
 	images: {
@@ -13,12 +13,16 @@ const props = defineProps({
 })
 
 onMounted(() => {
-	column = 15;
-	row = 2;
+	window.addEventListener('resize', updateGridSize);
+	updateGridSize();
 	dimensions = {
 		width: container.value.clientWidth,
 		height: 500
 	}
+})
+
+onUnmounted(() => {
+	window.removeEventListener('resize', updateGridSize)
 })
 
 const container = ref();
@@ -31,6 +35,16 @@ let counter = 0;
 
 let currentMousePos = null;
 let lastMousePos = {};
+
+function updateGridSize() {
+	if (window.innerWidth < 767) {
+		column = 5;
+		row = 4;
+	} else {
+		column = 15;
+		row = 2;
+	}
+}
 
 function leaveContainer(){
 	currentMousePos = null;
@@ -170,6 +184,11 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 	img {
 		height: 275px;
 		width: 450px;
+
+		@media #{$md-down} {
+			width: 225px;
+			height: 137px;
+		}
 		border: 1px solid $primary;
 		pointer-events: none;
 		
