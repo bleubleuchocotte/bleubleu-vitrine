@@ -1,7 +1,7 @@
 <script setup>
 
 import { defineProps } from 'vue';
-import IconArrowRight from "@/assets/icons/icon-arrow-right.svg?inline"
+import Link from "@/components/UI/Link.vue"
 import ImagesScrollingEffect from '../../../UI/ImagesScrollingEffect.vue';
 
 const props = defineProps({
@@ -26,11 +26,13 @@ const props = defineProps({
         </p>
       </div>
       <div class="article__project-date">
-        <p>{{ project.data.date.substring(0,4) }}</p>
-        <a
+        <p class="only-desktop">
+          {{ project.data.date.substring(0,4) }}
+        </p>
+        <Link
           :href="project.data.website_link.url"
           :target="project.data.website_link.target"
-        >go to website <IconArrowRight /></a>
+        />
       </div>
     </div>
     <div class="article-bottom">
@@ -51,15 +53,14 @@ const props = defineProps({
 
 <style scoped lang="scss">
 
-	
-p, a {
-	text-transform: uppercase;
-}
-
 .article-top, .article-bottom {
+	text-transform: uppercase;
 
 	div:first-of-type {
 		width: 35%;
+		@media #{$md-down} {
+			width: 80%;
+		}
 	}
 
 }
@@ -117,14 +118,26 @@ article:last-of-type {
 	display: flex;
 	height: 75px;
 
+	@media #{$md-down} {
+		height: 50px;
+	}
+
 	.article__project-title{
-	padding: 13px 20px;
+	padding: 14px 20px;
+
+	@media #{$md-down} {
+		padding: 10px;
+	}
 	border-right: 1px solid $primary;
 	
 	p{
 		position: relative;
 		width: fit-content;
 		padding: 10px 20px;
+
+		@media #{$md-down} {
+			padding: 5px 10px;
+		}
 
 		border: 1px solid $primary;
 		border-radius: 58px;
@@ -152,6 +165,9 @@ article:last-of-type {
 		left: 0;
 
 		padding-left: 20px;
+		@media #{$md-down} {
+			padding-left: 10px;
+		}
 
 		transition: color 0.6s $ease-vnr;
 	}
@@ -166,19 +182,6 @@ article:last-of-type {
 	width: 65%;
 
 	padding: 13px 20px;
-
-	a {
-		width: fit-content;
-		text-decoration: underline;
-
-		svg {
-			width: 15px;
-			height: 15px;
-			margin-left: 5px;
-
-			stroke: $primary;
-		}
-	}
 }
 }
 
