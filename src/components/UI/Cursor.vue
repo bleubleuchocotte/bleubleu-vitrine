@@ -22,7 +22,7 @@ function updateCursor(arg){
 		cursor.value.style.filter = "blur(15px)"
 		cursor.value.style.transform = `translate(${arg.clientX - 30}px, ${arg.clientY-30}px) scale(1)`;
 		cursor.value.style.borderWidth = "0px";
-		cursor.value.style.boxShadow = `${lastPosition.x + 30 - arg.clientX}px ${lastPosition.y + 30 - arg.clientY}px 0px -5px, ${(lastPosition.x + 30 - arg.clientX)*1.5}px ${(lastPosition.y + 30 - arg.clientY)*1.5}px 0px -10px, ${(lastPosition.x + 30 - arg.clientX)*2}px ${(lastPosition.y + 30 - arg.clientY)*2}px 0px -20px`;
+		cursor.value.style.boxShadow = `${lastPosition.x + 30 - arg.clientX}px ${lastPosition.y + 30 - arg.clientY}px 0px -5px, ${(lastPosition.x + 30 - arg.clientX)*1.5}px ${(lastPosition.y + 30 - arg.clientY)*1.5}px 0px -10px, ${(lastPosition.x + 30 - arg.clientX)*2}px ${(lastPosition.y + 30 - arg.clientY)*2}px 0px -15px, ${(lastPosition.x + 30 - arg.clientX)*2.5}px ${(lastPosition.y + 30 - arg.clientY)*2.5}px 0px -20px, ${(lastPosition.x + 30 - arg.clientX)*3}px ${(lastPosition.y + 30 - arg.clientY)*3}px 0px -25px`;
 	}
 }
 </script>
