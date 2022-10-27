@@ -14,7 +14,7 @@ import GridChelou from "../../../UI/GridChelou.vue";
 
 <template>
   <div class="container">
-    <div class="left">
+    <div class="left fs-42__big">
       <p>
         <span>BOLD &</span>
         <span id="beep-boop"><IconRobot />STRONG</span>
@@ -23,7 +23,7 @@ import GridChelou from "../../../UI/GridChelou.vue";
 
       <BlurText
         :field="fields.team_description"
-        class="blur-text"
+        class="blur-text fs-20"
       />
     </div>
     <div class="only-desktop">
@@ -58,18 +58,7 @@ import GridChelou from "../../../UI/GridChelou.vue";
 		justify-content: space-between;
 	}
 
-	.left p {
-		font-size: 42px;
-		@media #{$md-down} {
-      font-size: 32px;
-    }
-	}
-
 	.left .blur-text{
-		font-size: 20px;
-		@media #{$md-down} {
-      font-size: 14px;
-    }
 		max-width: 450px;
 	}
 	

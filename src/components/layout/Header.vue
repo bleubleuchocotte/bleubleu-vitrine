@@ -27,7 +27,7 @@ defineProps({
       />
     </div>
 
-    <div class="header-bottom">
+    <div class="header-bottom fs-20">
       <Socials :fields="socials" />
       <p class="infos__text">
         <span>Amour &</span>  
@@ -68,10 +68,6 @@ defineProps({
 		justify-content: space-between;
 		align-items: center;
 		
-		font-size: 22px;
-    @media #{$md-down} {
-      font-size: 12px;
-    }
 		text-align: right;
 	}
 </style>

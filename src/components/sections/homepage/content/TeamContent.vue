@@ -35,7 +35,7 @@ const hasHovered = ref(false);
         :href="member.link.url"
         :target="member.link.target"
         :data-index="index"
-        class="team-member active"
+        class="team-member active fs-20"
         @mouseover="updatePicture(index, member.image_bitmap)"
       > 
         {{ member.name }} 
@@ -53,7 +53,6 @@ ul {
 a.team-member {
 	display: block;
 	text-align: center;
-	font-size: 20px;
 
 	width: fit-content;
 

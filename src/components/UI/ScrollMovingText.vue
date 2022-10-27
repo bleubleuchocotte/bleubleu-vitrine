@@ -88,6 +88,7 @@ const deltaX = ref("0px");
   <span
     ref="containerHTML"
     :style="styles"
+    class="fs-42"
   >{{ text }}</span>
 </template>
 
@@ -99,7 +100,6 @@ span {
   width: fit-content;
 
   text-transform: uppercase;
-  font-size: 42px;
 
   border: 1px solid $primary;
   padding: 0 25px;
@@ -110,7 +110,6 @@ span {
   transition: transform 1s ease-out;
 
   @media #{$md-down} {
-    font-size: 20px;
     white-space: nowrap;
   }
 }

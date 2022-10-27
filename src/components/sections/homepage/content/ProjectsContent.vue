@@ -17,6 +17,7 @@ const props = defineProps({
   <article
     v-for="(project, index) in props.fields"
     :key="index"
+    class="fs-20"
   >
     <div class="article-top">
       <div class="article__project-title">
@@ -52,7 +53,6 @@ const props = defineProps({
 
 	
 p, a {
-	font-size: 20px;
 	text-transform: uppercase;
 }
 

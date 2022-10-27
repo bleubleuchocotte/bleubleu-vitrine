@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-  <nav>
+  <nav class="fs-42">
     <ul>
       <li class="nav__little-link">
         <RouterLink to="#agency">
@@ -41,13 +41,11 @@ import { RouterLink } from 'vue-router';
 		background: $gradient;
 
 		color: $secondary;
-		font-size: 42px;
 		letter-spacing: 1px;
 		font-weight: 400;
 
 		@media #{$md-down}{
 			height: 100px;
-			font-size: 20px;
 			background: $gradient-mobile;
 		}
 	}
