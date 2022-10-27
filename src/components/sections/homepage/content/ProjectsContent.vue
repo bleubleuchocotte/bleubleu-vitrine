@@ -18,6 +18,7 @@ const props = defineProps({
     v-for="(project, index) in props.fields"
     :key="index"
     class="fs-20"
+    tabindex="0"
   >
     <div class="article-top">
       <div class="article__project-title">
@@ -26,7 +27,7 @@ const props = defineProps({
         </p>
       </div>
       <div class="article__project-date">
-        <p class="only-desktop">
+        <p>
           {{ project.data.date.substring(0,4) }}
         </p>
         <Link
@@ -59,7 +60,7 @@ const props = defineProps({
 	div:first-of-type {
 		width: 35%;
 		@media #{$md-down} {
-			width: 80%;
+			width: 55%;
 		}
 	}
 
@@ -88,7 +89,7 @@ article{
 	border-left: 1px solid $primary;
 	border-right: 1px solid $primary;
 	
-	&:hover {
+	&:hover, &:target, &:focus {
 		.article__project-title p:before {
 			width: 100%;
 		}
@@ -180,8 +181,12 @@ article:last-of-type {
 	justify-content: space-between;
 
 	width: 65%;
-
 	padding: 13px 20px;
+
+	@media #{$md-down} {
+		width: 45%;
+		padding: 13px 10px;
+	}
 }
 }
 
