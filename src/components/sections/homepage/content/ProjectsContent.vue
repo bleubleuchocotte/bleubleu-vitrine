@@ -54,16 +54,21 @@ const props = defineProps({
 
 <style scoped lang="scss">
 
-.article-top, .article-bottom {
-	text-transform: uppercase;
-
+.article-top {
 	div:first-of-type {
 		width: 35%;
 		@media #{$md-down} {
 			width: 55%;
 		}
 	}
-
+}
+.article-bottom {
+	div:first-of-type {
+		width: 35%;
+		@media #{$md-down} {
+			width: 100%;
+		}
+	}
 }
 
 .container-images {
@@ -84,6 +89,7 @@ hr{
 }
 
 article{
+	text-transform: uppercase;
 	width: 100%;
 
 	border-left: 1px solid $primary;
@@ -100,6 +106,10 @@ article{
 
 		.article-bottom {
 			height: 500px;
+
+			@media #{$md-down} {
+				height: 60vh;
+			}
 		}
 	}
 }
@@ -206,6 +216,9 @@ article:last-of-type {
 
 		p {
 			padding: 40px 20px;
+			@media #{$md-down} {
+				padding: 20px 10px;
+			}
 		}
 	}
 }
