@@ -26,7 +26,7 @@
   font-size: 42px;
 
   .android & {
-    line-height: 42px;
+    // line-height: 42px;
   }
 
   @media #{$md-down} {
