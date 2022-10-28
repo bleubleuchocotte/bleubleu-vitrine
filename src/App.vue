@@ -189,7 +189,7 @@ import { onMounted } from 'vue';
 		document.querySelector(':root').style.setProperty('--secondary-color', randomColor.secondary);
 		document.querySelector(':root').style.setProperty('--filter-to-primary', randomColor.filter);
 		if (navigator.userAgent.match(/Android/i)) {
-			document.querySelector(':root').style.setProperty('--android-line-height', "100px");
+			document.querySelector(':root').style.setProperty('--android-line-height', "24px");
 		}
 		console.log(randomColor.name);
 
