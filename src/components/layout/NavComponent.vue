@@ -74,6 +74,10 @@ import { RouterLink } from 'vue-router';
 			justify-content: center;
 		}
 
+		.android & *{
+			padding: 0.3rem 1rem;
+		}
+
 	}
 
 	.nav__big-link{
