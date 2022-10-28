@@ -14,7 +14,7 @@
   font-size: 20px;
   
   .android & {
-    line-height: 20px;
+    line-height: 14px;
   }
 
   @media #{$md-down} {
@@ -26,7 +26,7 @@
   font-size: 42px;
 
   .android & {
-    // line-height: 42px;
+    line-height: 22px;
   }
 
   @media #{$md-down} {
@@ -38,7 +38,7 @@
   font-size: 42px;
 
   .android & {
-    line-height: 42px;
+    line-height: 32px;
   }
 
   @media #{$md-down} {
