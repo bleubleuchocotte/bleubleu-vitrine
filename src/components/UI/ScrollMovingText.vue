@@ -111,6 +111,10 @@ span {
 
   @media #{$md-down} {
     white-space: nowrap;
+
+    .android & {
+      padding: 5px 25px;
+    }
   }
 }
 </style>
