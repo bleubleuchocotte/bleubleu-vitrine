@@ -14,13 +14,7 @@
     />
     <HomepageTeamSection :members="document.data.team_members" />
 
-
     <Footer />
-
-    <pre>
-    height : {{ height }}
-    width : {{ width }}
-  </pre>
 
     <Cursor class="only-desktop" />
   </div>
@@ -60,7 +54,4 @@ async function getKeywords() {
 getContent();
 getProjects();
 getKeywords();
-
-const height = window.innerHeight;
-const width = window.innerWidth;
 </script>
