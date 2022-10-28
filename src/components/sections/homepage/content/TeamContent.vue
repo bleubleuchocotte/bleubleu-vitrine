@@ -1,7 +1,7 @@
 <script setup>
-import { defineProps, defineEmits, ref } from "vue";
+import { defineProps, defineEmits, ref, onMounted } from "vue";
 
-defineProps({
+const props = defineProps({
 	members: {
 		type: Array,
 		required: true
@@ -20,6 +20,25 @@ function updatePicture(index, image_src){
 
 	emit('activeBitMap', image_src);
 } 
+
+onMounted(() => {
+	if (window.matchMedia('(max-width: 767px)').matches) {
+		
+		let index = 0;
+		const size = props.members.length;
+	
+		setInterval(() => {
+			if (index > size - 1) {
+				index = 0;
+			}
+	
+			updatePicture(index, props.members[index].image_bitmap)
+	
+			index += 1;
+	
+		}, 2000)
+	}
+})
 
 const hasHovered = ref(false);
 
@@ -62,19 +81,43 @@ a.team-member {
 
 	color: $secondary;
 
-	text-decoration: underline;
-	text-decoration-thickness: 1.5px;
-	text-decoration-thickness: 2px;
-	text-underline-offset: 3px;
+	position: relative;
 
 	.no-picture &{
 		color: $primary
 	}
+	.no-picture &:after {
+		background-color: $primary;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: 3px;
+		left: 2rem;
+
+		height: 2px;
+		width:0;
+		background-color: $secondary;
+
+		transition: width 0.4s $ease-vnr;
+	}
+
+	&:hover:after {
+		width: calc(100% - 4rem)
+	}
+
+	&.active:after {
+		width: calc(100% - 4rem)
+	}
 }
 
 a:not(.active) {
-	text-decoration: none;
 	opacity: 0.6;
+
+	&:after {
+		width: 0;
+	}
 }
 
 </style>
