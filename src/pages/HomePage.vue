@@ -4,6 +4,7 @@
     class="home-page"
   >
     <Header :socials="document.data.socials" />
+
     <HomepageAgencySection
       :fields="document.data"
       :keywords-properties="keywordsProperties"
@@ -15,6 +16,11 @@
 
 
     <Footer />
+
+    <pre>
+    height : {{ height }}
+    width : {{ width }}
+  </pre>
 
     <Cursor class="only-desktop" />
   </div>
@@ -54,4 +60,7 @@ async function getKeywords() {
 getContent();
 getProjects();
 getKeywords();
+
+const height = window.innerHeight;
+const width = window.innerWidth;
 </script>
