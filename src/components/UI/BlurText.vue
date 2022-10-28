@@ -100,3 +100,11 @@
 	}
 
 </script>
+
+<style scoped lang="scss">
+
+div {
+	line-height: $android-line-height;
+}
+
+</style>
