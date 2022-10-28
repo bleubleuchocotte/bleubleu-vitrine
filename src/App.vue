@@ -182,11 +182,14 @@ import { onMounted } from 'vue';
 		}
 	]
 
+
 	onMounted(() => {
 		const randomColor = colors[getRandomInteger(colors.length)];
 		document.querySelector(':root').style.setProperty('--primary-color', randomColor.primary);
 		document.querySelector(':root').style.setProperty('--secondary-color', randomColor.secondary);
-		document.querySelector(':root').style.setProperty('--filter-to-primary', randomColor.filter);
+		if (navigator.userAgent.match(/Android/i)) {
+			document.querySelector(':root').style.setProperty('--filter-to-primary', randomColor.filter);
+		}
 		console.log(randomColor.name);
 
 	})
