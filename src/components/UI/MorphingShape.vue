@@ -120,5 +120,9 @@ div:not(.morphing-container) {
   margin: 60px 0;
 
   pointer-events: none;
+
+  @media #{$md-down} {
+    transform: scale(0.6);
+  }
 }
 </style>

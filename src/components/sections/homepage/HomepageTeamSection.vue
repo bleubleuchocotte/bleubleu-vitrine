@@ -55,6 +55,7 @@ const imageBitmapSrc = ref("");
 
 		@media #{$md-down} {
       padding-inline: 20px;
+			padding-top: 60px;
     }
 	}
 

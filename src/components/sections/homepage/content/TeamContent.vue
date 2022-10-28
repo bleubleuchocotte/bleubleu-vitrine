@@ -58,6 +58,9 @@ a.team-member {
 
 	margin: 0 auto;
 	padding: 0.5rem 2rem;
+	@media #{$md-down}{
+		padding: 0.3rem 2rem;
+	}
 	opacity: 1;
 
 	color: $secondary;

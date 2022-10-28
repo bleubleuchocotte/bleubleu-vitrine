@@ -48,5 +48,9 @@ img {
   transform: scale(1.3);
 
   filter: $filter-to-primary;
+
+  @media #{$md-down}{
+    transform: scale(1.1);
+  }
 }
 </style>
