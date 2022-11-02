@@ -134,10 +134,13 @@ article:last-of-type {
 	}
 
 	.article__project-title{
-	padding: 14px 20px;
+	padding: 15px 20px;
 
 	@media #{$md-down} {
-		padding: 10px;
+		padding: 11px 10px;
+	}
+	@media #{$xs-down} {
+		padding: 12px 10px;
 	}
 	border-right: 1px solid $primary;
 	
