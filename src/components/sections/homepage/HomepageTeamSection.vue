@@ -49,13 +49,16 @@ const imageBitmapSrc = ref("");
 		justify-content: center;
 		align-items: center;
 
-		min-height: 80vh;
+		min-height: 605px;
 
-		padding: 0 $global-horizontal-padding 0 $global-horizontal-padding;
+		margin-top: 10vh;
+	
+		padding-inline: $global-horizontal-padding;
 
 		@media #{$md-down} {
+			min-height: 363px;
       padding-inline: 20px;
-			padding-top: 60px;
+			margin-top: 60px;
     }
 	}
 
