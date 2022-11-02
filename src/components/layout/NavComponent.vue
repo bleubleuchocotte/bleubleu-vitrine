@@ -21,9 +21,13 @@ import { RouterLink } from 'vue-router';
         </RouterLink>
       </li>
       <li class="nav__big-link">
-        <RouterLink to="#footer">
+        <!-- <RouterLink to="https://3fh7gbh186a.typeform.com/to/ENGwpoSa">
           Contact us
-        </RouterLink>
+        </RouterLink> -->
+        <a
+          href="https://3fh7gbh186a.typeform.com/to/ENGwpoSa"
+          target="_blank"
+        >Contact us</a>
       </li>
     </ul>
   </nav>
