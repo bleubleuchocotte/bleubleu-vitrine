@@ -20,6 +20,10 @@
   @media #{$md-down} {
     font-size: 14px;
   }
+
+  @media #{$xs-down} {
+    font-size: 12px;
+  }
 }
 
 .fs-42 {
@@ -32,6 +36,9 @@
   @media #{$md-down} {
     font-size: 22px;
   }
+  @media #{$xs-down} {
+    font-size: 18px;
+  }
 }
 
 .fs-42__big {
@@ -43,5 +50,8 @@
 
   @media #{$md-down} {
     font-size: 32px;
+  }
+  @media #{$xs-down} {
+    font-size: 28px;
   }
 }
