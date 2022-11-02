@@ -57,6 +57,7 @@ getFooterContent()
 @media #{$sm-up} {
   .footer {
     padding: 56px 22px;
+    padding-bottom: 20px;
   }
 }
 
