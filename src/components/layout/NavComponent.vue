@@ -11,7 +11,7 @@ import { RouterLink } from 'vue-router';
         </RouterLink>
       </li>
       <li class="nav__big-link">
-        <RouterLink to="/test">
+        <RouterLink to="#project">
           Our projects
         </RouterLink>
       </li>
