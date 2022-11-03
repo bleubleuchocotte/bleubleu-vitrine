@@ -3,6 +3,7 @@ import HomePage from '@/pages/HomePage.vue';
 
 const routes = [
   { path: '/', component: HomePage },
+  { path: '/:pathMatch(.*)*', redirect: "/"}, // 404
 ]
 
 export const router = createRouter({
