@@ -1,31 +1,57 @@
 /*
  * [ base / font ]
  */
-@font-face {
-  font-family: 'Sprat';
-  src:
-      url('@/assets/fonts/Sprat-Variable.woff2') format("woff2-variations"),
-      url('@/assets/fonts/Sprat.woff2') format("woff2"),
-      url('@/assets/fonts/Sprat.woff') format('woff');
-  font-weight: 1 999;
-  font-style: normal;
-  font-display: swap;
-}
 
 @font-face {
   font-family: 'Neutral Face';
-  src: url('@/assets/fonts/subset-NeutralFaceBold.woff2') format('woff2'),
-  url('@/assets/fonts/subset-NeutralFaceBold.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Neutral Face';
-  src: url('@/assets/fonts/subset-NeutralFaceRegular.woff2') format('woff2'),
-  url('@/assets/fonts/subset-NeutralFaceRegular.woff') format('woff');
+  src: url('@/assets/fonts/Neutral_Face.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+
+.fs-20 {
+  font-size: 20px;
+  
+  .android & {
+    line-height: 14px;
+  }
+
+  @media #{$md-down} {
+    font-size: 14px;
+  }
+
+  @media #{$xs-down} {
+    font-size: 12px;
+  }
+}
+
+.fs-42 {
+  font-size: 42px;
+
+  .android & {
+    line-height: 22px;
+  }
+
+  @media #{$md-down} {
+    font-size: 22px;
+  }
+  @media #{$xs-down} {
+    font-size: 18px;
+  }
+}
+
+.fs-42__big {
+  font-size: 42px;
+
+  .android & {
+    line-height: 32px;
+  }
+
+  @media #{$md-down} {
+    font-size: 32px;
+  }
+  @media #{$xs-down} {
+    font-size: 28px;
+  }
 }

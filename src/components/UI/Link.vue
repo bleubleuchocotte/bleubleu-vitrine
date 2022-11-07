@@ -1,74 +1,56 @@
-<template>
-  <component
-    :is="componentType"
-    :to="to"
-    :href="url"
-    :target="target"
-    class="link"
-  >
-    <span class="link__text">{{ text }}</span>
-    <span class="link__arrow">
-      <IconArrowRight />
-    </span>
-  </component>
-</template>
-
 <script setup>
-import { defineProps, ref } from 'vue';
-import IconArrowRight from '@/assets/icons/icon-arrow-right.svg?inline';
+import {defineProps} from "vue";
+import IconArrowRight from "@/assets/icons/icon-arrow-right.svg?inline"
 
-const props = defineProps({
-  text: {
-    type: String,
-    required: true,
-  },
-  type: {
-    type: String,
-    default: 'external'
-  },
-  to: {
-    type: String,
-    default: () => null,
-  },
-  url: {
-    type: String,
-    default: () => null,
-  },
-  target: {
-    type: String,
-    default: () => null,
-  },
+
+defineProps({
+	href: {
+		type: String,
+		required: true
+	},
+	target: {
+		type: String,
+		required: true
+	}
 })
 
-const componentType = ref(props.type === 'internal' ? 'router-link' : 'a');
 </script>
 
-<style lang="scss">
-.link {
-  display: inline-block;
-  font-size: 24px;
-  line-height: 1.2;
-  cursor: pointer;
-}
+<template>
+  <a
+    :href="href"
+    :target="target"
+    class="only-desktop"
+  >
+    Go to website<IconArrowRight />
+  </a>
+  <a
+    :href="href"
+    :target="target"
+    class="only-mobile"
+  >
+    Website<IconArrowRight />
+  </a>
+</template>
 
-.link__text {
-  position: relative;
-  text-decoration: underline;
-}
 
-.link__arrow {
-  display: inline-block;
-  vertical-align: top;
-  width: 18px;
-  height: 18px;
-  margin-left: 8px;
-  position: relative;
-  top: 2px;
+<style scoped lang="scss">
+a {
+	width: fit-content;
+	text-decoration: underline;
 
-  svg {
-    vertical-align: top;
-    width: 100%;
-    height: 100%;
-  }
+	svg {
+		width: 15px;
+		height: 15px;
+		margin-left: 10px;
+
+		stroke: $primary;
+		
+		@media #{$md-down} {
+			vertical-align: middle;
+			transform: rotate(-45deg);
+			margin-left: 5px;
+		}
+	}
 }
 </style>

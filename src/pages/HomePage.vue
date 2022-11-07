@@ -1,37 +1,57 @@
 <template>
   <div
-    v-if="document"
+    v-if="document && keywordsProperties && projects"
     class="home-page"
   >
-    <Header />
-    <HomepageEntrySection :socials="document.data.socials" />
-    <HomepageContentSection :fields="document.data" />
-    <HomepageTeamSection :members="document.data.team_members" />
-    <Footer />
-  </div>
+    <Header :socials="document.data.socials" />
 
-  <span class="line-top o-grid-item--full-top" />
-  <span class="line-bottom o-grid-item--full-bottom" />
+    <HomepageAgencySection
+      :fields="document.data"
+      :keywords-properties="keywordsProperties"
+    />
+    <HomepageProjectSection
+      :fields="projects"
+    />
+    <HomepageTeamSection :members="document.data.team_members" />
+
+    <Footer />
+
+    <Cursor class="only-desktop" />
+  </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import { usePrismic } from '@prismicio/vue';
-import Header from '../components/layout/Header.vue'
-import HomepageEntrySection from '../components/sections/homepage/HomepageEntrySection.vue';
+
+import Header from '../components/layout/Header.vue';
+import HomepageAgencySection from '../components/sections/homepage/HomepageAgencySection.vue';
+import HomepageProjectSection from '../components/sections/homepage/HomepageProjectSection.vue';
 import HomepageTeamSection from '../components/sections/homepage/HomepageTeamSection.vue';
 import Footer from '../components/layout/Footer.vue';
-import HomepageContentSection from '../components/sections/homepage/HomepageContentSection.vue';
+import Cursor from '../components/UI/Cursor.vue';
+
 
 const { client } = usePrismic();
 let document = ref(null);
+const projects = ref(null);
+const keywordsProperties = ref(null);
 
 async function getContent() {
   document.value = await client.getSingle('home_page', {
     fetchLinks: ['social_media.name', 'social_media.link'],
   }, null);
-  console.log(document.value);
 }
 
-getContent()
+async function getProjects() {
+  projects.value = await client.getAllByType('project')
+}
+
+async function getKeywords() {
+  keywordsProperties.value = await client.getAllByType('keyword-agency');
+}
+
+getContent();
+getProjects();
+getKeywords();
 </script>

@@ -1,6 +1,7 @@
 <template>
   <footer
     v-if="footer"
+    id="footer"
     class="footer"
   >
     <prismic-image
@@ -30,7 +31,6 @@ async function getFooterContent() {
   footer.value = await client.getSingle('footer', {
     fetchLinks: ['social_media.name', 'social_media.link'],
   }, null);
-  console.log(footer.value);
 }
 
 const year = ref(new Date().getFullYear());
@@ -47,20 +47,23 @@ getFooterContent()
 .footer__img {
   width: 100px;
   margin-bottom: 32px;
+  filter: $filter-to-primary;
 }
 
 .footer__copyright {
   margin-top: 16px;
-  font-family: $font-secondary;
-  font-weight: 10;
-  font-variation-settings: 'wdth' 150;
-  text-transform: uppercase;
-  @include fluid(font-size, 320px, 576px, 11px, 15px);
 }
 
 @media #{$sm-up} {
   .footer {
     padding: 56px 22px;
+    padding-bottom: 20px;
+  }
+}
+
+@media #{$md-down} {
+  .footer {
+    font-size: 14px;
   }
 }
 </style>

@@ -1,92 +1,123 @@
-<template>
-  <article class="content-item team-content">
-    <Title class="content-item__title team-content__title">
-      <prismic-text :field="title" />
-    </Title>
-    <div class="content-item__infos">
-      <Link
-        :url="link.url"
-        :target="link.target"
-        :text="linkName"
-      />
-      <div class="content-item__description">
-        <prismic-text
-          class="content-item__text"
-          :field="description"
-        />
-        <div class="blur" />
-      </div>
-    </div>
-  </article>
-</template>
-
 <script setup>
-import Link from '../../../UI/Link.vue';
-import { defineProps } from 'vue';
-import Title from '../../../UI/Title.vue';
+import { defineProps, defineEmits, ref, onMounted } from "vue";
 
-defineProps({
-  title: {
-    type: Array,
-    required: true,
-  },
-  description: {
-    type: Array,
-    required: true,
-  },
-  link: {
-    type: Object,
-    required: true,
-  },
-  linkName: {
-    type: String,
-    required: true,
-  }
+const props = defineProps({
+	members: {
+		type: Array,
+		required: true
+	}
 })
+const emit = defineEmits(['activeBitMap']);
+
+function updatePicture(index, image_src){
+	hasHovered.value = true;
+	const notActive = document.querySelectorAll(`.team-member:not([data-index="${index}"])`);
+	notActive.forEach(el => {
+		el.classList.remove("active")
+	})
+
+	document.querySelector(`.team-member[data-index="${index}"]`).classList.add('active');
+
+	emit('activeBitMap', image_src);
+} 
+
+onMounted(() => {
+	if (window.matchMedia('(max-width: 767px)').matches) {
+		
+		let index = 0;
+		const size = props.members.length;
+	
+		setInterval(() => {
+			if (index > size - 1) {
+				index = 0;
+			}
+	
+			updatePicture(index, props.members[index].image_bitmap)
+	
+			index += 1;
+	
+		}, 2000)
+	}
+})
+
+const hasHovered = ref(false);
+
 </script>
 
-<style lang="scss">
-.content-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 16px;
+<template>
+  <ul :class="[hasHovered ? '' : 'no-picture']">
+    <li
+      v-for="(member, index) in members"
+      :key="index"
+    >
+      <a
+        :href="member.link.url"
+        :target="member.link.target"
+        :data-index="index"
+        class="team-member active fs-20"
+        @mouseover="updatePicture(index, member.image_bitmap)"
+      > 
+        {{ member.name }} 
+      </a>
+    </li>
+  </ul>
+</template>
+
+<style scoped lang="scss">
+
+ul {
+	z-index: 1;
 }
 
-.content-item__title {
-  display: block;
+a.team-member {
+	display: block;
+	text-align: center;
+
+	width: fit-content;
+
+	margin: 0 auto;
+	padding: 0.5rem 2rem;
+	opacity: 1;
+
+	color: $secondary;
+
+	position: relative;
+
+	.no-picture &{
+		color: $primary
+	}
+	.no-picture &:after {
+		background-color: $primary;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: 3px;
+		left: 2rem;
+
+		height: 2px;
+		width:0;
+		background-color: $secondary;
+
+		transition: width 0.4s $ease-vnr;
+	}
+
+	&:hover:after {
+		width: calc(100% - 4rem)
+	}
+
+	&.active:after {
+		width: calc(100% - 4rem)
+	}
 }
 
-.blur {
-  @extend %absolute;
-  pointer-events: none;
-  left: -10px;
-  top: -10px;
-  backdrop-filter: blur(2px);
-  transition: backdrop-filter .3s ease-in-out;
+a:not(.active) {
+	opacity: 0.6;
+
+	&:after {
+		width: 0;
+	}
 }
 
-.content-item__description {
-  position: relative;
-  margin-top: 24px;
-  font-size: 20px;
-  line-height: 1.2;
-
-  @include hover {
-    .blur {
-      backdrop-filter: blur(0);
-    }
-  }
-}
-
-.team-content__title {
-  max-width: 400px;
-}
-
-@media #{$sm-up} {
-  .content-item {
-    padding: 28px 32px;
-  }
-}
 </style>

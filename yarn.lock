@@ -974,6 +974,11 @@ lodash@^4.17.21:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
+lottie-web@^5.8.1:
+  version "5.9.6"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.9.6.tgz#62ae68563355d3e04aa75d53dec3dd4bea0e57c9"
+  integrity sha512-JFs7KsHwflugH5qIXBpB4905yC1Sub2MZWtl/elvO/QC6qj1ApqbUZJyjzJseJUtVpgiDaXQLjBlIJGS7UUUXA==
+
 lru-cache@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
@@ -1337,6 +1342,13 @@ vue-router@4, vue-router@^4.0.10:
   integrity sha512-CPXvfqe+mZLB1kBWssssTiWg4EQERyqJZes7USiqfW9B5N2x+nHlnsM1D3b5CaJ6qgCvMmYJnz+G0iWjNCvXrg==
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.18"
+
+vue3-lottie@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/vue3-lottie/-/vue3-lottie-2.3.0.tgz#3b0e93cd8235545aad85e73a3ed3e9ca8ccbc6cd"
+  integrity sha512-pThHpAIxxvk9c5lJXyCgrIAUIy/Xn/XLETqW2yA+VIg5B+phjQkdxkTvRG60pq3zOZ9su2hee+HZgT9tWA+8Fw==
+  dependencies:
+    lottie-web "^5.8.1"
 
 vue@^3.2.16:
   version "3.2.20"

@@ -8,6 +8,9 @@
 :before,
 :after {
   box-sizing: border-box;
+  @media #{$md-up} {
+    cursor: none;
+  }
 }
 
 html {
@@ -16,6 +19,8 @@ html {
 
 html,
 body {
+  scroll-behavior: smooth;
+  text-transform: uppercase;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -32,24 +37,6 @@ body {
   // Style frame
   min-height: 100vh;
   position: relative;
-  padding: 40px 40px;
-
-  &:before, &:after {
-    content: '';
-    z-index: 900;
-    display: block;
-    width: 1px;
-    height: 100%;
-    background: $black;
-    position: absolute;
-    bottom: 0;
-  }
-  &:before {
-    left: 40px;
-  }
-  &:after {
-    right: 40px;
-  }
 }
 
 :focus:not(:focus-visible) {
@@ -65,15 +52,15 @@ button {
   }
 }
 
-@media #{$lg-up} {
-  body {
-    padding: 80px 90px;
+.only-mobile {
+  display: none;
+}
 
-    &:before {
-      left: 90px;
-    }
-    &:after {
-      right: 90px;
-    }
+@media #{$md-down} {
+  .only-mobile {
+    display: block;
+  }
+  .only-desktop {
+    display: none;
   }
 }
