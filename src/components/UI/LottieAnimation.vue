@@ -14,7 +14,7 @@ function createIntersectionObserver() {
   let options = {
     root: null,
     rootMargin: "0px",
-    threshold: 0,
+    threshold: 0.1,
   };
 
   let callback = (entries) => {
