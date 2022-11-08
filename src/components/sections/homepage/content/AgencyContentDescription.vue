@@ -69,10 +69,12 @@ import GridChelou from "../../../UI/GridChelou.vue";
 	#beep-boop{
 		display: inline-flex;
 		gap: 5px;
+		align-items: center;
 	}
 
 	#beep-boop > *{
-		stroke: $primary;
-		margin: auto 0;
+		fill: $primary;
+		width: 42px;
+		height: 42px;
 	}
 </style>
