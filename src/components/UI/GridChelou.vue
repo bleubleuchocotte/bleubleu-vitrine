@@ -6,19 +6,19 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
   <div class="dynamic-grid">
     <div class="left">
       <div>
-        <IconBleubleu class="svg" />
+        <IconBleubleu />
       </div>
       <div>
-        <IconBleubleu class="svg" />
+        <IconBleubleu />
       </div>
     </div>
 
     <div class="right">
       <div>
-        <IconBleubleu class="svg" />
+        <IconBleubleu />
       </div>
       <div>
-        <IconBleubleu class="svg" />
+        <IconBleubleu />
       </div>
     </div>
   </div>
