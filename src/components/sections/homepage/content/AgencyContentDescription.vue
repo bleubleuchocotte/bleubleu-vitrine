@@ -44,10 +44,8 @@ import GridChelou from "../../../UI/GridChelou.vue";
 	.left{
 		display: flex;
 		flex-direction: column;
-		gap: 388px;
-		@media #{$md-down} {
-      gap: 50vh;
-    }
+		gap: 25vh;
+
 		padding: 30px 0px 10px 15px;
 		border-left: 1px solid $primary;
 
