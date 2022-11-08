@@ -74,5 +74,10 @@ import GridChelou from "../../../UI/GridChelou.vue";
 		fill: $primary;
 		width: 42px;
 		height: 42px;
+
+		@media #{$md-down}{
+			width: 28px;
+			height: 28px;
+		}
 	}
 </style>
