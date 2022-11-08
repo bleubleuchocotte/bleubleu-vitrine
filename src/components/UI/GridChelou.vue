@@ -1,5 +1,5 @@
 <script setup>
-import IconBleubleu from "@/assets/icons/test.svg?inline";
+import IconBleubleu from "@/assets/icons/icon-bleubleu-animation.svg?inline";
 </script>
 
 <template>
