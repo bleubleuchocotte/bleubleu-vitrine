@@ -78,6 +78,10 @@ import IconBleubleu from "@/assets/icons/test.svg?inline";
 		div:last-of-type {
 			flex: 0.6;
 
+			svg {
+				transform: rotate(-4deg) scale(4.4) skew(27deg, -74deg);
+			}
+
 			&:hover{
 				flex: 0.8;
 			}
