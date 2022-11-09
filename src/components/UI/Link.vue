@@ -22,14 +22,14 @@ defineProps({
     :target="target"
     class="only-desktop"
   >
-    Go to website<IconArrowRight />
+    Go to <slot /><IconArrowRight />
   </a>
   <a
     :href="href"
     :target="target"
     class="only-mobile"
   >
-    Website<IconArrowRight />
+    <slot /><IconArrowRight />
   </a>
 </template>
 
