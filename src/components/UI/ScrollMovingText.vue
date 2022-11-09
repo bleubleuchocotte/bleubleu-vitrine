@@ -88,7 +88,7 @@ const deltaX = ref("0px");
   <span
     ref="containerHTML"
     :style="styles"
-    class="fs-42"
+    class="fs-42__big"
   >{{ text }}</span>
 </template>
 
