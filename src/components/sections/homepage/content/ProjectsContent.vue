@@ -84,7 +84,8 @@ hr{
 	bottom: 0;
 	width: 100%;
 	height: 1px;
-	color: $primary;
+	
+	border-color: $primary;
 
 	border-bottom-style: unset;
 	border-top-style: solid;
