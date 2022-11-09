@@ -33,7 +33,9 @@ const props = defineProps({
         <Link
           :href="project.data.website_link.url"
           :target="project.data.website_link.target"
-        />
+        >
+          {{ project.data.go_to[0]?.text }}
+        </Link>
       </div>
     </div>
     <div class="article-bottom">
