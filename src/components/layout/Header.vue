@@ -4,9 +4,8 @@ import {defineProps} from "vue";
 import Socials from '../socials/Socials.vue';
 import NavComponent from './NavComponent.vue';
 
-import { Vue3Lottie } from 'vue3-lottie'
-import 'vue3-lottie/dist/style.css'
 import video from '@/assets/video/Header_anim.json'
+import LottieAnimation from "../UI/LottieAnimation.vue";
 
 defineProps({
   socials: {
@@ -21,10 +20,7 @@ defineProps({
   <header id="agency">
     <NavComponent />
     <div class="morphing-container">
-      <Vue3Lottie
-        :animation-data="video"
-        :speed="1"
-      />
+      <LottieAnimation :video="video" />
     </div>
 
     <div class="header-bottom fs-20">

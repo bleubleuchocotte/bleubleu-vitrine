@@ -47,8 +47,8 @@ export default {
   display: inline-block;
   margin: 20px;
 
-  height: 36px;
-  width: 36px;
+  height: 28px;
+  width: 28px;
 
   @media #{$md-down} {
     height: 24px;
@@ -58,8 +58,8 @@ export default {
   }
   
   &[href*='behance']{
-    height: 32px;
-    width: 45px;
+    height: 24px;
+    width: 34px;
 
     @media #{$md-down} {
       height: 18px;
@@ -77,7 +77,6 @@ export default {
 
   svg {
     pointer-events: none;
-    stroke: $primary;
     fill: $primary;
     width: 100%;
     height: 100%;

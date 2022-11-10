@@ -44,11 +44,9 @@ import GridChelou from "../../../UI/GridChelou.vue";
 	.left{
 		display: flex;
 		flex-direction: column;
-		gap: 388px;
-		@media #{$md-down} {
-      gap: 50vh;
-    }
-		padding: 30px 0px 10px 15px;
+		gap: 25vh;
+
+		padding: 30px 15px 10px 15px;
 		border-left: 1px solid $primary;
 
 		@media #{$md-down}{
@@ -69,10 +67,17 @@ import GridChelou from "../../../UI/GridChelou.vue";
 	#beep-boop{
 		display: inline-flex;
 		gap: 5px;
+		align-items: center;
 	}
 
 	#beep-boop > *{
-		stroke: $primary;
-		margin: auto 0;
+		fill: $primary;
+		width: 42px;
+		height: 42px;
+
+		@media #{$md-down}{
+			width: 28px;
+			height: 28px;
+		}
 	}
 </style>

@@ -33,7 +33,9 @@ const props = defineProps({
         <Link
           :href="project.data.website_link.url"
           :target="project.data.website_link.target"
-        />
+        >
+          {{ project.data.go_to[0]?.text }}
+        </Link>
       </div>
     </div>
     <div class="article-bottom">
@@ -82,7 +84,8 @@ hr{
 	bottom: 0;
 	width: 100%;
 	height: 1px;
-	color: $primary;
+	
+	border-color: $primary;
 
 	border-bottom-style: unset;
 	border-top-style: solid;
