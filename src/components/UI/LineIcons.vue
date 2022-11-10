@@ -1,6 +1,6 @@
 <script setup>
 
-import { defineProps, onMounted, ref } from "vue";
+import { defineProps, onMounted, onUnmounted, ref } from "vue";
 
 defineProps({
 	icons: {
@@ -11,11 +11,18 @@ defineProps({
 
 onMounted(() => {
   listenerMaxWidth();
+  window.addEventListener("resize", listenerMaxWidth);
+})
+
+onUnmounted(() => {
+  window.removeEventListener("resize", listenerMaxWidth);
 })
 
 function listenerMaxWidth() {
   if (window.matchMedia('(max-width: 767px)').matches) {
     isMobile.value = true;
+  } else {
+    isMobile.value = false;
   }
 }
 
