@@ -46,20 +46,24 @@ const hasHovered = ref(false);
 
 <template>
   <ul :class="[hasHovered ? '' : 'no-picture']">
-    <li
+    <template
       v-for="(member, index) in members"
       :key="index"
     >
-      <a
-        :href="member.link.url"
-        :target="member.link.target"
-        :data-index="index"
-        class="team-member active fs-20"
-        @mouseover="updatePicture(index, member.image_bitmap)"
-      > 
-        {{ member.name }} 
-      </a>
-    </li>
+      <li
+        v-if="member.display"
+      >
+        <a
+          :href="member.link.url"
+          :target="member.link.target"
+          :data-index="index"
+          class="team-member active fs-20"
+          @mouseover="updatePicture(index, member.image_bitmap)"
+        > 
+          {{ member.name }} 
+        </a>
+      </li>
+    </template>
   </ul>
 </template>
 
