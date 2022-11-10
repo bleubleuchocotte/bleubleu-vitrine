@@ -80,13 +80,13 @@ defineProps({
 
 			padding: 30px;
 
-			@media #{$md-down} {
+			@media #{$sm-down} {
 				padding: 30px 10px 15px 15px;
 			}
 		}
 
 		.lower-part {
-			@media #{$md-up}{
+			@media #{$sm-up}{
 				border-top: 1px solid $primary;
 			}
 		}
