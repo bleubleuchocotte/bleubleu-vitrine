@@ -2,7 +2,11 @@
 import { onMounted, onUnmounted, ref } from "vue";
 
 onMounted(() => {
-  window.addEventListener('mousemove', updateCursor);
+	if (window.matchMedia('(pointer: coarse)').matches) {
+		window.removeEventListener('mousemove', updateCursor);
+  } else {
+		window.addEventListener('mousemove', updateCursor);
+  }
 })
 onUnmounted(() => {
   window.removeEventListener('mousemove', updateCursor);
