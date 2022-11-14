@@ -18,7 +18,7 @@ function createIntersectionObserver() {
   };
 
   let callback = (entries) => {
-		!entries[0].isIntersecting ? isPausing.value = false : isPausing.value = true;
+		entries[0].isIntersecting ? isPausing.value = false : isPausing.value = true;
   };
   let observer = new IntersectionObserver(callback, options);
   observer.observe(container.value.$el);
