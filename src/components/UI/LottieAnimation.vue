@@ -36,6 +36,6 @@ const isPausing = ref(true)
   <Vue3Lottie
     ref="container"
     :animation-data="video"
-    :pause-animation="isPausing"
+    :pause-animation="true"
   />
 </template>
