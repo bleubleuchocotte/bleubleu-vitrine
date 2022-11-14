@@ -90,11 +90,14 @@ const isMobile = ref(false);
     height: 34px;
     width: fit-content;
 
-    
     filter: $filter-to-primary;
     
     @media #{$sm-up} {
-      margin: 5px;
+      height: 42px;
+    }
+
+    @media #{$xl-low-to-xl-high} {
+      height: 34px;
     }
   }
 
