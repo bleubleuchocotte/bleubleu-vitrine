@@ -57,11 +57,12 @@ defineProps({
       height: 50vh;
     }
     filter: $filter-to-primary;
-
+    -webkit-filter: $filter-to-primary;
+    
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -moz-backface-visibility: hidden;
-    
+
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0,0,0);
     -moz-transform: translate3d(0, 0, 0);
