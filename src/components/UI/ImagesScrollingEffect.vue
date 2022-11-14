@@ -174,7 +174,7 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
       :key="key"
 
       :src="imageLoop.media.url"
-      :alt="imageLoop.media.alt"
+      :alt="imageLoop.media.alt ? imageLoop.media.alt : ''"
       :data-index="key"
     >
   </div>
