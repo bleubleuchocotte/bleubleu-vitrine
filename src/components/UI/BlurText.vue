@@ -33,11 +33,26 @@
 	const target = ref();
 
 	onMounted(function () {
-		document.addEventListener('mousemove', updateBlur);
+		createIntersectionObserver();
+		target.value.style = `filter: blur(5px)`;
 	})
 	onUnmounted(function(){
 		document.removeEventListener('mousemove', updateBlur);
 	})
+
+	function createIntersectionObserver() {
+		let options = {
+			root: null,
+			rootMargin: "0px",
+			threshold: 0.01,
+		};
+
+		let callback = (entries) => {
+			entries[0].isIntersecting ? document.addEventListener('mousemove', updateBlur) : document.removeEventListener('mousemove', updateBlur);
+		};
+		let observer = new IntersectionObserver(callback, options);
+		observer.observe(target.value);
+	}
 
 
 	function updateBlur(arg) {
@@ -59,13 +74,6 @@
 		const blurIntensity = blur(DISTANCE, circleOutside.radius);
 
 		el.style = `filter: blur(${blurIntensity*.01}px)`;
-
-		/**
-		* Permet d'avoir un affichage visuel de la zone à laquelle le blur s'efface (A enlever lors de la mise en prod)
-		*/
-		// const circle = document.createElement('div');
-		// circle.style = `width: ${circleOutside.radius * 2}px; height: ${circleOutside.radius * 2}px; top: ${circleOutside.y - (bounding.y + circleOutside.radius)}px; left: ${circleOutside.x - (bounding.x + circleOutside.radius)}px; position: absolute; border-radius: 100%; border: 1px solid red`;
-		// el.appendChild(circle);
 	}
 
 	/**
