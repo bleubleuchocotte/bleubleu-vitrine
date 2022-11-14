@@ -27,7 +27,7 @@ const props = defineProps({
         </p>
       </div>
       <div class="article__project-date">
-        <p>
+        <p id="article__project-date">
           {{ project.data.date.substring(0,4) }}
         </p>
         <Link
@@ -62,6 +62,10 @@ const props = defineProps({
 		@media #{$md-down} {
 			width: 55%;
 		}
+
+		@media screen and (max-width: 350px) {
+			width: 62%;
+		}
 	}
 }
 .article-bottom {
@@ -72,6 +76,14 @@ const props = defineProps({
 		}
 	}
 }
+
+@media screen and (max-width: 350px) {
+	
+	#article__project-date{
+		display: none;
+	}
+}
+
 
 .container-images {
 	width: 100%;
@@ -202,6 +214,9 @@ article:last-of-type {
 	@media #{$md-down} {
 		width: 45%;
 		padding: 13px 10px;
+	}
+	@media screen and (max-width: 350px) {
+		width: 38%;
 	}
 }
 }
