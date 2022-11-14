@@ -36,3 +36,14 @@ const isPausing = ref()
     @onAnimationLoaded="createIntersectionObserver()"
   />
 </template>
+
+<style scoped lang="scss">
+
+  *::v-deep {
+    path{
+      fill: $primary;
+      stroke: $primary;
+    }
+  }
+
+</style>
