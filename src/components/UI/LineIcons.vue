@@ -96,10 +96,6 @@ const isMobile = ref(false);
     @media #{$sm-up} {
       margin: 5px;
     }
-
-    @media #{$sm-down} {
-      aspect-ratio: 1;
-    }
   }
 
 
