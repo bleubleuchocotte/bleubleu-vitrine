@@ -7,6 +7,7 @@
     <prismic-image
       :field="footer.data.image"
       class="footer__img"
+      alt
     />
     <Socials
       :fields="footer.data.socials"
