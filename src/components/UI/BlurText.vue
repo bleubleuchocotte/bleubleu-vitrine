@@ -34,6 +34,7 @@
 
 	onMounted(function () {
 		createIntersectionObserver();
+		target.value.style = `filter: blur(5px)`;
 	})
 	onUnmounted(function(){
 		document.removeEventListener('mousemove', updateBlur);
