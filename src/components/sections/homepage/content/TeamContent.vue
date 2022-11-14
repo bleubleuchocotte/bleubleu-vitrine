@@ -21,18 +21,40 @@ function updatePicture(index, image_src){
 	emit('activeBitMap', image_src);
 } 
 
+/**
+ * 
+ * @param {Array} arr 
+ * @param {*} value 
+ */
+function removeItemAll(arr, value) {
+  var i = 0;
+  while (i < arr.length) {
+    if (arr[i] === value) {
+      arr.splice(i, 1);
+    } else {
+      ++i;
+    }
+  }
+  return arr;
+}
+
 onMounted(() => {
+	const notFindString = "null"
+	const indexMemberAvailable = removeItemAll(props.members.map((member,index) => member.display ? index : notFindString), notFindString);
+	
 	if (window.matchMedia('(max-width: 767px)').matches) {
 		
 		let index = 0;
-		const size = props.members.length;
+		const size = indexMemberAvailable.length;
+
+
 	
 		setInterval(() => {
 			if (index > size - 1) {
 				index = 0;
 			}
 	
-			updatePicture(index, props.members[index].image_bitmap)
+			updatePicture(indexMemberAvailable[index], props.members[indexMemberAvailable[index]].image_bitmap)
 	
 			index += 1;
 	
