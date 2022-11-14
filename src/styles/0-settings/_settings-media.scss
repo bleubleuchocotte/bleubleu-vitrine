@@ -14,15 +14,20 @@ $sm-up: 'screen and (min-width: 576px)';
 $md-up: 'screen and (min-width: 1301px)';
 $lg-up: 'screen and (min-width: 992px)';
 $lg-up-middly: 'screen and (min-width: 1079px)';
-$xl-up: 'screen and (min-width: 1440px)';
+$xl-up-low: 'screen and (min-width: 1300px)';
+$xl-up-middly: 'screen and (min-width: 1440px)';
+$xl-up-high: 'screen and (min-width: 1600px)';
 
 $xs-down: 'screen and (max-width: 400px)';
 $sm-down: 'screen and (max-width: 575px)';
 $md-down: 'screen and (max-width: 1300px)';
 $lg-down: 'screen and (max-width: 991px)';
 $lg-down-middly: 'screen and (max-width: 1079px)';
-$xl-down: 'screen and (max-width: 1439px)';
+$xl-down-low: 'screen and (max-width: 1299px)';
+$xl-down-middly: 'screen and (max-width: 1439px)';
+$xl-down-high: 'screen and (max-width: 1599px)';
 
 $sm-to-md: 'screen and (min-width: 576px) and (max-width: 767px)';
 $md-to-lg: 'screen and (min-width: 768px) and (max-width: 991px)';
 $lg-to-xl: 'screen and (min-width: 992px) and (max-width: 1439px)';
+$xl-low-to-xl-high: 'screen and (min-width: 1300px) and (max-width: 1600px)';
