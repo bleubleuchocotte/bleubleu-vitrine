@@ -86,9 +86,7 @@ defineProps({
 		}
 
 		.lower-part {
-			@media #{$sm-up}{
-				border-top: 1px solid $primary;
-			}
+			border-top: 1px solid $primary;
 		}
 	}
 
