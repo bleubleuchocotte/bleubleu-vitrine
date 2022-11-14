@@ -55,6 +55,7 @@ const pathURL = ref("");
   <img
     ref="containerHTML"
     :src="pathURL"
+    alt
   >
 </template>
 
