@@ -9,7 +9,7 @@ const props = defineProps({
 
 onMounted(() => {
   pathURL.value = props.path;
-  document.addEventListener("mousemove", parallax);
+  createIntersectionObserver();
 });
 
 onUpdated(() => {
@@ -19,6 +19,20 @@ onUpdated(() => {
 onUnmounted(() => {
   document.removeEventListener("mousemove", parallax);
 });
+
+function createIntersectionObserver() {
+  let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.01,
+  };
+
+  let callback = (entries) => {
+    entries[0].isIntersecting ? document.addEventListener('mousemove', parallax) : document.removeEventListener('mousemove', parallax);
+  };
+  let observer = new IntersectionObserver(callback, options);
+  observer.observe(containerHTML.value);
+}
 
 function parallax(e) {
   let _w = window.innerWidth / 2;
@@ -32,13 +46,16 @@ function parallax(e) {
 }
 
 const delta = ref("");
-
+const containerHTML = ref();
 const pathURL = ref("");
 
 </script>
 
 <template>
-  <img :src="pathURL">
+  <img
+    ref="containerHTML"
+    :src="pathURL"
+  >
 </template>
 
 <style scoped lang="scss">
