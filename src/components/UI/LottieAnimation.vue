@@ -40,8 +40,12 @@ const isPausing = ref()
 <style scoped lang="scss">
 
   *::v-deep {
-    path{
+
+    g[aria-label] path{
       fill: $primary;
+    }
+
+    path[stroke] {
       stroke: $primary;
     }
   }
