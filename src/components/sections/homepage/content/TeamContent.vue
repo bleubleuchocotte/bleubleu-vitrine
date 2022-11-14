@@ -109,11 +109,6 @@ a.team-member {
 
 	position: relative;
 
-	@media #{$md-down} {
-		font-size: 22px;
-		line-height: 22px;
-	}
-
 	.no-picture &{
 		color: $primary
 	}
