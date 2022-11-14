@@ -14,6 +14,9 @@ defineProps({
   }
 })
 
+const filter = document.querySelector(':root').style.getPropertyValue('--filter-to-primary');
+// const name = document.querySelector(':root').style.getPropertyValue('--filter-to-primary');
+
 </script>
 
 <template>
@@ -22,6 +25,8 @@ defineProps({
     <div class="morphing-container">
       <LottieAnimation :video="video" />
     </div>
+
+    <pre>{{ filter }}</pre>
 
     <div class="header-bottom fs-20">
       <Socials :fields="socials" />
@@ -58,7 +63,7 @@ defineProps({
     }
     filter: $filter-to-primary;
     -webkit-filter: $filter-to-primary;
-    
+
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -moz-backface-visibility: hidden;
