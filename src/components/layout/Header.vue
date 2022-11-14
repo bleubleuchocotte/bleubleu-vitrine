@@ -13,7 +13,6 @@ defineProps({
     required: true,
   }
 })
-
 </script>
 
 <template>
@@ -56,7 +55,6 @@ defineProps({
     @media #{$md-down} {
       height: 50vh;
     }
-    filter: $filter-to-primary;
 	}
 
 	.header-bottom{
