@@ -61,8 +61,8 @@ const filter = document.querySelector(':root').style.getPropertyValue('--filter-
     @media #{$md-down} {
       height: 50vh;
     }
-    filter: $filter-to-primary;
-    -webkit-filter: $filter-to-primary;
+    // filter: $filter-to-primary;
+    // -webkit-filter: $filter-to-primary;
 
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
