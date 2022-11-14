@@ -13,10 +13,6 @@ defineProps({
     required: true,
   }
 })
-
-const filter = document.querySelector(':root').style.getPropertyValue('--filter-to-primary');
-// const name = document.querySelector(':root').style.getPropertyValue('--filter-to-primary');
-
 </script>
 
 <template>
@@ -25,8 +21,6 @@ const filter = document.querySelector(':root').style.getPropertyValue('--filter-
     <div class="morphing-container">
       <LottieAnimation :video="video" />
     </div>
-
-    <pre>{{ filter }}</pre>
 
     <div class="header-bottom fs-20">
       <Socials :fields="socials" />
@@ -61,16 +55,6 @@ const filter = document.querySelector(':root').style.getPropertyValue('--filter-
     @media #{$md-down} {
       height: 50vh;
     }
-    // filter: $filter-to-primary;
-    // -webkit-filter: $filter-to-primary;
-
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0,0,0);
-    -moz-transform: translate3d(0, 0, 0);
 	}
 
 	.header-bottom{
