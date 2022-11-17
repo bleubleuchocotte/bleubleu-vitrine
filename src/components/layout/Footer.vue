@@ -8,6 +8,8 @@
       :field="footer.data.image"
       class="footer__img"
       alt
+      width="640"
+      height="360"
     />
     <Socials
       :fields="footer.data.socials"

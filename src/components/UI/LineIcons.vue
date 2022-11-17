@@ -41,6 +41,8 @@ const isMobile = ref(false);
         :src="icon"
         alt
         class="icon"
+        width="79"
+        height="42"
       >
     </div>
     <div class="line-icons__2">
@@ -50,6 +52,8 @@ const isMobile = ref(false);
         :src="icon"
         alt
         class="icon"
+        width="79"
+        height="42"
       >
     </div>
   </div>
@@ -63,6 +67,8 @@ const isMobile = ref(false);
       :src="icon"
       alt
       class="icon"
+      width="79"
+      height="42"
     >
   </div>
 </template>
