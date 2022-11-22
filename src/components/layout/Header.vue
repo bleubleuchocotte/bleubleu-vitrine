@@ -4,7 +4,8 @@ import {defineProps} from "vue";
 import Socials from '../socials/Socials.vue';
 import NavComponent from './NavComponent.vue';
 
-import video from '@/assets/video/Header_anim.json'
+import videoDesktop from '@/assets/video/Header_anim.json'
+import videoMobile from '@/assets/video/header_anim_mobile.json'
 import LottieAnimation from "../UI/LottieAnimation.vue";
 
 defineProps({
@@ -19,7 +20,10 @@ defineProps({
   <header id="agency">
     <NavComponent />
     <div class="morphing-container">
-      <LottieAnimation :video="video" />
+      <LottieAnimation
+        :video-desktop="videoDesktop"
+        :video-mobile="videoMobile"
+      />
     </div>
 
     <div class="header-bottom fs-20">
@@ -43,6 +47,7 @@ defineProps({
     
     @media #{$md-down} {
       padding-inline: 20px;
+      padding-top: 100px;
     }
 
     border-bottom: 1px solid $primary;
@@ -54,6 +59,7 @@ defineProps({
     height: 75vh;
     @media #{$md-down} {
       height: 50vh;
+      margin: auto 0;
     }
 	}
 
