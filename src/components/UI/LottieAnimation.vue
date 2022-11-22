@@ -4,7 +4,11 @@ import { defineProps, onMounted, ref } from 'vue';
 import 'vue3-lottie/dist/style.css'
 
 defineProps({
-	video: {
+  videoDesktop: {
+    type: Object,
+    required: true
+  },
+	videoMobile: {
 		type: Object,
 		required: true
 	}
@@ -25,17 +29,23 @@ function createIntersectionObserver() {
 }
 
 onMounted(() => {
+  if (window.matchMedia('(max-width: 767px)').matches) {
+    isMobile.value = true;
+  } else {
+    isMobile.value = false;
+  }
 	createIntersectionObserver();
 })
 
 const container = ref();
 const isPausing = ref(true)
+const isMobile = ref();
 </script>
 
 <template>
   <Vue3Lottie
     ref="container"
-    :animation-data="video"
+    :animation-data="isMobile ? videoMobile : videoDesktop"
     :pause-animation="isPausing"
   />
 </template>
