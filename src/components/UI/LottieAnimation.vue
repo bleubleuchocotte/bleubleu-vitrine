@@ -59,6 +59,10 @@ const isMobile = ref();
       fill: $primary;
     }
 
+    path[fill] {
+      fill: $primary;
+    }
+
     path[stroke] {
       stroke: $primary;
     }
