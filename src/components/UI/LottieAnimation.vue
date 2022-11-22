@@ -53,7 +53,7 @@ const isMobile = ref();
 
 <style scoped lang="scss">
 
-  *::v-deep {
+  :deep(*) {
 
     g[aria-label] path{
       fill: $primary;
