@@ -122,6 +122,8 @@ import IconBleubleu from "@/assets/icons/icon-bleubleu-animation.svg?inline";
 	}
 
 	svg {
+		width: 285px;
+		height: 285px;
 		fill: $primary;
 	}
 </style>
