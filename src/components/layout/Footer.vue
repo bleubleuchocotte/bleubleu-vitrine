@@ -4,10 +4,8 @@
     id="footer"
     class="footer"
   >
-    <prismic-image
-      :field="footer.data.image"
-      class="footer__img"
-      alt
+    <IconBleubleu
+      class="footer__icon"
     />
     <Socials
       :fields="footer.data.socials"
@@ -24,6 +22,7 @@
 import { ref } from 'vue';
 import { usePrismic } from '@prismicio/vue';
 import Socials from '../socials/Socials.vue';
+import IconBleubleu from "@/assets/icons/icon-bleubleu-animation.svg?inline";
 
 const { client } = usePrismic();
 let footer = ref(null);
@@ -45,10 +44,10 @@ getFooterContent()
   text-align: center;
 }
 
-.footer__img {
-  width: 100px;
-  margin-bottom: 32px;
-  filter: $filter-to-primary;
+.footer__icon {
+  width: 120px;
+  margin-bottom: 16px;
+  fill: $primary;
 }
 
 .footer__copyright {

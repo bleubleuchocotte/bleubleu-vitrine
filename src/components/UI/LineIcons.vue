@@ -35,35 +35,32 @@ const isMobile = ref(false);
     class="line-icons"
   >
     <div class="line-icons__1">
-      <img
+      <component
+        :is="icon"
         v-for="(icon, index) in icons.slice(0,5)"
         :key="index"
-        :src="icon"
-        alt
         class="icon"
-      >
+      />
     </div>
     <div class="line-icons__2">
-      <img
+      <component
+        :is="icon"
         v-for="(icon, index) in icons.slice(5)"
         :key="index"
-        :src="icon"
-        alt
         class="icon"
-      >
+      />
     </div>
   </div>
   <div
     v-else
     class="line-icons"
   >
-    <img
+    <component
+      :is="icon"
       v-for="(icon, index) in icons"
       :key="index"
-      :src="icon"
-      alt
       class="icon"
-    >
+    />
   </div>
 </template>
 
@@ -88,9 +85,6 @@ const isMobile = ref(false);
   } 
   .icon {
     height: 34px;
-    width: fit-content;
-
-    filter: $filter-to-primary;
     
     @media #{$sm-up} {
       height: 42px;
@@ -101,5 +95,8 @@ const isMobile = ref(false);
     }
   }
 
+  .icon :deep(path){
+    fill: $primary;
+  }
 
 </style>

@@ -176,6 +176,8 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
       :src="imageLoop.media.url"
       :alt="imageLoop.media.alt ? imageLoop.media.alt : ''"
       :data-index="key"
+      width="640"
+      height="340"
     >
   </div>
 </template>

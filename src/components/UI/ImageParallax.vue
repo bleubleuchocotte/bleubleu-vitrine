@@ -56,6 +56,8 @@ const pathURL = ref("");
     ref="containerHTML"
     :src="pathURL"
     alt
+    :width="pathURL ? '640' : '0'"
+    :height="pathURL ? '340' : '0'"
   >
 </template>
 
