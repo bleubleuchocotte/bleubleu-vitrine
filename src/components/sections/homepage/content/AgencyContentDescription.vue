@@ -3,15 +3,15 @@ import IconRobot from "@/assets/icons/icon-robot-bleubleu.svg?inline"
 import BlurText from "@/components/UI/BlurText.vue";
 import GridChelou from "../../../UI/GridChelou.vue";
 
-import Icon1 from "@/assets/icons/icon-bleubleu-electric.svg"
-import Icon4 from "@/assets/icons/icon-bleubleu-gameboy.svg"
-import Icon7 from "@/assets/icons/icon-bleubleu-horror.svg"
-import Icon5 from "@/assets/icons/icon-bleubleu-orbital.svg"
-import Icon6 from "@/assets/icons/icon-bleubleu-heart.svg"
-import Icon9 from "@/assets/icons/icon-bleubleu-pixel.svg"
-import Icon3 from "@/assets/icons/icon-bleubleu-print.svg"
-import Icon8 from "@/assets/icons/icon-bleubleu-QR.svg"
-import Icon2 from "@/assets/icons/icon-bleubleu-star.svg"
+import Icon1 from "@/assets/icons/icon-bleubleu-electric.svg?inline"
+import Icon4 from "@/assets/icons/icon-bleubleu-gameboy.svg?inline"
+import Icon7 from "@/assets/icons/icon-bleubleu-horror.svg?inline"
+import Icon5 from "@/assets/icons/icon-bleubleu-orbital.svg?inline"
+import Icon6 from "@/assets/icons/icon-bleubleu-heart.svg?inline"
+import Icon9 from "@/assets/icons/icon-bleubleu-pixel.svg?inline"
+import Icon3 from "@/assets/icons/icon-bleubleu-print.svg?inline"
+import Icon8 from "@/assets/icons/icon-bleubleu-QR.svg?inline"
+import Icon2 from "@/assets/icons/icon-bleubleu-star.svg?inline"
 
 import {defineProps} from "vue";
 import LineIcons from "../../../UI/LineIcons.vue";
