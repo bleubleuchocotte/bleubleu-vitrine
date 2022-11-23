@@ -169,16 +169,19 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
     @mousemove="updateImage"
     @mouseleave="leaveContainer"
   >
-    <img
+    <template 
       v-for="(imageLoop, key) in images"
       :key="key"
-
-      :src="imageLoop.media.url"
-      :alt="imageLoop.media.alt ? imageLoop.media.alt : ''"
-      :data-index="key"
-      width="640"
-      height="340"
     >
+      <img
+        v-if="imageLoop.media.url"
+        :src="imageLoop.media.url"
+        :alt="imageLoop.media.alt ? imageLoop.media.alt : ''"
+        :data-index="key"
+        width="640"
+        height="340"
+      >
+    </template>
   </div>
 </template>
 
