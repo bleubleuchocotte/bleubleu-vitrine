@@ -65,6 +65,9 @@ function updateImage(arg){
 
 watch(index, () => {
 	image.value = document.querySelector(`[data-images-container="${props.index}"] [data-index="${counter % props.images.length}"]`)
+	if (!image.value) {
+		return 0;
+	}
 	image.value.positions = {
 		last: lastMousePos,
 		current: currentMousePos
