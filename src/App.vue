@@ -2,16 +2,25 @@
   import { onMounted } from 'vue';
   import { getRandomInt } from '@/composables/useRandom.js';
   import { getDataUriFromSvg, getSvgFavicon } from "@/composables/useSvg.js";
+  import { addCSSProperty } from "@/composables/useRootElement.js";
   import Colors from "./config";
 
   onMounted(() => {
 
-    const length = Object.entries(Colors).length;
-    const randomColor = Object.entries(Colors)[getRandomInt(0, length)][1];
+    let randomColor;
 
-    useCSSProperty('--primary-color', randomColor.primary);
-    useCSSProperty('--secondary-color', randomColor.secondary);
-    useCSSProperty('--filter-to-primary', randomColor.filter);
+    localStorage.getItem("colorful") ? localStorage.getItem("colorful") : localStorage.setItem("colorful", false);
+
+    if (localStorage.getItem("colorful") === "false") {
+      randomColor = Colors.DARKER;
+    } else {
+      const length = Object.entries(Colors).length;
+      randomColor = Object.entries(Colors)[getRandomInt(0, length)][1];
+    }
+
+    addCSSProperty('--primary-color', randomColor.primary);
+    addCSSProperty('--secondary-color', randomColor.secondary);
+    addCSSProperty('--filter-to-primary', randomColor.filter);
 
     if (navigator.userAgent.match(/Android/i)) {
       document.querySelector('html').classList.add('android');
@@ -24,9 +33,7 @@
     console.log(randomColor.name);
   });
 
-  function useCSSProperty(name, value) {
-    document.querySelector(':root').style.setProperty(name, value);
-  }
+
 </script>
 
 <template>
