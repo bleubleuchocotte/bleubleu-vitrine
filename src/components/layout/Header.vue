@@ -36,6 +36,7 @@ function activeColor() {
   addCSSProperty('--filter-to-primary', newColor.filter);
 
   document.getElementById('squaredFavicon').href = getDataUriFromSvg(getSvgFavicon(newColor.primary)); // Update favicon
+  console.log(newColor.name);
 }
 
 const localStorageBuffer = ref("");
