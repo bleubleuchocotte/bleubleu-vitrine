@@ -189,12 +189,17 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 
 <style scoped lang="scss">
 	.images-scrolling__container img {
-		height: 275px;
 		width: 450px;
+		height: 253px;
 
 		@media #{$md-down} {
 			width: 225px;
-			height: 137px;
+			height: 126px;
+		}
+
+		@media #{$xs-down} {
+			width: 150px;
+			height: 84px;
 		}
 		border: 1px solid $primary;
 		pointer-events: none;
