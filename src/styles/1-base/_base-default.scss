@@ -44,8 +44,11 @@ body {
 }
 
 button {
-  cursor: pointer;
+  font-size: inherit;
   border: none;
+
+  font-family: $font-primary;
+  font-weight: $weight-base;
 
   &:focus {
     outline: none;
