@@ -29,6 +29,19 @@ defineProps({
 
 		width: 40%;
 		height: 100%;
+
+		@media #{$md-down} {
+			width: 100%;
+			height: 60%;
+			bottom: 0;
+			top: unset;
+		}
+
+		img {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+		}
 	}
 
 </style>
