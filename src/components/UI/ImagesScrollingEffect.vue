@@ -165,6 +165,7 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 <template>
   <div
     ref="container"
+    class="images-scrolling__container"
     @mousemove="updateImage"
     @mouseleave="leaveContainer"
   >
@@ -185,7 +186,7 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 </template>
 
 <style scoped lang="scss">
-	img {
+	.images-scrolling__container img {
 		height: 275px;
 		width: 450px;
 
@@ -201,7 +202,7 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 		position: absolute;
 	}
 
-	div[data-images-container]{
+	.images-scrolling__container{
 		position: absolute;
 	}
 
