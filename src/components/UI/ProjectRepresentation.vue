@@ -9,15 +9,11 @@ defineProps({
 	project: {
 		type: Object,
 		required: true,
-	},
-	index: {
-		type: Number,
-		required: true,
 	}
 })
 
 function updateCurrentImage(arg) {
-	currentImage.value = arg.value;
+	currentImage.value = arg?.value || undefined;
 } 
 
 const currentImage = ref(null);
@@ -116,6 +112,11 @@ const currentImage = ref(null);
 	width: 60%;
 	height: 100%;
 	border-right: $border-right;
+	@media #{$md-down} {
+		border-right: unset;
+		width: 100%;
+		height: 40%;
+	}
 }
 
 hr{
@@ -135,8 +136,8 @@ article{
 	text-transform: uppercase;
 	width: 100%;
 
-	border-left: 1px solid $primary;
-	border-right: 1px solid $primary;
+	border-left: $border-left;
+	border-right: $border-right;
 	
 	&:hover, &:target, &:focus {
 		.article__top_left p:before {
@@ -152,6 +153,12 @@ article{
 
 			@media #{$md-down} {
 				height: 60vh;
+			}
+		}
+		@media #{$md-down} {
+			.container-images {
+				border-bottom: $border-bottom;
+				transition: border-bottom 0s linear 0.6s;
 			}
 		}
 	}
