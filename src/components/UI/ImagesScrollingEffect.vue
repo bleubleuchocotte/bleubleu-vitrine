@@ -64,6 +64,9 @@ function updateImage(arg){
 }
 
 watch(index, () => {
+	if (index.value == -1) {
+		return 0;
+	}
 	image.value = container.value.querySelector(`[data-index="${counter % props.images.length}"]`)
 	if (!image.value) {
 		return 0;
