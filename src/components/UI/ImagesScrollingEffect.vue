@@ -49,6 +49,7 @@ function updateGridSize() {
 function leaveContainer(){
 	currentMousePos = null;
 	lastMousePos = null;
+	index.value = -1;
 }
 
 function updateImage(arg){
