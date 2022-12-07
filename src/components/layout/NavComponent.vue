@@ -1,9 +1,11 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import AddColor from '../UI/AddColor.vue';
 </script>
 
 <template>
   <nav class="fs-42">
+    <AddColor />
     <ul>
       <li class="nav__little-link">
         <RouterLink to="#agency">
@@ -21,9 +23,6 @@ import { RouterLink } from 'vue-router';
         </RouterLink>
       </li>
       <li class="nav__big-link">
-        <!-- <RouterLink to="https://3fh7gbh186a.typeform.com/to/ENGwpoSa">
-          Contact us
-        </RouterLink> -->
         <a
           href="https://3fh7gbh186a.typeform.com/to/ENGwpoSa"
           target="_blank"
