@@ -1,16 +1,14 @@
 <script setup>
-import {defineProps, onMounted, onUnmounted, ref, watch} from "vue";
+import {defineProps, defineEmits, onMounted, onUnmounted, ref, watch} from "vue";
 
 const props = defineProps({
 	images: {
 		type: Array,
 		required: true
-	},
-	index: {
-		type: Number,
-		required: true
 	}
 })
+
+const emit = defineEmits(['currentImage']);
 
 onMounted(() => {
 	window.addEventListener('resize', updateGridSize);
@@ -41,7 +39,7 @@ function updateGridSize() {
 		column = 5;
 		row = 4;
 	} else {
-		column = 15;
+		column = 7;
 		row = 2;
 	}
 }
@@ -50,7 +48,6 @@ function leaveContainer(){
 	currentMousePos = null;
 	lastMousePos = null;
 }
-
 
 function updateImage(arg){
 	currentMousePos ? lastMousePos = currentMousePos : lastMousePos = null;
@@ -64,7 +61,7 @@ function updateImage(arg){
 }
 
 watch(index, () => {
-	image.value = document.querySelector(`[data-images-container="${props.index}"] [data-index="${counter % props.images.length}"]`)
+	image.value = container.value.querySelector(`[data-index="${counter % props.images.length}"]`)
 	if (!image.value) {
 		return 0;
 	}
@@ -76,7 +73,7 @@ watch(index, () => {
 })
 
 watch(image, (newImage) => {
-
+	emit("currentImage", image);
 	if (newImage) {
 		if (newImage.animation) {
 			newImage.animation.cancel();
@@ -168,7 +165,6 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 <template>
   <div
     ref="container"
-    :data-images-container="props.index"
     @mousemove="updateImage"
     @mouseleave="leaveContainer"
   >
