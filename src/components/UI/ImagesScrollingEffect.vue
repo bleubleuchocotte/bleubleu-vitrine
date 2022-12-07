@@ -1,5 +1,5 @@
 <script setup>
-import {defineProps, defineEmits, onMounted, onUnmounted, ref, watch} from "vue";
+import {defineProps, defineEmits, onMounted, onUnmounted, ref, watch } from "vue";
 
 const props = defineProps({
 	images: {
@@ -13,6 +13,7 @@ const emit = defineEmits(['currentImage']);
 onMounted(() => {
 	window.addEventListener('resize', updateGridSize);
 	updateGridSize();
+
 	dimensions = {
 		width: container.value.clientWidth,
 		height: 500
@@ -38,6 +39,7 @@ function updateGridSize() {
 	if (window.innerWidth < 767) {
 		column = 5;
 		row = 4;
+		dimensions ? dimensions.height = 100 : dimensions;
 	} else {
 		column = 7;
 		row = 2;
