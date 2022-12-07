@@ -32,15 +32,24 @@ defineProps({
 
 		@media #{$md-down} {
 			width: 100%;
-			height: 60%;
+			height: 40%;
 			bottom: 0;
 			top: unset;
 		}
 
+		@media #{$md-up} {
+			display: flex;
+			align-items: center;
+		}
+		overflow: hidden;
+
 		img {
-			object-fit: cover;
 			width: 100%;
-			height: 100%;
+
+			@media #{$md-down} {
+				height: 100%;
+				object-fit: cover;
+			}
 		}
 	}
 
