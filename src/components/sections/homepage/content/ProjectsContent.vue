@@ -20,14 +20,14 @@ const props = defineProps({
     class="fs-20"
     tabindex="0"
   >
-    <div class="article-top">
-      <div class="article__project-title">
+    <div class="article__top">
+      <div class="article__top_left">
         <p :data-text="project.data.title[0].text">
           {{ project.data.title[0].text }}
         </p>
       </div>
-      <div class="article__project-date">
-        <p id="article__project-date">
+      <div class="article__top_right">
+        <p id="article__top_project-date">
           {{ project.data.date.substring(0,4) }}
         </p>
         <Link
@@ -38,7 +38,7 @@ const props = defineProps({
         </Link>
       </div>
     </div>
-    <div class="article-bottom">
+    <div class="article__bottom">
       <div>
         <p> {{ project.data.description[0].text }}</p>
       </div>
@@ -56,9 +56,10 @@ const props = defineProps({
 
 <style scoped lang="scss">
 
-.article-top {
-	div:first-of-type {
-		width: 35%;
+.article {
+	&__top_left {
+		width: 60%;
+
 		@media #{$md-down} {
 			width: 55%;
 		}
@@ -67,8 +68,20 @@ const props = defineProps({
 			width: 62%;
 		}
 	}
+
+	&__top_right {
+		width: 40%;
+
+		@media #{$md-down} {
+			width: 45%;
+		}
+		@media screen and (max-width: 350px) {
+			width: 38%;
+		}
+	}
 }
-.article-bottom {
+
+.article__bottom {
 	div:first-of-type {
 		width: 35%;
 		@media #{$md-down} {
@@ -79,7 +92,7 @@ const props = defineProps({
 
 @media screen and (max-width: 350px) {
 	
-	#article__project-date{
+	#article__top_project-date{
 		display: none;
 	}
 }
@@ -111,15 +124,15 @@ article{
 	border-right: 1px solid $primary;
 	
 	&:hover, &:target, &:focus {
-		.article__project-title p:before {
+		.article__top_left p:before {
 			width: 100%;
 		}
 
-		.article__project-title p {
+		.article__top_left p {
 			color: $secondary;
 		}
 
-		.article-bottom {
+		.article__bottom {
 			height: 500px;
 
 			@media #{$md-down} {
@@ -135,12 +148,12 @@ article:last-of-type {
 		bottom: unset;
 	}
 
-	.article-bottom {
+	.article__bottom {
 		border-top: unset;
 	}
 }
 
-.article-top{
+.article__top{
 	display: flex;
 	height: 75px;
 
@@ -148,81 +161,80 @@ article:last-of-type {
 		height: 50px;
 	}
 
-	.article__project-title{
-	padding: 15px 20px;
-
-	@media #{$md-down} {
-		padding: 11px 10px;
-	}
-	@media #{$xs-down} {
-		padding: 12px 10px;
-	}
-	border-right: 1px solid $primary;
-	
-	p{
-		position: relative;
-		width: fit-content;
-		padding: 10px 20px;
+	.article__top_left {
+		padding: 15px 20px;
 
 		@media #{$md-down} {
-			padding: 5px 10px;
+			padding: 11px 10px;
+		}
+		@media #{$xs-down} {
+			padding: 12px 10px;
+		}
+		border-right: 1px solid $primary;
+		
+		p{
+			position: relative;
+			width: fit-content;
+			padding: 10px 20px;
+
+			@media #{$md-down} {
+				padding: 5px 10px;
+			}
+
+			border: 1px solid $primary;
+			border-radius: 58px;
+
+			overflow: hidden;
 		}
 
-		border: 1px solid $primary;
-		border-radius: 58px;
+		p:before {
+			content: "";
+			position: absolute;
+			width: 0;
+			height: 100%;
 
-		overflow: hidden;
+			left: 0;
+			top: 0;
+
+			background-color: $primary;
+			transition: width 0.6s $ease-vnr;
+		}
+		p:after{
+			content: attr(data-text);
+			height: 100%;
+
+			position: absolute;
+			left: 0;
+
+			padding-left: 20px;
+			@media #{$md-down} {
+				padding-left: 10px;
+			}
+
+			transition: color 0.6s $ease-vnr;
+		}
+
 	}
 
-	p:before {
-		content: "";
-		position: absolute;
-		width: 0;
-		height: 100%;
+	.article__top_right{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 
-		left: 0;
-		top: 0;
+		padding: 13px 20px;
 
-		background-color: $primary;
-		transition: width 0.6s $ease-vnr;
-	}
-	p:after{
-		content: attr(data-text);
-		height: 100%;
-
-		position: absolute;
-		left: 0;
-
-		padding-left: 20px;
 		@media #{$md-down} {
-			padding-left: 10px;
+			width: 45%;
+			padding: 13px 10px;
 		}
-
-		transition: color 0.6s $ease-vnr;
-	}
-
-}
-
-.article__project-date{
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-
-	width: 65%;
-	padding: 13px 20px;
-
-	@media #{$md-down} {
-		width: 45%;
-		padding: 13px 10px;
-	}
-	@media screen and (max-width: 350px) {
-		width: 38%;
+		@media screen and (max-width: 350px) {
+			width: 38%;
+		}
 	}
 }
-}
 
 
-.article-bottom{
+.article__bottom{
 	position: relative;
 
 	display: flex;
