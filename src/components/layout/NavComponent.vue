@@ -1,10 +1,27 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import { onMounted, ref } from 'vue';
+import AddColor from '../UI/AddColor.vue';
+
+onMounted(() => {
+	colorful.value = (localStorage.getItem("colorful") == "true");
+})
+
+const colorful = ref(false);
+const getEmit = ref(false)
 </script>
 
 <template>
-  <nav class="fs-42">
-    <ul>
+  <nav
+    class="fs-42"
+    :class="{animate: getEmit, dynamicHeight: colorful}"
+  >
+    <AddColor
+      v-if="(!colorful)"
+      :class="{animate: getEmit}"
+      @colorful="(bool) => getEmit = bool"
+    />
+    <ul :class="{animate: getEmit}">
       <li class="nav__little-link">
         <RouterLink to="#agency">
           BleuBleu?
@@ -21,9 +38,6 @@ import { RouterLink } from 'vue-router';
         </RouterLink>
       </li>
       <li class="nav__big-link">
-        <!-- <RouterLink to="https://3fh7gbh186a.typeform.com/to/ENGwpoSa">
-          Contact us
-        </RouterLink> -->
         <a
           href="https://3fh7gbh186a.typeform.com/to/ENGwpoSa"
           target="_blank"
@@ -49,8 +63,17 @@ import { RouterLink } from 'vue-router';
 		font-weight: 400;
 
 		@media #{$md-down}{
-			height: 100px;
+			height: 120px;
 			background: $gradient-mobile;
+
+			&.animate{
+				height: 100px;
+				transition: height 0.4s $ease-vnr 0.2s;
+			}
+
+			&.dynamicHeight{
+				height: 100px;
+			}
 		}
 	}
 	ul{
@@ -58,7 +81,14 @@ import { RouterLink } from 'vue-router';
 		@media #{$md-down}{
 			flex-wrap: wrap;
 		}
+
+		&.animate{
+			transform: translateY(-24px);
+			transition: transform 0.4s $ease-vnr 0.2s;
+		}
 	}
+
+
 	li{
 		border: 1px solid $secondary;
 		border-radius: 50px;

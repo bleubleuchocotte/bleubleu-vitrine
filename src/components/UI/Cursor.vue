@@ -16,7 +16,7 @@ const cursor = ref();
 
 function updateCursor(arg){
 	cursor.value.style.zIndex = "100";
-	if (arg.target.localName === "a"){
+	if (arg.target.localName === "a" || arg.target.localName === "button"){
 		cursor.value.style.filter = "none";
 		cursor.value.style.transform = `translate(${arg.clientX - 30}px, ${arg.clientY-30}px) scale(0.7)`;
 		cursor.value.style.borderWidth = "1px";
