@@ -1,20 +1,19 @@
 <script setup>
-import {defineProps, onMounted, onUnmounted, ref, watch} from "vue";
+import {defineProps, defineEmits, onMounted, onUnmounted, ref, watch } from "vue";
 
 const props = defineProps({
 	images: {
 		type: Array,
 		required: true
-	},
-	index: {
-		type: Number,
-		required: true
 	}
 })
+
+const emit = defineEmits(['currentImage']);
 
 onMounted(() => {
 	window.addEventListener('resize', updateGridSize);
 	updateGridSize();
+
 	dimensions = {
 		width: container.value.clientWidth,
 		height: 500
@@ -40,8 +39,9 @@ function updateGridSize() {
 	if (window.innerWidth < 767) {
 		column = 5;
 		row = 4;
+		dimensions ? dimensions.height = 100 : dimensions;
 	} else {
-		column = 15;
+		column = 7;
 		row = 2;
 	}
 }
@@ -49,8 +49,8 @@ function updateGridSize() {
 function leaveContainer(){
 	currentMousePos = null;
 	lastMousePos = null;
+	index.value = -1;
 }
-
 
 function updateImage(arg){
 	currentMousePos ? lastMousePos = currentMousePos : lastMousePos = null;
@@ -64,7 +64,10 @@ function updateImage(arg){
 }
 
 watch(index, () => {
-	image.value = document.querySelector(`[data-images-container="${props.index}"] [data-index="${counter % props.images.length}"]`)
+	if (index.value == -1) {
+		return 0;
+	}
+	image.value = container.value.querySelector(`[data-index="${counter % props.images.length}"]`)
 	if (!image.value) {
 		return 0;
 	}
@@ -76,7 +79,7 @@ watch(index, () => {
 })
 
 watch(image, (newImage) => {
-
+	emit("currentImage", image);
 	if (newImage) {
 		if (newImage.animation) {
 			newImage.animation.cancel();
@@ -168,7 +171,7 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 <template>
   <div
     ref="container"
-    :data-images-container="props.index"
+    class="images-scrolling__container"
     @mousemove="updateImage"
     @mouseleave="leaveContainer"
   >
@@ -189,13 +192,18 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 </template>
 
 <style scoped lang="scss">
-	img {
-		height: 275px;
+	.images-scrolling__container img {
 		width: 450px;
+		height: 253px;
 
 		@media #{$md-down} {
 			width: 225px;
-			height: 137px;
+			height: 126px;
+		}
+
+		@media #{$xs-down} {
+			width: 150px;
+			height: 84px;
 		}
 		border: 1px solid $primary;
 		pointer-events: none;
@@ -205,7 +213,7 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 		position: absolute;
 	}
 
-	div[data-images-container]{
+	.images-scrolling__container{
 		position: absolute;
 	}
 

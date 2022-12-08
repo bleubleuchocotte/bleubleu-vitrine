@@ -1,6 +1,6 @@
 <script setup>
 	import { defineProps } from 'vue';
-	import ProjectsContent from './content/ProjectsContent.vue';
+	import ProjectsContent from '@/components/sections/homepage/content/ProjectsContent.vue';
 	
 	defineProps({
 		fields: {
