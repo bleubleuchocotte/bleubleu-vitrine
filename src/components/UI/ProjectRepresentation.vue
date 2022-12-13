@@ -13,6 +13,11 @@ const props = defineProps({
 })
 
 onMounted(() => {
+
+	if (window.matchMedia('(pointer: coarse)').matches) {
+		hasMouse.value = false;
+	}
+
 	props.project.data.medias.forEach(el => {
 		if (el.video.size) {
 			video.value = el.video;
@@ -34,12 +39,22 @@ function onLeave(){
 	isInContainer.value = false;
 }
 
+function onFocus(){
+	isInContainer.value = true;
+}
+
+function onBlur(){
+	isInContainer.value = false;
+}
+
 const currentImage = ref({});
 
 const isInContainer = ref(false);
 
 const images = ref([]);
 const video = ref({});
+
+const hasMouse = ref(true);
 
 </script>
 
@@ -49,6 +64,8 @@ const video = ref({});
     tabindex="0"
     @mouseenter="onEnter"
     @mouseleave="onLeave"
+    @focus="onFocus"
+    @blur="onBlur"
   >
     <div class="article__top">
       <div class="article__top_left">
@@ -74,6 +91,7 @@ const video = ref({});
       </div>
 
       <ImagesScrollingEffect
+        v-if="hasMouse"
         class="container-images"
         :images="images"
         @current-image="updateCurrentImage"
@@ -121,6 +139,7 @@ const video = ref({});
 	div:first-of-type {
 		width: 35%;
 		@media #{$md-down} {
+			height: fit-content;
 			width: 100%;
 		}
 	}
@@ -178,7 +197,7 @@ article{
 			height: 500px;
 
 			@media #{$md-down} {
-				height: 60vh;
+				height: 50vh;
 			}
 		}
 		@media #{$md-down} {
@@ -286,6 +305,10 @@ article:last-of-type {
 	position: relative;
 
 	display: flex;
+		@media #{$md-down} {
+		flex-direction: column;
+		justify-content: space-between;
+	}
 
 	height: 0;
 	transition: height 0.5s $ease-vnr 0.5s;
