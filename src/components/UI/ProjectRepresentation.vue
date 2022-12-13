@@ -1,17 +1,25 @@
 <script setup>
 
-import { defineProps, ref } from 'vue';
+import { defineProps, onMounted, ref } from 'vue';
 import Link from "@/components/UI/Link.vue"
 import ImagesScrollingEffect from '@/components/UI/ImagesScrollingEffect.vue';
 import ProjectVideo from '@/components/UI/ProjectVideo.vue';
 
-import video from "@/assets/video/viqi.mp4"
-
-defineProps({
+const props = defineProps({
 	project: {
 		type: Object,
 		required: true,
 	}
+})
+
+onMounted(() => {
+	props.project.data.medias.forEach(el => {
+		if (el.video.size) {
+			video.value = el.video;
+		} else {
+			images.value.push(el.media);
+		}
+	});
 })
 
 function updateCurrentImage(arg) {
@@ -29,6 +37,9 @@ function onLeave(){
 const currentImage = ref({});
 
 const isInContainer = ref(false);
+
+const images = ref([]);
+const video = ref({});
 
 </script>
 
@@ -64,7 +75,7 @@ const isInContainer = ref(false);
 
       <ImagesScrollingEffect
         class="container-images"
-        :images="project.data.medias"
+        :images="images"
         @current-image="updateCurrentImage"
       />
 
