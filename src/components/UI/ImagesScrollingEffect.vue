@@ -180,9 +180,9 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
       :key="key"
     >
       <img
-        v-if="imageLoop.media.url"
-        :src="imageLoop.media.url"
-        :alt="imageLoop.media.alt ? imageLoop.media.alt : ''"
+        v-if="imageLoop.url"
+        :src="imageLoop.url"
+        :alt="imageLoop.alt ? imageLoop.alt : ''"
         :data-index="key"
         width="640"
         height="340"
