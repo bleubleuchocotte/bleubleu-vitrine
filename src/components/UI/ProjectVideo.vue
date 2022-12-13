@@ -3,7 +3,7 @@ import {defineProps, ref, onUpdated} from "vue";
 
 const props = defineProps({
 	video: {
-		type: String,
+		type: Object,
 		required: true
 	},
 	thumbnail: {
@@ -18,9 +18,7 @@ const props = defineProps({
 
 onUpdated(() => {
 	if (props.isInContainer) {
-		setTimeout(() => {
-			videoContainer.value.play();
-		}, 500)
+		videoContainer.value.play();
 	} else {
 		setTimeout(() => {
 			videoContainer.value.load();
@@ -37,7 +35,7 @@ const videoContainer = ref(null);
     <video
       ref="videoContainer"
       :class="isInContainer ? 'videoPlaying' : ''"
-      :src="video"
+      :src="video.url"
       muted
       loop
     />
