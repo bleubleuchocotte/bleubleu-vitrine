@@ -225,7 +225,7 @@ article:last-of-type {
 	height: 75px;
 
 	@media #{$md-down} {
-		height: 50px;
+		height: 60px;
 	}
 
 	.article__top_left {
