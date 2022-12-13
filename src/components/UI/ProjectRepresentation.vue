@@ -3,7 +3,9 @@
 import { defineProps, ref } from 'vue';
 import Link from "@/components/UI/Link.vue"
 import ImagesScrollingEffect from '@/components/UI/ImagesScrollingEffect.vue';
-import SliderImages from '@/components/UI/SliderImages.vue';
+import ProjectVideo from '@/components/UI/ProjectVideo.vue';
+
+import video from "@/assets/video/viqi.mp4"
 
 defineProps({
 	project: {
@@ -16,7 +18,17 @@ function updateCurrentImage(arg) {
 	currentImage.value = arg?.value || undefined;
 } 
 
-const currentImage = ref(null);
+function onEnter(){
+	isInContainer.value = true;
+}
+
+function onLeave(){
+	isInContainer.value = false;
+}
+
+const currentImage = ref({});
+
+const isInContainer = ref(false);
 
 </script>
 
@@ -24,6 +36,8 @@ const currentImage = ref(null);
   <article
     class="fs-20"
     tabindex="0"
+    @mouseenter="onEnter"
+    @mouseleave="onLeave"
   >
     <div class="article__top">
       <div class="article__top_left">
@@ -54,9 +68,10 @@ const currentImage = ref(null);
         @current-image="updateCurrentImage"
       />
 
-      <SliderImages
-        v-if="currentImage"
-        :image="currentImage"
+      <ProjectVideo
+        :video="video"
+        :thumbnail="currentImage"
+        :is-in-container="isInContainer"
       />
 
       <hr>
