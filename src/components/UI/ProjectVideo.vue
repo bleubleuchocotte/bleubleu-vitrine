@@ -18,15 +18,18 @@ const props = defineProps({
 
 onUpdated(() => {
 	if (props.isInContainer) {
+		clearTimeout(timeoutID);
 		videoContainer.value.play();
 	} else {
-		setTimeout(() => {
+		timeoutID = setTimeout(() => {
 			videoContainer.value.load();
 		}, 1000)
 	}
 })
 
 const videoContainer = ref(null);
+let timeoutID;
+
 
 </script>
 
