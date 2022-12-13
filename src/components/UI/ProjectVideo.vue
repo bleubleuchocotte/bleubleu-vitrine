@@ -17,6 +17,10 @@ const props = defineProps({
 })
 
 onUpdated(() => {
+	if (window.matchMedia('(max-width: 1300px)').matches) {
+		isMobile.value = true;
+	}
+
 	if (props.isInContainer) {
 		clearTimeout(timeoutID);
 		videoContainer.value.play();
@@ -28,13 +32,17 @@ onUpdated(() => {
 })
 
 const videoContainer = ref(null);
+const isMobile = ref(false);
 let timeoutID;
 
 
 </script>
 
 <template>
-  <div class="slider-images">
+  <div
+    v-if="!isMobile"
+    class="slider-images"
+  >
     <video
       ref="videoContainer"
       :class="isInContainer ? 'videoPlaying' : ''"
@@ -48,6 +56,17 @@ let timeoutID;
       alt
     >
   </div>
+
+
+  <video
+    v-else
+    ref="videoContainer"
+    :class="isInContainer ? 'videoPlaying' : ''"
+    class="video mobile"
+    :src="video.url"
+    muted
+    loop
+  />
 </template>
 
 <style scoped lang="scss">
@@ -63,8 +82,7 @@ let timeoutID;
 		@media #{$md-down} {
 			width: 100%;
 			height: 40%;
-			bottom: 0;
-			top: unset;
+			position: unset;
 		}
 
 		@media #{$md-up} {
@@ -94,6 +112,18 @@ let timeoutID;
 			&.thumbnailActive {
 				opacity: 1;
 			}
+		}
+	}
+
+	.video.mobile {
+		max-height: 80%;
+		opacity: 0;
+
+		transition: all 0.5s $ease-vnr 0.2s;
+		object-fit: cover;
+
+		&.videoPlaying {
+			opacity: 1;
 		}
 	}
 
