@@ -10,17 +10,21 @@ const props = defineProps({
 		type: Object,
 		required: true
 	},
-	isPlaying: {
+	isInContainer: {
 		type: Boolean,
 		required: true
 	}
 })
 
 onUpdated(() => {
-	if (props.isPlaying) {
-		videoContainer.value.play();
+	if (props.isInContainer) {
+		setTimeout(() => {
+			videoContainer.value.play();
+		}, 500)
 	} else {
-		videoContainer.value.pause();
+		setTimeout(() => {
+			videoContainer.value.load();
+		}, 1000)
 	}
 })
 
@@ -32,13 +36,13 @@ const videoContainer = ref(null);
   <div class="slider-images">
     <video
       ref="videoContainer"
-      :class="isPlaying ? 'videoPlaying' : ''"
+      :class="isInContainer ? 'videoPlaying' : ''"
       :src="video"
       muted
       loop
     />
     <img
-      :class="isPlaying ? '' : 'thumbnailActive'"
+      :class="isInContainer ? '' : 'thumbnailActive'"
       :src="thumbnail.src"
       alt
     >
@@ -80,7 +84,7 @@ const videoContainer = ref(null);
 		}
 
 		video, image {
-			transition: all 0.4s $ease-vnr;
+			transition: all 0.5s $ease-vnr;
 		}
 
 		img {
