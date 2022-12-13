@@ -197,7 +197,7 @@ article{
 			height: 500px;
 
 			@media #{$md-down} {
-				height: 50vh;
+				height: 60vh;
 			}
 		}
 		@media #{$md-down} {
@@ -225,7 +225,7 @@ article:last-of-type {
 	height: 75px;
 
 	@media #{$md-down} {
-		height: 60px;
+		height: 50px;
 	}
 
 	.article__top_left {
