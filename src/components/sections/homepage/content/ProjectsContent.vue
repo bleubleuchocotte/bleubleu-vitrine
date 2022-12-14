@@ -1,6 +1,6 @@
 <script setup>
-
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
+import { useMedia } from "@/composables/useMedia.js"
 import ProjectRepresentation from '@/components/UI/ProjectRepresentation.vue';
 
 defineProps({
@@ -9,6 +9,8 @@ defineProps({
 		required: true,
 	}
 })
+
+const hasMouse = ref(useMedia('(pointer: fine)'));
 </script>
 
 <template>
@@ -16,5 +18,6 @@ defineProps({
     v-for="(project, index) in fields"
     :key="index"
     :project="project"
+    :active-mouse-effect="hasMouse"
   />
 </template>

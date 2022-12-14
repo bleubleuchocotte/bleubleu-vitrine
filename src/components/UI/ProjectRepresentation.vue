@@ -1,5 +1,4 @@
 <script setup>
-
 import { defineProps, onMounted, ref } from 'vue';
 import Link from "@/components/UI/AppLink.vue"
 import ImagesScrollingEffect from '@/components/UI/ProjectImagesScrollingEffect.vue';
@@ -9,15 +8,14 @@ const props = defineProps({
 	project: {
 		type: Object,
 		required: true,
+	},
+	activeMouseEffect: {
+		type: Boolean,
+		required: true,
 	}
 })
 
 onMounted(() => {
-
-	if (window.matchMedia('(pointer: coarse)').matches) {
-		hasMouse.value = false;
-	}
-
 	props.project.data.medias.forEach(el => {
 		if (el.video.size) {
 			video.value = el.video;
@@ -53,9 +51,6 @@ const isInContainer = ref(false);
 
 const images = ref([]);
 const video = ref({});
-
-const hasMouse = ref(true);
-
 </script>
 
 <template>
@@ -91,7 +86,7 @@ const hasMouse = ref(true);
       </div>
 
       <ImagesScrollingEffect
-        v-if="hasMouse"
+        v-if="activeMouseEffect"
         class="container-images"
         :images="images"
         @current-image="updateCurrentImage"
