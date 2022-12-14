@@ -16,13 +16,14 @@
 
     <Footer />
 
-    <Cursor class="only-desktop" />
+    <Cursor v-if="hasMouse" />
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import { usePrismic } from '@prismicio/vue';
+import { useMedia } from "@/composables/useMedia.js"
 
 import Header from '../components/layout/Header.vue';
 import HomepageAgencySection from '../components/sections/homepage/HomepageAgencySection.vue';
@@ -36,6 +37,7 @@ const { client } = usePrismic();
 let document = ref(null);
 const projects = ref(null);
 const keywordsProperties = ref(null);
+const hasMouse = ref(useMedia('(pointer: fine)'));
 
 async function getContent() {
   document.value = await client.getSingle('home_page', {

@@ -1,19 +1,12 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from "vue";
-import {getValueWithBoundaries} from "@/composables/useMath.js"
+import { ref } from "vue";
+import { getValueWithBoundaries } from "@/composables/useMath.js"
+import { useEventListener } from "@/composables/useEventListener.js"
 
-onMounted(() => {
-	if (window.matchMedia('(pointer: coarse)').matches) {
-		window.removeEventListener('mousemove', updateCursor);
-  } else {
-		window.addEventListener('mousemove', updateCursor);
-  }
-})
-onUnmounted(() => {
-  window.removeEventListener('mousemove', updateCursor);
-})
 
 const cursor = ref();
+
+useEventListener(window, 'mousemove', updateCursor);
 
 function updateCursor(arg){
 	cursor.value.style.zIndex = "100";
