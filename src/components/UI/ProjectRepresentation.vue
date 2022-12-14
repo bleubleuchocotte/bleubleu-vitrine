@@ -29,22 +29,6 @@ function updateCurrentImage(arg) {
 	currentImage.value = arg?.value || undefined;
 } 
 
-function onEnter(){
-	isInContainer.value = true;
-}
-
-function onLeave(){
-	isInContainer.value = false;
-}
-
-function onFocus(){
-	isInContainer.value = true;
-}
-
-function onBlur(){
-	isInContainer.value = false;
-}
-
 const currentImage = ref({});
 
 const isInContainer = ref(false);
@@ -57,10 +41,10 @@ const video = ref({});
   <article
     class="fs-20"
     tabindex="0"
-    @mouseenter="onEnter"
-    @mouseleave="onLeave"
-    @focus="onFocus"
-    @blur="onBlur"
+    @mouseenter="isInContainer = true"
+    @mouseleave="isInContainer = false"
+    @focus="isInContainer = true"
+    @blur="isInContainer = false"
   >
     <div class="article__top">
       <div class="article__top_left">
