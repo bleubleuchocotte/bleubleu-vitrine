@@ -13,9 +13,9 @@ export function useMedia(query){
 }
 
 export function useScreenSize() {
-	const isMobile = useMedia('(max-width: 640px)');
-	const isTablet = useMedia('(min-width: 641px) and (max-width: 1024px)');
-	const isDesktop = useMedia('(min-width: 1025px)');
+	const isMobile = useMedia('(max-width: 767px)');
+	const isTablet = useMedia('(min-width: 767px) and (max-width: 1300px)');
+	const isDesktop = useMedia('(min-width: 1300px)');
 
 	return computed(() => {
 		if (isMobile.value) {
