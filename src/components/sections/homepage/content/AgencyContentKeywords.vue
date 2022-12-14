@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps, ref, onMounted } from 'vue';
-import ScrollMovingText from '../../../UI/AgencyTextScrolling.vue';
+import AgencyTextScrolling from '../../../UI/AgencyTextScrolling.vue';
 
 defineProps({
 	properties: {
@@ -39,7 +39,7 @@ const isInView = ref(false);
     class="container"
   >
     <div class="border" />
-    <ScrollMovingText
+    <AgencyTextScrolling
       v-for="(property, index) in properties"
       :key="index"
       :text="property.data.text[0].text"

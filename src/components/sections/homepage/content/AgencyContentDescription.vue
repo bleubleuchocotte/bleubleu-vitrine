@@ -1,8 +1,11 @@
 <script setup>
-import IconRobot from "@/assets/icons/icon-robot-bleubleu.svg?inline"
-import BlurText from "@/components/UI/AppTextBlurEffect.vue";
-import GridChelou from "../../../UI/AgencyGridDesign.vue";
+import {defineProps} from "vue";
 
+import AppTextBlurEffect from "@/components/UI/AppTextBlurEffect.vue";
+import AgencyGridDesign from "../../../UI/AgencyGridDesign.vue";
+import AgencyLineIcons from "../../../UI/AgencyLineIcons.vue";
+
+import IconRobot from "@/assets/icons/icon-robot-bleubleu.svg?inline"
 import Icon1 from "@/assets/icons/icon-bleubleu-electric.svg?inline"
 import Icon4 from "@/assets/icons/icon-bleubleu-gameboy.svg?inline"
 import Icon7 from "@/assets/icons/icon-bleubleu-horror.svg?inline"
@@ -13,11 +16,7 @@ import Icon3 from "@/assets/icons/icon-bleubleu-print.svg?inline"
 import Icon8 from "@/assets/icons/icon-bleubleu-QR.svg?inline"
 import Icon2 from "@/assets/icons/icon-bleubleu-star.svg?inline"
 
-import {defineProps} from "vue";
-import LineIcons from "../../../UI/AgencyLineIcons.vue";
-
 const arr = [Icon1, Icon2, Icon3, Icon4, Icon5, Icon6, Icon7, Icon8, Icon9];
-
 
 defineProps({
 	fields: {
@@ -37,18 +36,18 @@ defineProps({
           <span>COLLECTIVE</span>
         </p>
 
-        <BlurText
+        <AppTextBlurEffect
           :field="fields.team_description"
           class="blur-text fs-20"
         />
       </div>
 
       <div class="lower-part">
-        <LineIcons :icons="arr" />
+        <AgencyLineIcons :icons="arr" />
       </div>
     </div>
     <div class="only-desktop">
-      <GridChelou />
+      <AgencyGridDesign />
     </div>
   </div>
 </template>

@@ -1,8 +1,8 @@
 <script setup>
 import TeamContent from "@/components/sections/homepage/content/TeamContent.vue";
 import { defineProps, ref } from "vue";
-import MorphingShape from "../../UI/TeamMorphingShape.vue";
-import ImageParallax from "../../UI/AppImageParallaxEffect.vue";
+import TeamMorphingShape from "../../UI/TeamMorphingShape.vue";
+import AppImageParallaxEffect from "../../UI/AppImageParallaxEffect.vue";
 
 defineProps({
 	members: {
@@ -32,12 +32,12 @@ const imageBitmapSrc = ref("");
       :members="members"
       @activeBitMap="updateSrc"
     />
-    <MorphingShape
+    <TeamMorphingShape
       :morphing-duration="'10s'"
       :morphing-paths="paths"
     >
-      <ImageParallax :path="imageBitmapSrc" />
-    </morphingshape>
+      <AppImageParallaxEffect :path="imageBitmapSrc" />
+    </TeamMorphingShape>
   </section>
 </template>
 

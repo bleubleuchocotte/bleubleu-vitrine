@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { onMounted, ref } from 'vue';
-import AddColor from '../UI/HeaderTextColorIndication.vue';
+import HeaderTextColorIndication from '../UI/HeaderTextColorIndication.vue';
 
 onMounted(() => {
 	colorful.value = (localStorage.getItem("colorful") == "true");
@@ -16,7 +16,7 @@ const getEmit = ref(false)
     class="fs-42"
     :class="{animate: getEmit, dynamicHeight: colorful}"
   >
-    <AddColor
+    <HeaderTextColorIndication
       v-if="(!colorful)"
       :class="{animate: getEmit}"
       @colorful="(bool) => getEmit = bool"
