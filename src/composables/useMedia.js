@@ -9,8 +9,6 @@ export function useMedia(query){
 		matches.value = arg.matches;
 	})
 
-	console.log(matches.value, query);
-
 	return matches;
 }
 
