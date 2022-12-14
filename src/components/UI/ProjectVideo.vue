@@ -116,7 +116,8 @@ let timeoutID;
 		max-height: 80%;
 		opacity: 0;
 
-		transition: all 0.5s $ease-vnr 0.2s;
+		border-top: $border-bottom;
+		transition: opacity 0.5s $ease-vnr 0.2s;
 		object-fit: cover;
 
 		&.videoPlaying {

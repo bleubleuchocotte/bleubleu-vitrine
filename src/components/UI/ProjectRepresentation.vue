@@ -179,12 +179,6 @@ article{
 				height: 60vh;
 			}
 		}
-		@media #{$md-down} {
-			.container-images {
-				border-bottom: $border-bottom;
-				transition: border-bottom 0s linear 0.6s;
-			}
-		}
 	}
 }
 
