@@ -1,5 +1,5 @@
 <script setup>
-import {defineProps, defineEmits, onMounted, onUnmounted, ref, watch } from "vue";
+import {defineProps, defineEmits, onMounted, ref, watch } from "vue";
 
 const props = defineProps({
 	images: {
@@ -11,8 +11,8 @@ const props = defineProps({
 const emit = defineEmits(['currentImage']);
 
 onMounted(() => {
-	window.addEventListener('resize', updateGridSize);
-	updateGridSize();
+	column = 7;
+	row = 2;
 
 	dimensions = {
 		width: container.value.clientWidth,
@@ -20,9 +20,6 @@ onMounted(() => {
 	}
 })
 
-onUnmounted(() => {
-	window.removeEventListener('resize', updateGridSize)
-})
 
 const container = ref();
 const index = ref(-1);
@@ -35,16 +32,6 @@ let counter = 0;
 let currentMousePos = null;
 let lastMousePos = {};
 
-function updateGridSize() {
-	if (window.innerWidth < 767) {
-		column = 5;
-		row = 4;
-		dimensions ? dimensions.height = 100 : dimensions;
-	} else {
-		column = 7;
-		row = 2;
-	}
-}
 
 function leaveContainer(){
 	currentMousePos = null;
