@@ -201,7 +201,13 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 	}
 
 	.images-scrolling__container{
-		position: absolute;
+		@media #{$landscape} {
+			position: absolute;
+		}
+
+		@media #{$portrait} {
+			flex-shrink: 3;
+		}
 	}
 
 </style>
