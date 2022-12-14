@@ -29,7 +29,7 @@ import HomepageAgencySection from '../components/sections/homepage/HomepageAgenc
 import HomepageProjectSection from '../components/sections/homepage/HomepageProjectSection.vue';
 import HomepageTeamSection from '../components/sections/homepage/HomepageTeamSection.vue';
 import Footer from '../components/layout/Footer.vue';
-import Cursor from '../components/UI/Cursor.vue';
+import Cursor from '../components/UI/AppCursor.vue';
 
 
 const { client } = usePrismic();

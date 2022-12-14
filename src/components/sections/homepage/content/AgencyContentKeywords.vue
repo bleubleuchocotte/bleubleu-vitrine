@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps, ref, onMounted } from 'vue';
-import ScrollMovingText from '../../../UI/ScrollMovingText.vue';
+import ScrollMovingText from '../../../UI/AgencyTextScrolling.vue';
 
 defineProps({
 	properties: {

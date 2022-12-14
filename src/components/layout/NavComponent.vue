@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { onMounted, ref } from 'vue';
-import AddColor from '../UI/AddColor.vue';
+import AddColor from '../UI/HeaderTextColorIndication.vue';
 
 onMounted(() => {
 	colorful.value = (localStorage.getItem("colorful") == "true");

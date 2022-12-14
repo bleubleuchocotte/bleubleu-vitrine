@@ -6,7 +6,7 @@ import NavComponent from './NavComponent.vue';
 
 import videoDesktop from '@/assets/video/Header_anim.json'
 import videoMobile from '@/assets/video/header_anim_mobile.json'
-import LottieAnimation from "../UI/LottieAnimation.vue";
+import LottieAnimation from "../UI/HeaderLottieAnimation.vue";
 
 defineProps({
   socials: {

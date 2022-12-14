@@ -1,8 +1,8 @@
 <script setup>
 
 import { defineProps, onMounted, ref } from 'vue';
-import Link from "@/components/UI/Link.vue"
-import ImagesScrollingEffect from '@/components/UI/ImagesScrollingEffect.vue';
+import Link from "@/components/UI/AppLink.vue"
+import ImagesScrollingEffect from '@/components/UI/ProjectImagesScrollingEffect.vue';
 import ProjectVideo from '@/components/UI/ProjectVideo.vue';
 
 const props = defineProps({

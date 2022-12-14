@@ -1,7 +1,7 @@
 <script setup>
 import IconRobot from "@/assets/icons/icon-robot-bleubleu.svg?inline"
-import BlurText from "@/components/UI/BlurText.vue";
-import GridChelou from "../../../UI/GridChelou.vue";
+import BlurText from "@/components/UI/AppTextBlurEffect.vue";
+import GridChelou from "../../../UI/AgencyGridDesign.vue";
 
 import Icon1 from "@/assets/icons/icon-bleubleu-electric.svg?inline"
 import Icon4 from "@/assets/icons/icon-bleubleu-gameboy.svg?inline"
@@ -14,7 +14,7 @@ import Icon8 from "@/assets/icons/icon-bleubleu-QR.svg?inline"
 import Icon2 from "@/assets/icons/icon-bleubleu-star.svg?inline"
 
 import {defineProps} from "vue";
-import LineIcons from "../../../UI/LineIcons.vue";
+import LineIcons from "../../../UI/AgencyLineIcons.vue";
 
 const arr = [Icon1, Icon2, Icon3, Icon4, Icon5, Icon6, Icon7, Icon8, Icon9];
 

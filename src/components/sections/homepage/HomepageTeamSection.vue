@@ -1,8 +1,8 @@
 <script setup>
 import TeamContent from "@/components/sections/homepage/content/TeamContent.vue";
 import { defineProps, ref } from "vue";
-import MorphingShape from "../../UI/MorphingShape.vue";
-import ImageParallax from "../../UI/ImageParallax.vue";
+import MorphingShape from "../../UI/TeamMorphingShape.vue";
+import ImageParallax from "../../UI/AppImageParallaxEffect.vue";
 
 defineProps({
 	members: {
