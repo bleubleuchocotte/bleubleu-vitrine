@@ -7,16 +7,25 @@
 
   onMounted(() => {
 
-    let randomColor;
+    let randomColor = {};
 
     localStorage.getItem("colorful") ? localStorage.getItem("colorful") : localStorage.setItem("colorful", false);
-
+ 
     if (localStorage.getItem("colorful") === "false") {
       randomColor = Colors.DARKER;
     } else {
+
       const length = Object.entries(Colors).length;
       randomColor = Object.entries(Colors)[getRandomInt(0, length)][1];
+
+      while (localStorage.getItem("color") == JSON.stringify(randomColor)) {
+        // Draw colors until a new one is founded
+        randomColor = Object.entries(Colors)[getRandomInt(0, length)][1];
+      }
+
     }
+
+    localStorage.setItem("color", JSON.stringify(randomColor));
 
     addCSSProperty('--primary-color', randomColor.primary);
     addCSSProperty('--secondary-color', randomColor.secondary);
