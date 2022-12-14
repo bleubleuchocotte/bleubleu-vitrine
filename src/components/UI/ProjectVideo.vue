@@ -1,5 +1,6 @@
 <script setup>
-import {defineProps, ref, onUpdated} from "vue";
+import { defineProps, ref, onUpdated } from "vue";
+import { useScreenSize } from "@/composables/useMedia.js"
 
 const props = defineProps({
 	video: {
@@ -17,10 +18,6 @@ const props = defineProps({
 })
 
 onUpdated(() => {
-	if (window.matchMedia('(max-width: 1300px)').matches) {
-		isMobile.value = true;
-	}
-
 	if (props.isInContainer) {
 		clearTimeout(timeoutID);
 		videoContainer.value.play();
@@ -32,7 +29,7 @@ onUpdated(() => {
 })
 
 const videoContainer = ref(null);
-const isMobile = ref(false);
+const format = ref(useScreenSize());
 let timeoutID;
 
 
@@ -40,7 +37,7 @@ let timeoutID;
 
 <template>
   <div
-    v-if="!isMobile"
+    v-if="format == 'desktop'"
     class="slider-images"
   >
     <video

@@ -1,6 +1,7 @@
 <script setup>
 import { Vue3Lottie } from 'vue3-lottie'
 import { defineProps, ref, onMounted } from 'vue';
+import { useScreenSize } from "@/composables/useMedia.js"
 import 'vue3-lottie/dist/style.css'
 
 defineProps({
@@ -29,23 +30,18 @@ function createIntersectionObserver() {
 }
 
 onMounted(() => {
-  if (window.matchMedia('(max-width: 767px)').matches) {
-    isMobile.value = true;
-  } else {
-    isMobile.value = false;
-  }
 	createIntersectionObserver();
 })
 
 const container = ref();
 const isPausing = ref(true)
-const isMobile = ref();
+const format = ref(useScreenSize());
 </script>
 
 <template>
   <Vue3Lottie
     ref="container"
-    :animation-data="isMobile ? videoMobile : videoDesktop"
+    :animation-data="format == 'mobile' ? videoMobile : videoDesktop"
     :pause-animation="isPausing"
     @onAnimationLoaded="createIntersectionObserver()"
   />

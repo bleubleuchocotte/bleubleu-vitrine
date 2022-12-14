@@ -1,6 +1,7 @@
 <script setup>
+import { defineProps, ref } from "vue";
 
-import { defineProps, onMounted, onUnmounted, ref } from "vue";
+import { useScreenSize } from "@/composables/useMedia.js";
 
 defineProps({
 	icons: {
@@ -9,29 +10,12 @@ defineProps({
 	}
 })
 
-onMounted(() => {
-  listenerMaxWidth();
-  window.addEventListener("resize", listenerMaxWidth);
-})
-
-onUnmounted(() => {
-  window.removeEventListener("resize", listenerMaxWidth);
-})
-
-function listenerMaxWidth() {
-  if (window.matchMedia('(max-width: 767px)').matches) {
-    isMobile.value = true;
-  } else {
-    isMobile.value = false;
-  }
-}
-
-const isMobile = ref(false);
+const format = ref(useScreenSize());
 </script>
 
 <template>
   <div
-    v-if="isMobile"
+    v-if="format == 'mobile'"
     class="line-icons"
   >
     <div class="line-icons__1">
