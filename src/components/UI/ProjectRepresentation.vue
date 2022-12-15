@@ -39,7 +39,7 @@ const video = ref({});
 
 <template>
   <article
-    class="fs-20"
+    class="fs-20 article"
     tabindex="0"
     @mouseenter="isInContainer = true"
     @mouseleave="isInContainer = false"
@@ -48,7 +48,10 @@ const video = ref({});
   >
     <div class="article__top">
       <div class="article__top_left">
-        <p :data-text="project.data.title[0].text">
+        <p
+          class="article__top_left-title"
+          :data-text="project.data.title[0].text"
+        >
           {{ project.data.title[0].text }}
         </p>
       </div>
@@ -90,52 +93,175 @@ const video = ref({});
 <style scoped lang="scss">
 
 .article {
+
+	text-transform: uppercase;
+	width: 100%;
+
+	border-left: $border-left;
+	border-right: $border-right;
+
+	&:hover, &:target, &:focus {
+		.article__top_left-title:before {
+			width: 100%;
+		}
+
+		.article__top_left-title {
+			color: $secondary;
+		}
+
+		.article__bottom {
+			height: 500px;
+
+			@media #{$md-down} {
+				height: 60vh;
+			}
+		}
+	}
+
+	&__top {
+		display: flex;
+		height: 75px;
+
+		@media #{$md-down} {
+			height: 50px;
+		}
+	}
+
 	&__top_left {
+		padding: 15px 20px;
 		width: 60%;
 
 		@media #{$md-down} {
 			width: 55%;
+			padding: 11px 10px;
+		}
+		@media #{$xs-down} {
+			padding: 12px 10px;
 		}
 
 		@media screen and (max-width: 350px) {
 			width: 62%;
 		}
+
+		border-right: 1px solid $primary;
+
+		&-title {
+			position: relative;
+			width: fit-content;
+			padding: 10px 20px;
+
+			border: 1px solid $primary;
+			border-radius: 58px;
+
+			overflow: hidden;
+
+			transition: color 0.6s $ease-vnr;
+
+			@media #{$md-down} {
+				padding: 5px 10px;
+			}
+
+			&:before {
+				content: "";
+				position: absolute;
+				width: 0;
+				height: 100%;
+
+				left: 0;
+				top: 0;
+
+				background-color: $primary;
+				transition: width 0.6s $ease-vnr;
+			}
+
+			&:after{
+				content: attr(data-text);
+
+				position: absolute;
+				left: 0;
+
+				padding-left: 20px;
+				@media #{$md-down} {
+					padding-left: 10px;
+				}
+			}
+		}
 	}
 
 	&__top_right {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		padding: 13px 20px;
+
 		width: 40%;
 
 		@media #{$md-down} {
 			width: 45%;
+			padding: 13px 10px;
 		}
 		@media screen and (max-width: 350px) {
 			width: 38%;
 		}
 	}
-}
 
-.article__bottom {
-	div:first-of-type {
-		width: 35%;
+	&__bottom {
+		position: relative;
+
+		display: flex;
+
+		height: 0;
+		transition: height 0.5s $ease-vnr 0.5s;
+
+		border-top: 1px solid $primary;
+
 		@media #{$md-down} {
-			height: fit-content;
-			width: 100%;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		div:first-of-type {
+			overflow: hidden;
+
+			p {
+				padding: 40px 20px;
+				@media #{$md-down} {
+					padding: 20px 10px;
+				}
+			}
+
+			width: 35%;
+			@media #{$md-down} {
+				height: fit-content;
+				width: 100%;
+			}
+		}
+	}
+
+	&:last-of-type {
+		hr {
+			top: 0;
+			bottom: unset;
+		}
+
+		.article__bottom {
+			border-top: unset;
 		}
 	}
 }
 
 @media screen and (max-width: 350px) {
-	
 	#article__top_project-date{
 		display: none;
 	}
 }
 
-
 .container-images {
 	width: 60%;
 	height: 100%;
 	border-right: $border-right;
+
 	@media #{$md-down} {
 		border-right: unset;
 		width: 100%;
@@ -154,149 +280,5 @@ hr{
 
 	border-bottom-style: unset;
 	border-top-style: solid;
-}
-
-article{
-	text-transform: uppercase;
-	width: 100%;
-
-	border-left: $border-left;
-	border-right: $border-right;
-	
-	&:hover, &:target, &:focus {
-		.article__top_left p:before {
-			width: 100%;
-		}
-
-		.article__top_left p {
-			color: $secondary;
-		}
-
-		.article__bottom {
-			height: 500px;
-
-			@media #{$md-down} {
-				height: 60vh;
-			}
-		}
-	}
-}
-
-article:last-of-type {
-	hr {
-		top: 0;
-		bottom: unset;
-	}
-
-	.article__bottom {
-		border-top: unset;
-	}
-}
-
-.article__top{
-	display: flex;
-	height: 75px;
-
-	@media #{$md-down} {
-		height: 50px;
-	}
-
-	.article__top_left {
-		padding: 15px 20px;
-
-		@media #{$md-down} {
-			padding: 11px 10px;
-		}
-		@media #{$xs-down} {
-			padding: 12px 10px;
-		}
-		border-right: 1px solid $primary;
-		
-		p{
-			position: relative;
-			width: fit-content;
-			padding: 10px 20px;
-
-			@media #{$md-down} {
-				padding: 5px 10px;
-			}
-
-			border: 1px solid $primary;
-			border-radius: 58px;
-
-			overflow: hidden;
-		}
-
-		p:before {
-			content: "";
-			position: absolute;
-			width: 0;
-			height: 100%;
-
-			left: 0;
-			top: 0;
-
-			background-color: $primary;
-			transition: width 0.6s $ease-vnr;
-		}
-		p:after{
-			content: attr(data-text);
-			height: 100%;
-
-			position: absolute;
-			left: 0;
-
-			padding-left: 20px;
-			@media #{$md-down} {
-				padding-left: 10px;
-			}
-
-			transition: color 0.6s $ease-vnr;
-		}
-
-	}
-
-	.article__top_right{
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-
-		padding: 13px 20px;
-
-		@media #{$md-down} {
-			width: 45%;
-			padding: 13px 10px;
-		}
-		@media screen and (max-width: 350px) {
-			width: 38%;
-		}
-	}
-}
-
-
-.article__bottom{
-	position: relative;
-
-	display: flex;
-		@media #{$md-down} {
-		flex-direction: column;
-		justify-content: space-between;
-	}
-
-	height: 0;
-	transition: height 0.5s $ease-vnr 0.5s;
-
-	border-top: 1px solid $primary;
-	
-	div:first-of-type {
-		overflow: hidden;
-
-		p {
-			padding: 40px 20px;
-			@media #{$md-down} {
-				padding: 20px 10px;
-			}
-		}
-	}
 }
 </style>
