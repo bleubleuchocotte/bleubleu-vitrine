@@ -95,7 +95,7 @@ const format = ref(useScreenSize());
 		border: 1px solid $secondary;
 		border-radius: 50px;
 
-		transition: all 0.5s ease-out;
+		transition: flex 0.5s ease-out, letter-spacing 0.5s ease-out;
 		@media #{$md-down}{
 			transition: none;
 			width: 50%;

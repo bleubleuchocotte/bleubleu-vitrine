@@ -106,6 +106,10 @@ const video = ref({});
 		}
 
 		.article__top_left-title {
+			transition-duration: 0.6s;
+		}
+
+		.article__top_left-title {
 			color: $secondary;
 		}
 
@@ -155,7 +159,7 @@ const video = ref({});
 
 			overflow: hidden;
 
-			transition: color 0.6s $ease-vnr;
+			transition: color 0s $ease-vnr;
 
 			@media #{$md-down} {
 				padding: 5px 10px;
