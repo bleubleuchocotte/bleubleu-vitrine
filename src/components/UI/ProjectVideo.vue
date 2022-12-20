@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps, ref, onUpdated } from "vue";
-import { useScreenSize } from "@/composables/useMedia.js"
+import { useScreenSize, usePointerAccuracy } from "@/composables/useMedia.js"
 
 const props = defineProps({
 	video: {
@@ -30,6 +30,7 @@ onUpdated(() => {
 
 const videoContainer = ref(null);
 const format = ref(useScreenSize());
+const pointer = ref(usePointerAccuracy());
 let timeoutID;
 
 
@@ -37,7 +38,7 @@ let timeoutID;
 
 <template>
   <div
-    v-if="format == 'desktop'"
+    v-if="format == 'desktop' && pointer == 'fine'"
     class="slider-images"
   >
     <video
@@ -76,7 +77,7 @@ let timeoutID;
 		width: 40%;
 		height: 100%;
 
-		@media #{$md-down} {
+		@media #{$md-down}, #{$low-accuracy} {
 			width: 100%;
 			height: 40%;
 			position: unset;

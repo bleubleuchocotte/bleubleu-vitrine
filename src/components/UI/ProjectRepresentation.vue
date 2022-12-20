@@ -220,7 +220,7 @@ const video = ref({});
 
 		border-top: 1px solid $primary;
 
-		@media #{$md-down} {
+		@media #{$md-down}, #{$low-accuracy} {
 			flex-direction: column;
 			justify-content: space-between;
 		}
@@ -230,13 +230,13 @@ const video = ref({});
 
 			p {
 				padding: 40px 20px;
-				@media #{$md-down} {
+				@media #{$md-down}, #{$low-accuracy} {
 					padding: 20px 10px;
 				}
 			}
 
 			width: 35%;
-			@media #{$md-down} {
+			@media #{$md-down}, #{$low-accuracy} {
 				height: fit-content;
 				width: 100%;
 			}
@@ -266,7 +266,7 @@ const video = ref({});
 	height: 100%;
 	border-right: $border-right;
 
-	@media #{$md-down} {
+	@media #{$md-down}, #{$low-accuracy} {
 		border-right: unset;
 		width: 100%;
 		height: 60%;
