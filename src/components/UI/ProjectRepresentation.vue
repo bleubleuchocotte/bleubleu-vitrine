@@ -23,6 +23,8 @@ onMounted(() => {
 			images.value.push(el.media);
 		}
 	});
+
+	heightOnHover.value = `${(projectDescriptionContainer.value.clientHeight) + (window.innerHeight * 0.05) + ((window.innerWidth - 20 * 2) * 9 / 16)}px`; // Permet d'avoir toujours le même espace entre la description et la video
 })
 
 function updateCurrentImage(arg) {
@@ -35,6 +37,10 @@ const isInContainer = ref(false);
 
 const images = ref([]);
 const video = ref({});
+
+const projectDescriptionContainer = ref();
+
+const heightOnHover = ref("");
 </script>
 
 <template>
@@ -69,7 +75,9 @@ const video = ref({});
     </div>
     <div class="article__bottom">
       <div>
-        <p> {{ project.data.description[0].text }}</p>
+        <p ref="projectDescriptionContainer">
+          {{ project.data.description[0].text }}
+        </p>
       </div>
 
       <ImagesScrollingEffect
@@ -117,7 +125,7 @@ const video = ref({});
 			height: 500px;
 
 			@media #{$md-down} {
-				height: 60vh;
+				height: v-bind(heightOnHover);
 			}
 		}
 	}
@@ -223,6 +231,7 @@ const video = ref({});
 		@media #{$md-down}, #{$low-accuracy} {
 			flex-direction: column;
 			justify-content: space-between;
+			overflow: hidden;
 		}
 
 		div:first-of-type {
