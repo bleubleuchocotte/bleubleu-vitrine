@@ -1,7 +1,7 @@
 <script setup>
 import { Vue3Lottie } from 'vue3-lottie'
-import { defineProps, ref, onMounted } from 'vue';
-import { useScreenSize } from "@/composables/useMedia.js"
+import { defineProps, ref } from 'vue';
+import { useScreenSize, usePrefersReducedMotion } from "@/composables/useMedia.js"
 import 'vue3-lottie/dist/style.css'
 
 defineProps({
@@ -29,21 +29,25 @@ function createIntersectionObserver() {
   observer.observe(container.value.$el);
 }
 
-onMounted(() => {
-	createIntersectionObserver();
-})
+function lottieLoaded() {
+  createIntersectionObserver();
+  if (isPausing.value || isReducedMotionEnable.value) {
+    container.value.pause();
+  }
+}
 
 const container = ref();
 const isPausing = ref(true)
 const format = ref(useScreenSize());
+const isReducedMotionEnable = ref(usePrefersReducedMotion());
 </script>
 
 <template>
   <Vue3Lottie
     ref="container"
     :animation-data="format == 'mobile' ? videoMobile : videoDesktop"
-    :pause-animation="isPausing"
-    @onAnimationLoaded="createIntersectionObserver()"
+    :pause-animation="isPausing || isReducedMotionEnable"
+    @onAnimationLoaded="lottieLoaded()"
   />
 </template>
 
