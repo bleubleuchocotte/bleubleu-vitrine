@@ -114,17 +114,22 @@ let timeoutID;
 	}
 
 	.video.mobile {
-		flex: 1;
 
-		height: 0;
+		@media #{$landscape}{
+			flex: 1;
+			height: 0;
+			object-fit: cover;
+		}
+
 		opacity: 0;
 
 		border-top: $border-bottom;
-		transition: opacity 0.4s $ease-vnr 0.9s;
-		object-fit: cover;
+		transition: opacity 0.4s $ease-vnr 0.8s;
+		pointer-events: none;
 
 		&.videoPlaying {
 			opacity: 1;
+			pointer-events: all;
 		}
 	}
 
