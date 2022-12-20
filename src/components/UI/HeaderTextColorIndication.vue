@@ -32,6 +32,13 @@ function activeColor() {
   console.log(color.value.name);
 }
 
+function setStyleTitle() {
+	document.getElementById("project").classList.add("transition-off");
+}
+function resetStyleTitle() {
+	document.getElementById("project").classList.remove("transition-off");
+}
+
 const color = ref({});
 </script>
 
@@ -40,6 +47,8 @@ const color = ref({});
     <span>tired of {{ color.tiredOf }} ?<button
       class="add-color__button"
       @click="activeColor()"
+      @mouseenter="setStyleTitle()"
+      @mouseleave="resetStyleTitle()"
     >get color here</button></span>
   </div>
 </template>
