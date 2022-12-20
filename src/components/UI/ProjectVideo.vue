@@ -114,11 +114,13 @@ let timeoutID;
 	}
 
 	.video.mobile {
-		max-height: 80%;
+		flex: 1;
+
+		height: 0;
 		opacity: 0;
 
 		border-top: $border-bottom;
-		transition: opacity 0.5s $ease-vnr 0.2s;
+		transition: opacity 0.4s $ease-vnr 0.9s;
 		object-fit: cover;
 
 		&.videoPlaying {
