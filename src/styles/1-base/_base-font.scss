@@ -45,6 +45,9 @@
   @media #{$md-down} {
     font-size: 22px;
   }
+  @media #{$md-low-to-md-high} {
+    font-size: 40px;
+  }
   @media #{$xs-down} {
     font-size: 18px;
   }
