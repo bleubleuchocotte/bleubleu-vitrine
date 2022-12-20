@@ -29,3 +29,21 @@ export function useScreenSize() {
 		}
 	})
 }
+
+export function usePointerAccuracy() {
+	const isFine = useMedia('(pointer: fine)');
+	const isCoarse = useMedia('(pointer: coarse)');
+	const isNone = useMedia('(pointer: none)')
+
+	return computed(() => {
+		if (isFine.value) {
+			return "fine";
+		} else if (isCoarse.value) {
+			return "coarse";
+		} else if (isNone.value) {
+			return "none";
+		} else {
+			return undefined;
+		}
+	})
+}
