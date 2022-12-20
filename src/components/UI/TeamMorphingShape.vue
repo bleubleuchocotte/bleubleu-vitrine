@@ -1,5 +1,8 @@
 <script setup>
 import { onMounted, defineProps, ref } from "vue";
+import { usePrefersReducedMotion } from "@/composables/useMedia.js"
+
+
 const props = defineProps({
   morphingPaths: {
     type: Array,
@@ -54,6 +57,7 @@ function createIntersectionObserver() {
 
 const morphingPaths = ref([]);
 const isRunning = ref(true);
+const isReducedMotionEnable = ref(usePrefersReducedMotion());
 const containerHTML = ref(null);
 </script>
 
@@ -70,7 +74,7 @@ const containerHTML = ref(null);
           <clipPath id="clipPath">
             <path :d="props.morphingPaths[0]">
               <animate
-                v-if="isRunning"
+                v-if="isRunning && !isReducedMotionEnable"
                 attributeName="d"
                 :values="morphingPaths"
                 :dur="morphingDuration"
@@ -85,7 +89,7 @@ const containerHTML = ref(null);
           style="stroke-width: 2"
         >
           <animate
-            v-if="isRunning"
+            v-if="isRunning && !isReducedMotionEnable"
             attributeName="d"
             :values="morphingPaths"
             :dur="morphingDuration"
