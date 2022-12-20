@@ -47,3 +47,15 @@ export function usePointerAccuracy() {
 		}
 	})
 }
+
+export function usePrefersReducedMotion() {
+	const isEnable = useMedia('(prefers-reduced-motion)');
+
+	return computed(() => {
+		if (isEnable.value) {
+			return true;
+		} else {
+			return false;
+		}
+	})
+}
