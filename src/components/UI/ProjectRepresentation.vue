@@ -12,6 +12,10 @@ const props = defineProps({
 	activeMouseEffect: {
 		type: Boolean,
 		required: true,
+	},
+	isFirst: {
+		type: Boolean,
+		required: true
 	}
 })
 
@@ -24,12 +28,21 @@ onMounted(() => {
 		}
 	});
 
+	props.isFirst ? isInContainer.value = true : null; // Permet de lancer la vidéo dès le début
+
 	heightOnHover.value = `${(projectDescriptionContainer.value.clientHeight) + (window.innerHeight * 0.05) + ((window.innerWidth - 20 * 2) * 9 / 16)}px`; // Permet d'avoir toujours le même espace entre la description et la video
 })
 
 function updateCurrentImage(arg) {
 	currentImage.value = arg?.value || undefined;
 } 
+
+function mouseenter(){
+	if(article.value.classList.contains("first-article")) {
+		article.value.classList.remove("first-article")
+	}
+	isInContainer.value = true;
+}
 
 const currentImage = ref({});
 
@@ -41,13 +54,17 @@ const video = ref({});
 const projectDescriptionContainer = ref();
 
 const heightOnHover = ref("");
+
+const article = ref();
 </script>
 
 <template>
   <article
+    ref="article"
     class="fs-20 article"
+    :class="isFirst ? 'first-article' : ''"
     tabindex="0"
-    @mouseenter="isInContainer = true"
+    @mouseenter="mouseenter"
     @mouseleave="isInContainer = false"
     @focus="isInContainer = true"
     @blur="isInContainer = false"
@@ -163,7 +180,7 @@ const heightOnHover = ref("");
 
 			overflow: hidden;
 
-			transition: color 0.6s $ease-vnr;
+			transition: color 0.3s $ease-vnr;
 
 			@media #{$md-down} {
 				padding: 5px 10px;
@@ -179,7 +196,7 @@ const heightOnHover = ref("");
 				top: 0;
 
 				background-color: $primary;
-				transition: width 0.6s $ease-vnr;
+				transition: width 0.3s $ease-vnr;
 			}
 
 			&:after{
@@ -220,7 +237,7 @@ const heightOnHover = ref("");
 		display: flex;
 
 		height: 0;
-		transition: height 0.5s $ease-vnr 0.5s;
+		transition: height 0.2s $ease-vnr 0.2s;
 
 		border-top: 1px solid $primary;
 
@@ -260,6 +277,24 @@ const heightOnHover = ref("");
 	}
 }
 
+.article.first-article {
+	.article__top_left-title:before {
+		width: 100%;
+	}
+
+	.article__top_left-title {
+		color: $secondary;
+	}
+
+	.article__bottom {
+		height: 500px;
+
+		@media #{$md-down} {
+			height: v-bind(heightOnHover);
+		}
+	}
+}
+
 @media screen and (max-width: 350px) {
 	#article__top_project-date{
 		display: none;
@@ -283,7 +318,6 @@ hr{
 	margin: 0;
 	bottom: 0;
 	width: 100%;
-	height: 1px;
 	
 	border-color: $primary;
 

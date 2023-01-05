@@ -36,5 +36,6 @@ const hasMouse = ref(useMedia('(pointer: fine)'));
     :key="index"
     :project="project"
     :active-mouse-effect="hasMouse"
+    :is-first="index === 0 ? true : false"
   />
 </template>
