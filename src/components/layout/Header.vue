@@ -57,9 +57,9 @@ defineProps({
 
 	.morphing-container {
     height: 75vh;
+    margin: auto 0;
     @media #{$md-down} {
       height: 50vh;
-      margin: auto 0;
     }
 	}
 
