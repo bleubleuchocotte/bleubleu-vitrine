@@ -4,7 +4,7 @@ export default Object.freeze({
 		primary: '#000000',
 		secondary: '#FFFFFF',
 		filter: 'none',
-		tiredOf: 'black&white',
+		tiredOf: 'tired of black&white',
 	},
 	PASSION: {
 		name: 'Passion',
@@ -12,7 +12,7 @@ export default Object.freeze({
 		secondary: '#FFFFFF',
 		filter:
 			'invert(7%) sepia(97%) saturate(7318%) hue-rotate(1deg) brightness(108%) contrast(130%)',
-		tiredOf: 'passion',
+		tiredOf: 'sick of red',
 	},
 	JELLY: {
 		name: 'Jelly',
@@ -20,7 +20,7 @@ export default Object.freeze({
 		secondary: '#696969',
 		filter:
 			'invert(90%) sepia(28%) saturate(839%) hue-rotate(30deg) brightness(101%) contrast(104%)',
-		tiredOf: 'jelly',
+		tiredOf: 'pertubed by neon',
 	},
 	SEA: {
 		name: 'Sea',
@@ -28,7 +28,7 @@ export default Object.freeze({
 		secondary: '#F2F2F2',
 		filter:
 			'invert(29%) sepia(78%) saturate(7150%) hue-rotate(218deg) brightness(106%) contrast(99%)',
-		tiredOf: 'sea',
+		tiredOf: 'fed up with blue',
 	},
 	PASTEL: {
 		name: 'Pastel',
@@ -36,7 +36,7 @@ export default Object.freeze({
 		secondary: '#F7F4ED',
 		filter:
 			'invert(28%) sepia(76%) saturate(1829%) hue-rotate(313deg) brightness(82%) contrast(94%)',
-		tiredOf: 'pastel',	
+		tiredOf: 'bored of bordeaux',	
 	},
 	MEMORY: {
 		name: 'Memory',
@@ -44,7 +44,7 @@ export default Object.freeze({
 		secondary: '#F7F4ED',
 		filter:
 			' invert(44%) sepia(41%) saturate(494%) hue-rotate(206deg) brightness(89%) contrast(87%)',
-		tiredOf: 'memory',
+		tiredOf: 'disenchanted with purple',
 	},
 	CYAN: {
 		name: 'Cyan',
@@ -52,7 +52,7 @@ export default Object.freeze({
 		secondary: '#F7F1EE',
 		filter:
 			'invert(38%) sepia(45%) saturate(717%) hue-rotate(135deg) brightness(94%) contrast(92%)',
-		tiredOf: 'cyan',	
+		tiredOf: 'frustrated with green',	
 	},
 	CHAOS: {
 		name: 'Chaos',
@@ -60,7 +60,7 @@ export default Object.freeze({
 		secondary: '#020303',
 		filter:
 			'invert(15%) sepia(97%) saturate(4036%) hue-rotate(350deg) brightness(93%) contrast(97%)',
-		tiredOf: 'bloody red & deep black',	
+		tiredOf: 'afraid of the dark',	
 	},
 	POLAR:{
 		name: 'Polar',
@@ -68,7 +68,7 @@ export default Object.freeze({
 		secondary: '#0E38B1',
 		filter:
 			'invert(100%) sepia(1%) saturate(0%) hue-rotate(171deg) brightness(103%) contrast(101%)',
-		tiredOf: 'polar',	
+		tiredOf: 'irritated by blue',	
 	},
 })
 
