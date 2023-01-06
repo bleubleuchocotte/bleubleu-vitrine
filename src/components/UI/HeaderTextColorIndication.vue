@@ -3,15 +3,20 @@ import { defineEmits, ref, onMounted } from "vue";
 import { addCSSProperty } from "@/composables/useRootElement.js";
 import { getRandomInt } from '@/composables/useRandom.js';
 import { getDataUriFromSvg, getSvgFavicon } from "@/composables/useSvg.js";
+import IconRefresh from "@/assets/icons/icon-refresh.svg?inline";
 import Colors from "@/config";
 
 const emit = defineEmits(["colorful"]);
 
 onMounted(() => {
+	if (localStorage.getItem("colorful") === "true") {
+		isFirstTime.value = false;
+	}
 	color.value = JSON.parse(localStorage.getItem('color'));
 })
 
 function activeColor() {
+	isFirstTime.value = false;
 	emit("colorful", true)
   localStorage.setItem('colorful', true);
 
@@ -40,16 +45,17 @@ function resetStyleTitle() {
 }
 
 const color = ref({});
+const isFirstTime = ref(true);
 </script>
 
 <template>
   <div class="add-color__container fs-15">
-    <span>tired of {{ color.tiredOf }} ?<button
+    <span>{{ color.tiredOf }}?<button
       class="add-color__button"
       @click="activeColor()"
       @mouseenter="setStyleTitle()"
       @mouseleave="resetStyleTitle()"
-    >get color here</button></span>
+    >{{ isFirstTime ? 'give me color' : 'change color' }}<IconRefresh /></button></span>
   </div>
 </template>
 
@@ -70,6 +76,12 @@ const color = ref({});
 		background-color: transparent;
 		color: $secondary;
 		text-decoration: underline;
+
+		svg {
+			fill: $secondary;
+			vertical-align: middle;
+			margin-left: 4px;
+		}
 	}
 
 
