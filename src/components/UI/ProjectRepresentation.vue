@@ -20,13 +20,11 @@ const props = defineProps({
 })
 
 onMounted(() => {
-	props.project.data.medias.forEach(el => {
-		if (el.video.size) {
-			video.value = el.video;
-		} else {
-			images.value.push(el.media);
-		}
-	});
+	props.project.data.project_images.forEach(el => {
+		images.value.push(el.image)
+	})
+
+	videos.value = props.project.data.videos[0];
 
 	props.isFirst ? isInContainer.value = true : null; // Permet de lancer la vidéo dès le début
 
@@ -49,7 +47,7 @@ const currentImage = ref({});
 const isInContainer = ref(false);
 
 const images = ref([]);
-const video = ref({});
+const videos = ref({});
 
 const projectDescriptionContainer = ref();
 
@@ -105,7 +103,7 @@ const article = ref();
       />
 
       <ProjectVideo
-        :video="video"
+        :videos="videos"
         :thumbnail="currentImage"
         :is-in-container="isInContainer"
       />

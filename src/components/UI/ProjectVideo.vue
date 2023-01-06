@@ -3,7 +3,7 @@ import { defineProps, ref, onUpdated } from "vue";
 import { useScreenSize, usePointerAccuracy } from "@/composables/useMedia.js"
 
 const props = defineProps({
-	video: {
+	videos: {
 		type: Object,
 		required: true
 	},
@@ -44,10 +44,20 @@ let timeoutID;
     <video
       ref="videoContainer"
       :class="isInContainer ? 'videoPlaying' : ''"
-      :src="video.url"
       muted
       loop
-    />
+    >
+      <source
+        v-if="videos.webm"
+        :src="videos.webm.url"
+        type="video/webm"
+      >
+      <source
+        v-if="videos.webm"
+        :src="videos.mp4.url"
+        type="video/mp4"
+      >
+    </video>
     <img
       :class="isInContainer ? '' : 'thumbnailActive'"
       :src="thumbnail.src"
@@ -59,12 +69,22 @@ let timeoutID;
   <video
     v-else
     ref="videoContainer"
+    :poster="thumbnail.src"
     :class="isInContainer ? 'videoPlaying' : ''"
     class="video mobile"
-    :src="video.url"
     muted
-    loop
-  />
+  >
+    <source
+      v-if="videos.webm"
+      :src="videos.webm.url"
+      type="video/webm"
+    >
+    <source
+      v-if="videos.webm"
+      :src="videos.mp4.url"
+      type="video/mp4"
+    >
+  </video>
 </template>
 
 <style scoped lang="scss">
