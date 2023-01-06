@@ -178,7 +178,7 @@ const article = ref();
 
 			overflow: hidden;
 
-			transition: color 0.3s $ease-vnr;
+			transition: color 0.5s $ease-vnr;
 
 			@media #{$md-down} {
 				padding: 5px 10px;
@@ -194,7 +194,7 @@ const article = ref();
 				top: 0;
 
 				background-color: $primary;
-				transition: width 0.3s $ease-vnr;
+				transition: width 0.5s $ease-vnr;
 			}
 
 			&:after{
@@ -235,7 +235,7 @@ const article = ref();
 		display: flex;
 
 		height: 0;
-		transition: height 0.2s $ease-vnr 0.2s;
+		transition: height 0.5s $ease-vnr 0.4s;
 
 		border-top: 1px solid $primary;
 
