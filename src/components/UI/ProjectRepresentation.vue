@@ -34,6 +34,8 @@ onMounted(() => {
 	props.isFirst ? isInContainer.value = true : null; // Permet de lancer la vidéo dès le début
 
 	heightOnHover.value = `${(projectDescriptionContainer.value.clientHeight) + (window.innerHeight * 0.05) + ((window.innerWidth - 20 * 2) * 9 / 16)}px`; // Permet d'avoir toujours le même espace entre la description et la video
+
+	createIntersectionObserver();
 })
 
 function updateCurrentImage(arg) {
@@ -45,6 +47,22 @@ function mouseenter(){
 		article.value.classList.remove("first-article")
 	}
 	isInContainer.value = true;
+}
+
+function createIntersectionObserver() {
+  let options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0,
+  };
+
+  let callback = (entries) => {
+    entries[0].isIntersecting
+      ? (isInView.value = true)
+      : (isInView.value = false);
+  };
+  let observer = new IntersectionObserver(callback, options);
+  observer.observe(article.value);
 }
 
 const currentImage = ref({});
@@ -61,6 +79,8 @@ const heightOnHover = ref("");
 const article = ref();
 
 const format = ref(useScreenSize());
+
+const isInView = ref(false)
 </script>
 
 <template>
@@ -113,6 +133,7 @@ const format = ref(useScreenSize());
         :videos="videos"
         :thumbnail="currentImage"
         :is-in-container="isInContainer"
+        :is-in-view="isInView"
       />
 
       <hr>

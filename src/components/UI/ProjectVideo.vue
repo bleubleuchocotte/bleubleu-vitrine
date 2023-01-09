@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref, onUpdated, onMounted, watch } from "vue";
+import { defineProps, ref, onUpdated } from "vue";
 import { useScreenSize, usePointerAccuracy } from "@/composables/useMedia.js"
 
 const props = defineProps({
@@ -14,11 +14,15 @@ const props = defineProps({
 	isInContainer: {
 		type: Boolean,
 		required: true
+	},
+	isInView: {
+		type: Boolean,
+		required: true
 	}
 })
 
 onUpdated(() => {
-	if (props.isInContainer && format.value == 'desktop') {
+	if (props.isInContainer && format.value == 'desktop' && props.isInView) {
 		clearTimeout(timeoutID);
 		videoContainer.value.play();
 	} else {
@@ -28,43 +32,12 @@ onUpdated(() => {
 	}
 })
 
-onMounted(() => {
-  createIntersectionObserver();
-});
-
-function createIntersectionObserver() {
-  let options = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0,
-  };
-
-  let callback = (entries) => {
-    entries[0].isIntersecting
-      ? (isInView.value = true)
-      : (isInView.value = false);
-  };
-  let observer = new IntersectionObserver(callback, options);
-  observer.observe(videoContainer.value);
-}
 
 const videoContainer = ref(null);
 const format = ref(useScreenSize());
 const pointer = ref(usePointerAccuracy());
+
 let timeoutID;
-
-const isInView = ref(false);
-
-watch(isInView, isInViewUpdate => {
-	if (isInViewUpdate) {
-		clearTimeout(timeoutID);
-		videoContainer.value.play();
-	} else {
-		timeoutID = setTimeout(() => {
-			videoContainer.value.load();
-		}, 1000)
-	}
-})
 </script>
 
 <template>
