@@ -70,9 +70,9 @@ const format = ref(useScreenSize());
     :class="isFirst ? 'first-article' : ''"
     tabindex="0"
     @mouseenter="mouseenter"
-    @mouseleave="format == desktop ? isInContainer = false : ''"
-    @focus="format == desktop ? isInContainer = true : ''"
-    @blur="format == desktop ? isInContainer = false : ''"
+    @mouseleave="isInContainer = false "
+    @focus="isInContainer = true "
+    @blur="isInContainer = false "
   >
     <div class="article__top">
       <div class="article__top_left">
