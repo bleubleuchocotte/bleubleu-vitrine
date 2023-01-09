@@ -24,15 +24,16 @@ export function getDataUriFromSvg(svg) {
  * @param {String} color HEX value of a color
  */
 	export function getSvgFavicon(color) {
-	const svg = `<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+	const svg = 
+	`<svg width="30" height="30" viewBox="0 0 29.18 28.63" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<style>
-				rect {
+				path {
 					fill: ${color};
 				}
 			</style>
-			<rect x="0" y="0" width="30" height="30" rx="5"/>
-		</svg>`;
-
+			<path d="M26.98,28.63H2.2c-1.21,0-2.2-.99-2.2-2.2V2.2C0,.99,.99,0,2.2,0H26.98c1.21,0,2.2,.99,2.2,2.2V26.43c0,1.21-.99,2.2-2.2,2.2ZM2.2,1.65c-.3,0-.55,.25-.55,.55V26.43c0,.3,.25,.55,.55,.55H26.98c.3,0,.55-.25,.55-.55V2.2c0-.3-.25-.55-.55-.55H2.2Z"/>
+			<path d="M21.34,22.94H7.3v-2.75h1.65v1.1h12.39v1.65Zm-5.23-5.23h-3.58v-1.65h1.93v-6.88h1.65v8.53Zm6.06-6.23h-1.65V5.69h1.65v5.78Zm-13.49,0h-1.65V5.69h1.65v5.78Z"/>
+	</svg>`;
 	return svg;
 }
 
