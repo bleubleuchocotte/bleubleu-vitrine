@@ -22,13 +22,24 @@ const props = defineProps({
 })
 
 onUpdated(() => {
-	if (props.isInContainer && format.value == 'desktop' && props.isInView) {
-		clearTimeout(timeoutID);
-		videoContainer.value.play();
+	if(format.value == 'desktop') {
+		if (props.isInContainer && props.isInView) {
+			clearTimeout(timeoutID);
+			videoContainer.value.play();
+		} else {
+			timeoutID = setTimeout(() => {
+				videoContainer.value.load();
+			}, 1000)
+		}
 	} else {
-		timeoutID = setTimeout(() => {
-			videoContainer.value.load();
-		}, 1000)
+		if (props.isInView) {
+			clearTimeout(timeoutID);
+			videoContainer.value.play();
+		} else {
+			timeoutID = setTimeout(() => {
+				videoContainer.value.load();
+			}, 1000)
+		}
 	}
 })
 
