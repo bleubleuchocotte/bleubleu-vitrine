@@ -2,7 +2,6 @@
 import { RouterLink } from 'vue-router';
 import { onMounted, ref } from 'vue';
 import HeaderTextColorIndication from '../UI/HeaderTextColorIndication.vue';
-import { useScreenSize } from "@/composables/useMedia.js";
 
 onMounted(() => {
 	colorful.value = (localStorage.getItem("colorful") == "true");
@@ -10,20 +9,16 @@ onMounted(() => {
 
 const colorful = ref(false);
 const getEmit = ref(false)
-const format = ref(useScreenSize());
 </script>
 
 <template>
   <nav
     class="fs-42"
-    :class="format != 'desktop' ? {animate: getEmit, dynamicHeight: colorful} : ''"
   >
     <HeaderTextColorIndication
-      v-if="(!colorful || format == 'desktop')"
-      :class="format != 'desktop' ? {animate: getEmit} : ''"
       @colorful="(bool) => getEmit = bool"
     />
-    <ul :class="format != 'desktop' ? {animate: getEmit} : ''">
+    <ul>
       <li class="nav__little-link">
         <RouterLink to="#agency">
           BleuBleu?
