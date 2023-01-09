@@ -3,6 +3,7 @@ import { defineProps, onMounted, ref } from 'vue';
 import Link from "@/components/UI/AppLink.vue"
 import ImagesScrollingEffect from '@/components/UI/ProjectImagesScrollingEffect.vue';
 import ProjectVideo from '@/components/UI/ProjectVideo.vue';
+import { useScreenSize } from '@/composables/useMedia.js'
 
 const props = defineProps({
 	project: {
@@ -20,6 +21,10 @@ const props = defineProps({
 })
 
 onMounted(() => {
+	if (format.value == 'mobile' || format.value == 'tablet') {
+		isInContainer.value = true;
+	}
+
 	props.project.data.project_images.forEach(el => {
 		images.value.push(el.image)
 	})
@@ -54,6 +59,8 @@ const projectDescriptionContainer = ref();
 const heightOnHover = ref("");
 
 const article = ref();
+
+const format = ref(useScreenSize());
 </script>
 
 <template>
@@ -63,9 +70,9 @@ const article = ref();
     :class="isFirst ? 'first-article' : ''"
     tabindex="0"
     @mouseenter="mouseenter"
-    @mouseleave="isInContainer = false"
-    @focus="isInContainer = true"
-    @blur="isInContainer = false"
+    @mouseleave="format == desktop ? isInContainer = false : ''"
+    @focus="format == desktop ? isInContainer = true : ''"
+    @blur="format == desktop ? isInContainer = false : ''"
   >
     <div class="article__top">
       <div class="article__top_left">
@@ -290,6 +297,20 @@ const article = ref();
 		@media #{$md-down} {
 			height: v-bind(heightOnHover);
 		}
+	}
+}
+
+@media #{$md-down} {
+	.article__top_left-title:before {
+		width: 100%;
+	}
+
+	.article__top_left-title {
+		color: $secondary;
+	}
+
+	.article__bottom {
+		height: v-bind(heightOnHover);
 	}
 }
 
