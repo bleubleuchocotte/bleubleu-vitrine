@@ -73,6 +73,7 @@ let timeoutID;
     :class="isInContainer ? 'videoPlaying' : ''"
     class="video mobile"
     muted
+    loop
   >
     <source
       v-if="videos.webm"
