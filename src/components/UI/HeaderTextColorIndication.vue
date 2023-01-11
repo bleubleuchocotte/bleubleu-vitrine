@@ -32,7 +32,9 @@ function activeColor() {
   addCSSProperty('--secondary-color', color.value.secondary);
   addCSSProperty('--filter-to-primary', color.value.filter);
 
+	document.querySelector("meta[name='theme-color']").content = color.value.primary.primary; // Update theme color on mobile
   document.getElementById('squaredFavicon').href = getDataUriFromSvg(getSvgFavicon(color.value.primary)); // Update favicon
+	
 	localStorage.setItem('color', JSON.stringify(color.value));
   console.log(color.value.name);
 }
