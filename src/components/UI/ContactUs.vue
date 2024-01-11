@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import Link from './Link.vue';
+import Link from './AppLink.vue';
 import ClipboardCopy from './ClipboardCopy.vue';
 </script>
 

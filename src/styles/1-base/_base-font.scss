@@ -10,6 +10,15 @@
   font-display: swap;
 }
 
+.fs-15 {
+  font-size: 15px;
+  line-height: 24px;
+
+  @media #{$md-down} {
+    font-size: 12px;
+  }
+}
+
 .fs-20 {
   font-size: 20px;
   
@@ -35,6 +44,9 @@
 
   @media #{$md-down} {
     font-size: 22px;
+  }
+  @media #{$md-low-to-md-high} {
+    font-size: 40px;
   }
   @media #{$xs-down} {
     font-size: 18px;

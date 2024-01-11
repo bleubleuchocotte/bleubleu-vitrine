@@ -1,29 +1,25 @@
 <script setup>
-import {defineProps, onMounted, onUnmounted, ref, watch} from "vue";
+import {defineProps, defineEmits, onMounted, ref, watch } from "vue";
 
 const props = defineProps({
 	images: {
 		type: Array,
 		required: true
-	},
-	index: {
-		type: Number,
-		required: true
 	}
 })
 
+const emit = defineEmits(['currentImage']);
+
 onMounted(() => {
-	window.addEventListener('resize', updateGridSize);
-	updateGridSize();
+	column = 7;
+	row = 2;
+
 	dimensions = {
 		width: container.value.clientWidth,
 		height: 500
 	}
 })
 
-onUnmounted(() => {
-	window.removeEventListener('resize', updateGridSize)
-})
 
 const container = ref();
 const index = ref(-1);
@@ -36,21 +32,12 @@ let counter = 0;
 let currentMousePos = null;
 let lastMousePos = {};
 
-function updateGridSize() {
-	if (window.innerWidth < 767) {
-		column = 5;
-		row = 4;
-	} else {
-		column = 15;
-		row = 2;
-	}
-}
 
 function leaveContainer(){
 	currentMousePos = null;
 	lastMousePos = null;
+	index.value = -1;
 }
-
 
 function updateImage(arg){
 	currentMousePos ? lastMousePos = currentMousePos : lastMousePos = null;
@@ -64,7 +51,13 @@ function updateImage(arg){
 }
 
 watch(index, () => {
-	image.value = document.querySelector(`[data-images-container="${props.index}"] [data-index="${counter % props.images.length}"]`)
+	if (index.value == -1) {
+		return 0;
+	}
+	image.value = container.value.querySelector(`[data-index="${counter % props.images.length}"]`)
+	if (!image.value) {
+		return 0;
+	}
 	image.value.positions = {
 		last: lastMousePos,
 		current: currentMousePos
@@ -73,7 +66,7 @@ watch(index, () => {
 })
 
 watch(image, (newImage) => {
-
+	emit("currentImage", image);
 	if (newImage) {
 		if (newImage.animation) {
 			newImage.animation.cancel();
@@ -165,31 +158,39 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 <template>
   <div
     ref="container"
-    :data-images-container="props.index"
+    class="images-scrolling__container"
     @mousemove="updateImage"
     @mouseleave="leaveContainer"
   >
-    <img
+    <template 
       v-for="(imageLoop, key) in images"
       :key="key"
-
-      :src="imageLoop.media.url"
-      :alt="imageLoop.media.alt ? imageLoop.media.alt : ''"
-      :data-index="key"
-      width="640"
-      height="340"
     >
+      <img
+        v-if="imageLoop.url"
+        :src="imageLoop.url"
+        :alt="imageLoop.alt ? imageLoop.alt : ''"
+        :data-index="key"
+        width="640"
+        height="340"
+      >
+    </template>
   </div>
 </template>
 
 <style scoped lang="scss">
-	img {
-		height: 275px;
+	.images-scrolling__container img {
 		width: 450px;
+		height: 253px;
 
 		@media #{$md-down} {
 			width: 225px;
-			height: 137px;
+			height: 126px;
+		}
+
+		@media #{$xs-down} {
+			width: 150px;
+			height: 84px;
 		}
 		border: 1px solid $primary;
 		pointer-events: none;
@@ -199,8 +200,14 @@ function getAnimationObject(element, initValue, endValue, stepValue, zIndex) {
 		position: absolute;
 	}
 
-	div[data-images-container]{
-		position: absolute;
+	.images-scrolling__container{
+		@media #{$landscape} {
+			position: absolute;
+		}
+
+		@media #{$portrait} {
+			flex-shrink: 3;
+		}
 	}
 
 </style>

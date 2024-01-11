@@ -1,6 +1,6 @@
 <script setup>
 	import { defineProps } from 'vue';
-	import ProjectsContent from './content/ProjectsContent.vue';
+	import ProjectsContent from '@/components/sections/homepage/content/ProjectsContent.vue';
 	
 	defineProps({
 		fields: {
@@ -19,7 +19,7 @@
 
 
 <style scoped lang="scss">
-section{
+#project {
 	display: flex;
 	flex-direction: column;
 
@@ -28,5 +28,11 @@ section{
 		padding-inline: 20px;
   }
 	border-bottom: 1px solid $primary;
+
+	&.transition-off {
+		:deep(.article__top_left-title ) {
+			transition-duration: 0s;
+		}
+	}
 }
 </style>
